@@ -7,7 +7,7 @@ function App() {
 
   return (
     <BrowserRouter>
-    
+      {/* Routes to be inserted here. */}
     </BrowserRouter>
   )
 }
