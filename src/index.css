@@ -11,3 +11,9 @@
   --font-*: initial;
   --font: Inter, sans-serif;
 }
+
+@layer base {
+  button {
+    @apply flex justify-center items-center cursor-pointer rounded-md m-[20px];
+  }
+}
