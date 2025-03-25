@@ -1,10 +1,9 @@
-import { BrowserRouter } from 'react-router';
+import { BrowserRouter, Route, Routes } from 'react-router';
 
+import routes from './config/routes';
 import Navbar from './layout components/Navbar';
-import LoginButton from './design components/LoginButton';
-import JoinButton from './design components/JoinButton';
-import HireButton from './design components/HireButton';
-import TextButton from './design components/TextButton';
+
+
 
 function App() {
   
@@ -12,15 +11,17 @@ function App() {
   return (
     <BrowserRouter>
       <Navbar />
-      <LoginButton />
-      <JoinButton />
-      <HireButton />
-      <TextButton
-        buttonText='Sign Up'
-      />
-      <TextButton
-        buttonText='Login'
-      />
+        <Routes>
+          { routes.map((route: any, index: number) => (
+            <Route
+              key={index}
+              path={route.path}
+              element={
+                <route.component />
+              }
+            />
+          ))}
+        </Routes>
       {/* Routes to be inserted here. */}
     </BrowserRouter>
   )

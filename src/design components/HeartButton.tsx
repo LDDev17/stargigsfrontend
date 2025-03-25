@@ -1,1 +1,0 @@
-import Heart from '../assets/Vector.svg';
