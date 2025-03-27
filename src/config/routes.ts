@@ -1,4 +1,4 @@
-import Home from "../pages/Home";
+import LandingPage from "../pages/LandingPage";
 import About from "../pages/About";
 import Dashboard from "../pages/Dashboard";
 import Reviews from "../pages/Reviews";
@@ -14,8 +14,8 @@ interface RouteType {
 const routes: RouteType[] = [
   {
     path: "",
-    component: Home,
-    name: "Home Screen",
+    component: LandingPage,
+    name: "Landing Page",
     protected: false,
   },
   {
@@ -24,6 +24,12 @@ const routes: RouteType[] = [
     name: "About",
     protected: false,
   },
+  // {
+  //   path: "/SignUp",
+  //   component: SignUp,
+  //   name: "Sign Up",
+  //   protected: false,
+  // },
   {
     path: "/Dashboard",
     component: Dashboard,
