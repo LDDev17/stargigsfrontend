@@ -10,7 +10,7 @@ import MusicNote from '../assets/icons/Music_note.png';
 // include magnifying glass at the end
 
 const SearchBar = () => {
-  const [isActive, setIsActive] = useState(false);
+  const [isActive, setIsActive] = useState(true);
 
   return (
     <div>
