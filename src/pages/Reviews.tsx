@@ -9,7 +9,7 @@ const Reviews = () => {
       <Navbar />
       <ReviewsBanner />
       <div className="flex flex-col items-center justify-center my-12">
-        <h3>Hear it from the customer</h3>
+        <h3>Hear it from the customers</h3>
         <img src={Squiggle} alt="orange squiggle underline" />
       </div>
       <AverageRating />

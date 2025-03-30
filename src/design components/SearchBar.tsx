@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 
 import MagGlass from '../assets/icons/MagnifyingGlass.png';
 import MapPin1 from '../assets/icons/MapPin.png';
@@ -10,23 +10,44 @@ import MusicNote from '../assets/icons/Music_note.png';
 // include magnifying glass at the end
 
 const SearchBar = () => {
-  const [isActive, setIsActive] = useState(true);
+  const [isActive, setIsActive] = useState(false);
+
+  const handleClick = () => {
+    setIsActive(true);
+  }
+
+  let searchRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    let clickHandler = (e: MouseEvent) => {
+      if (!searchRef.current?.contains(e.target as Node)){
+        setIsActive(false);
+      }
+    }
+
+    document.addEventListener("mousedown", clickHandler)
+
+    return() => {
+      document.removeEventListener("mousedown", clickHandler)
+    }
+
+  });
 
   return (
-    <div>
+    <div className='transition duration-300 ease-in-out'>
       {isActive ?
         (
           <div className='flex justify-between w-full bg-white rounded-3xl px-2
                   bg-gradient-to-r from-primary to-light_orange'>
             <div className='flex justify-between'>
-              <button className='flex justify-start my-1 mr-2 ml-0 space-x-1 rounded-3xl bg-white pl-2 pr-12'>
+              <button className='flex justify-start my-2 mr-2 ml-0 space-x-1 rounded-3xl bg-white pl-2 pr-12'>
                 <img src={MapPin1} alt="map pin icon" />
                 <div className='flex flex-col'>
                   <p className='text-sm'>WHERE</p>
                   <p className='text-[10px]'>Location</p>
                 </div>
               </button>
-              <button className='flex justify-start my-1 mr-2 ml-0 mx-0 space-x-1 rounded-3xl bg-white pl-2 pr-12'>
+              <button className='flex justify-start my-2 mr-2 ml-0 space-x-1 rounded-3xl bg-white pl-2 pr-12'>
                 {/* TODO: insert calender icon */}
                 <img src={Calendar} alt="calendar icon" /> 
                 <div className='flex flex-col'>
@@ -34,7 +55,7 @@ const SearchBar = () => {
                   <p className='text-[10px]'>Select date</p>
                 </div>
               </button>
-              <button className='flex justify-start my-1 mx-0 space-x-1 rounded-3xl bg-white pl-2 pr-12'>
+              <button className='flex justify-start my-2 mx-0 space-x-1 rounded-3xl bg-white pl-2 pr-12'>
                 {/* TODO: insert star icon? */}
                 <img src={MusicNote} alt="music note icon" />
                 <div className='flex flex-col'>
@@ -46,7 +67,7 @@ const SearchBar = () => {
             </div>
           </div>
           ) : (
-            <button className='flex justify-between w-[280px] bg-white rounded-3xl py-2 px-5' type='button'>
+            <button className='flex justify-between w-[280px] bg-white rounded-3xl py-2 px-5' type='button' onClick={handleClick}>
               <p className='text-text_secondary'>Search local talent</p>
               <img src={MagGlass} alt="magnifying glass icon" />
             </button>
