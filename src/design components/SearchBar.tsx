@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from 'react';
 
 import SearchWhere from './SearchWhere';
 import SearchWhen from './SearchWhen';
+import SearchWhat from './SearchWhat';
 
 import MagGlass from '../assets/icons/MagnifyingGlass.png';
 import Calendar from '../assets/icons/Calendar_today.png';
@@ -42,18 +43,18 @@ const SearchBar = () => {
   });
 
   return (
-    <div ref={searchRef} className='flex justify-end transition duration-300 ease-in-out w-full'>
+    <div ref={searchRef} className='flex justify-end h-[50px] transition duration-300 ease-in-out w-full'>
       {isActive ?
         (
           <div className='flex justify-between bg-white rounded-3xl px-2
                   bg-gradient-to-r from-primary to-light_orange w-full'>
             <div className='flex justify-between w-full'>
-              <div className='flex justify-start my-2 mr-2 ml-0 space-x-1 rounded-3xl bg-white pl-2 w-1/3'>
+              <div className='flex justify-start items-center my-1 mr-2 ml-0 space-x-1 rounded-3xl bg-white pl-2 w-1/3'>
                 
                 <SearchWhere />
                 
               </div>
-              <div className='flex justify-start items-center my-2 mr-2 ml-0 space-x-2 rounded-3xl bg-white pl-2 w-1/3'>
+              <div className='flex justify-start items-center my-1 mr-2 ml-0 space-x-2 rounded-3xl bg-white pl-2 w-1/3'>
                 <img src={Calendar} alt="calendar icon" />
                 <SearchWhen />
               </div>
@@ -64,12 +65,16 @@ const SearchBar = () => {
                   <p className='text-[10px]'>Select date</p>
                 </div>
               </div> */}
-              <div className='flex justify-start my-2 mx-0 space-x-1 rounded-3xl bg-white pl-2 w-1/3'>
+              {/* <div className='flex justify-start my-2 mx-0 space-x-1 rounded-3xl bg-white pl-2 w-1/3'>
                 <img src={MusicNote} alt="music note icon" />
                 <div className='flex flex-col'>
                   <p className='text-sm'>WHAT</p>
                   <p className='text-[10px]'>Talent</p>
                 </div>
+              </div> */}
+
+              <div className='flex justify-start items-center my-1 mr-2 ml-0 space-x-1 rounded-3xl bg-white pl-2 w-1/3'>
+                <SearchWhat />
               </div>
               
               <button type='submit'>

@@ -57,7 +57,7 @@ const SearchWhere = () => {
       <div className='flex justify-start mx-0 space-x-1 rounded-3xl bg-white 
             pl-2 '>
         {/* dropdown */}
-        <div className='absolute flex flex-col justify-start my-4 mx-0 space-x-1 
+        <div className='absolute flex flex-col justify-start top-8 space-x-1 
           rounded-3xl bg-transparent max-h-96 max-w-36'>
           {/* <label 
             className='p-2'

@@ -54,6 +54,7 @@ const SearchWhen = () => {
         placeholderText="Select date"
         showMonthDropdown
         showYearDropdown
+        className="w-24"
         // customInput={<CustomInput className="w-30"/>}
         // ref={whenRef}
       />
