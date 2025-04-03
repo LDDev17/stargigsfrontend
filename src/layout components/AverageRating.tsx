@@ -25,17 +25,20 @@ const AverageRating = () => {
   return (
     <div className="flex bg-gradient-to-r from-black to-[#565656] h-[200px]">
       {/* left side of vertical line */}
-      <div className="flex flex-col m-4 text-tertiary border-red border-2">
+      <div className="flex flex-col mx-12 justify-center space-y-2 text-tertiary">
         <h4 className="text-xl">Average rating</h4>
-        <h5 className="flex text-4xl inline">
-          {avgRating} {filledStarArr.map((item: string, i) => (<span key={i}><img key={i} src={item} /></span>))} 
-          {emptyStarArr.map(j => <img key={j} src={star_empty} />)}
-        </h5>
+        <div className="flex text-4xl inline">
+          <div>{avgRating}</div> 
+          <div className='flex'>
+            {filledStarArr.map((item: string, i) => (<span><img key={i} src={item} /></span>))}
+            {emptyStarArr.map(j => <img key={j} src={star_empty} />)}
+          </div>
+        </div>
         {/* TODO: insert props that are state to make this dynamic */}
         <p>over 20,000+ ratings are 4 star plus</p>
       </div>
       {/* vertical line */}
-      <div className='my-6 border-r-1 border-tertiary'></div>
+      <div className='my-6 w-1/8 border-r-1 border-tertiary'></div>
       {/* right side of vertical line */}
       <div className='flex flex-col justify-around my-4 text-tertiary'>
         <div className='flex justify-around w-8'>

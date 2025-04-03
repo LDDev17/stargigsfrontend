@@ -10,7 +10,7 @@ const ReviewsBanner = () => {
             <h2 className='text-4xl text-tertiary font-bold text-center'>Success Stories</h2>
             <p className='text-tertiary text-lg text-center'>Insert cute text here.</p>
             {/* this button will lead to a write your own review page or modal */}
-            <button className='text-tertiary border-tertiary border-1 rounded-3xl px-2'>SHARE YOUR STORY</button>
+            <button className='text-tertiary border-tertiary border-1 rounded-3xl py-2 px-4'>SHARE YOUR STORY</button>
         </div>
     </div>
   )

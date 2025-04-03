@@ -2,6 +2,7 @@ import Navbar from "../layout components/Navbar";
 import ReviewsBanner from "../layout components/ReviewsBanner";
 import AverageRating from "../layout components/AverageRating";
 import Squiggle from '../assets/icons/Squiggle.png';
+import ReviewsTile from "../design components/ReviewsTile";
 
 const Reviews = () => {
   return (
@@ -13,7 +14,7 @@ const Reviews = () => {
         <img src={Squiggle} alt="orange squiggle underline" />
       </div>
       <AverageRating />
-      <h1 className="flex justify-center items-center">Testimonial Section</h1>
+      <ReviewsTile />
     </div>
   )
 }

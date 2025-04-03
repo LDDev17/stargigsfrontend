@@ -18,12 +18,12 @@ const Navbar = () => {
           <img src={logo_light} alt="Star Gigs logo in light theme" />
         </NavLink>
         
-        <div className='flex justify-end'>
+        <div className='w-2/5'>
           <SearchBar />
         </div>
 
         {/* Navigation Links */}
-        <div className='flex justify-around w-2/5'>
+        <div className='flex justify-around w-1/3'>
           <NavLink
             to='/Reviews'
             className='text-tertiary'

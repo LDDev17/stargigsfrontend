@@ -18,3 +18,9 @@
     @apply flex justify-center items-center cursor-pointer rounded-md;
   }
 }
+
+.react-datepicker_day {
+  color: #FEEFE5;
+
+}
+

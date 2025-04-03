@@ -1,7 +1,9 @@
 import { useState, useEffect, useRef } from 'react';
 
+import SearchWhere from './SearchWhere';
+import SearchWhen from './SearchWhen';
+
 import MagGlass from '../assets/icons/MagnifyingGlass.png';
-import MapPin1 from '../assets/icons/MapPin.png';
 import Calendar from '../assets/icons/Calendar_today.png';
 import MusicNote from '../assets/icons/Music_note.png';
 // isActive state for conditional rendering
@@ -10,10 +12,16 @@ import MusicNote from '../assets/icons/Music_note.png';
 // include magnifying glass at the end
 
 const SearchBar = () => {
+  // state for whether the search bar is collapsed or expanded
   const [isActive, setIsActive] = useState(false);
+  const [whereActive, setWhereActive] = useState(false);
 
   const handleClick = () => {
     setIsActive(true);
+  }
+
+  const handleSearchClick = () => {
+    setWhereActive(true);
   }
 
   let searchRef = useRef<HTMLDivElement>(null);
@@ -34,36 +42,39 @@ const SearchBar = () => {
   });
 
   return (
-    <div className='transition duration-300 ease-in-out'>
+    <div ref={searchRef} className='flex justify-end transition duration-300 ease-in-out w-full'>
       {isActive ?
         (
-          <div className='flex justify-between w-full bg-white rounded-3xl px-2
-                  bg-gradient-to-r from-primary to-light_orange'>
-            <div className='flex justify-between'>
-              <button className='flex justify-start my-2 mr-2 ml-0 space-x-1 rounded-3xl bg-white pl-2 pr-12'>
-                <img src={MapPin1} alt="map pin icon" />
-                <div className='flex flex-col'>
-                  <p className='text-sm'>WHERE</p>
-                  <p className='text-[10px]'>Location</p>
-                </div>
-              </button>
-              <button className='flex justify-start my-2 mr-2 ml-0 space-x-1 rounded-3xl bg-white pl-2 pr-12'>
-                {/* TODO: insert calender icon */}
+          <div className='flex justify-between bg-white rounded-3xl px-2
+                  bg-gradient-to-r from-primary to-light_orange w-full'>
+            <div className='flex justify-between w-full'>
+              <div className='flex justify-start my-2 mr-2 ml-0 space-x-1 rounded-3xl bg-white pl-2 w-1/3'>
+                
+                <SearchWhere />
+                
+              </div>
+              <div className='flex justify-start items-center my-2 mr-2 ml-0 space-x-2 rounded-3xl bg-white pl-2 w-1/3'>
+                <img src={Calendar} alt="calendar icon" />
+                <SearchWhen />
+              </div>
+              {/* <div className='flex justify-start my-2 mr-2 ml-0 space-x-1 rounded-3xl bg-white pl-2 pr-12'>
                 <img src={Calendar} alt="calendar icon" /> 
                 <div className='flex flex-col'>
                   <p className='text-sm'>WHEN</p>
                   <p className='text-[10px]'>Select date</p>
                 </div>
-              </button>
-              <button className='flex justify-start my-2 mx-0 space-x-1 rounded-3xl bg-white pl-2 pr-12'>
-                {/* TODO: insert star icon? */}
+              </div> */}
+              <div className='flex justify-start my-2 mx-0 space-x-1 rounded-3xl bg-white pl-2 w-1/3'>
                 <img src={MusicNote} alt="music note icon" />
                 <div className='flex flex-col'>
                   <p className='text-sm'>WHAT</p>
                   <p className='text-[10px]'>Talent</p>
                 </div>
+              </div>
+              
+              <button type='submit'>
+                <img src={MagGlass} alt="magnifying glass icon" className='m-4'/>
               </button>
-              <img src={MagGlass} alt="magnifying glass icon" className='m-4'/>
             </div>
           </div>
           ) : (
