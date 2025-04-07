@@ -1,0 +1,26 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #F45E00;
+  --color-secondary: #030325;
+  --color-tertiary: #F8F8F8;
+  --color-text_primary: #010113;
+  --color-text_secondary: #505186;
+  --color-text_highlight: #30B701;
+  --color-light_orange: #F6BD97;
+
+  --font-*: initial;
+  --font: Inter, sans-serif;
+}
+
+@layer base {
+  button {
+    @apply flex justify-center items-center cursor-pointer rounded-md;
+  }
+}
+
+.react-datepicker_day {
+  color: #FEEFE5;
+
+}
+
