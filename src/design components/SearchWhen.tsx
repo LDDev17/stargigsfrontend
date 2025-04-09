@@ -4,7 +4,7 @@ import Calendar from '../assets/icons/calendar.png';
 import "react-datepicker/dist/react-datepicker.css";
 
 const SearchWhen = () => {
-  const [date, setDate] = useState<Date | null>(null);
+  const [selectedDate, setSelectedDate] = useState<Date | null>(null);
   const [isWhenOpen, setIsWhenOpen] = useState(false);
 
   const handleWhenMenu = () => {
@@ -42,22 +42,34 @@ const SearchWhen = () => {
     )
   )
 
-  
+  const renderDate = (date: Date) => {
+    const isSelected = date.toDateString() === selectedDate?.toDateString();
+    const isInCurrentMonth = date.getMonth() === new Date().getMonth();
+
+    return (
+      <div
+        className={`
+          ${isSelected? 'bg-primary text-white' : ''}
+          ${isInCurrentMonth ? 'bg-[#FEEFE5]' : 'bg-[#001754] opacity-15'}
+        `}
+      >
+        {date.getDate()}
+      </div>
+    )
+  }
 
   return (
     <div ref={whenRef} className="w-full">
-      {isWhenOpen || date != null?
+      {isWhenOpen || selectedDate != null?
       (
         <DatePicker 
-        selected={date} 
-        onChange={(date) => setDate(date)} 
-        placeholderText="Select date"
-        showMonthDropdown
-        showYearDropdown
-        className="w-24"
-        // customInput={<CustomInput className="w-30"/>}
-        // ref={whenRef}
-      />
+          selected={selectedDate} 
+          onChange={setSelectedDate} 
+          placeholderText="Select date"
+          showMonthDropdown
+          showYearDropdown
+          renderDate={renderDate}
+        />
       ) : (
         <button
         className='flex flex-col justify-around items-start my-2 mx-0 space-x-2 rounded-3xl bg-white 

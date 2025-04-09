@@ -1,4 +1,4 @@
-import { ChangeEvent, useState } from 'react';
+import { ChangeEvent, useState, useEffect, useRef } from 'react';
 import states from 'states-us';
 
 import stateType from '../types/stateType';
@@ -10,11 +10,25 @@ const onlyStates: stateType[] = states.filter((x) => x.territory === false)
 
 const SearchWhere = () => {
   // state for the where searchbar
-  const [whereInput, setWhereInput] = useState('Location');
+  const [whereInput, setWhereInput] = useState('');
   const [whereOptions, setWhereOptions] = useState(onlyStates);
   const [isWhereOpen, setIsWhereOpen] = useState(false);
 
-  
+  let whereRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    let clickHandler = (e: MouseEvent) => {
+      if (!whereRef.current?.contains(e.target as Node)){
+        setIsWhereOpen(false);
+      }
+    }
+
+    document.addEventListener("mousedown", clickHandler)
+
+    return() => {
+      document.removeEventListener("mousedown", clickHandler)
+    }
+  })
   
   // populates dropdown results with options that match the state for the searchbar: whereInput
   const filteredOptions = () => {
@@ -50,8 +64,10 @@ const SearchWhere = () => {
     setWhereInput('');
   }
 
+  // TODO: add {!isWhereOpen && whereInput != null}
+
   return (
-    <div className='w-full'>
+    <div ref={whereRef} className='w-full'>
       {isWhereOpen? 
       (
       <div className='flex justify-start mx-0 space-x-1 rounded-3xl bg-white 
@@ -92,17 +108,35 @@ const SearchWhere = () => {
         </div>
       </div>
       ) : (
-        <button 
-          className='flex justify-start my-2 mx-0 space-x-2 rounded-3xl bg-white 
-            pl-2 w-full'
-          onClick={handleWhereMenu}
-        >
-          <img src={map_pin} alt="map pin icon" />
-          <div className='flex flex-col'>
-            <p className='text-sm'>WHERE</p>
-            <p className='text-[10px]'>{whereInput}</p>
-          </div>
-        </button>
+        <div>
+          {!isWhereOpen && whereInput?
+            (
+              <button
+                className='flex justify-start my-2 mx-0 space-x-2 rounded-3xl bg-white
+                  pl-2 w-full'
+                onClick={handleWhereMenu}
+              >
+                <img src={map_pin} alt="map pin icon" />
+                <div className='flex flex-col'>
+                  <p>{whereInput}</p>
+                </div>
+              </button>
+            ) : (
+              <button
+                className='flex justify-start my-2 mx-0 space-x-2 rounded-3xl bg-white
+                  pl-2 w-full'
+                onClick={handleWhereMenu}
+              >
+                <img src={map_pin} alt="map pin icon" />
+                <div className='flex flex-col'>
+                  <p className='text-sm'>WHERE</p>
+                  <p className='text-[10px]'>Location</p>
+                </div>
+              </button>
+            )
+          }
+        </div>
+        
       )}
     </div>
   )

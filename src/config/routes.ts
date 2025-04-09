@@ -1,6 +1,6 @@
 import LandingPage from "../pages/LandingPage";
 import About from "../pages/About";
-import Dashboard from "../pages/Dashboard";
+import Dashboard from "../pages/ClientDashboard";
 import Reviews from "../pages/Reviews";
 import { JSX } from "react";
 

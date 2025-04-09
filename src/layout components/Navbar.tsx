@@ -30,6 +30,7 @@ const Navbar = () => {
           >
               <TextButton
                 buttonText='Reviews'
+                textColor='white'
               />
           </NavLink>
           <NavLink
@@ -38,6 +39,7 @@ const Navbar = () => {
           >
               <TextButton
                 buttonText='About'
+                textColor='white'
               />
           </NavLink>
           {/* conditional rendering section */}
@@ -48,6 +50,7 @@ const Navbar = () => {
           >
             <TextButton 
               buttonText='Sign Up'
+              textColor='white'
             />
           </NavLink>
           <LoginButton />
