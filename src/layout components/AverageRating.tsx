@@ -43,17 +43,7 @@ const AverageRating = () => {
       <div className='flex flex-col justify-around my-4 text-tertiary'>
         <div className='flex justify-around w-8'>
           <img src={gold_star} alt="golden star" /> 
-          <p>1</p>
-          {/* bar graph */}
-        </div>
-        <div className='flex justify-around w-8'>
-          <img src={gold_star} alt="golden star" /> 
-          <p>2</p>
-          {/* bar graph */}
-        </div>
-        <div className='flex justify-around w-8'>
-          <img src={gold_star} alt="golden star" /> 
-          <p>3</p>
+          <p>5</p>
           {/* bar graph */}
         </div>
         <div className='flex justify-around w-8'>
@@ -63,7 +53,17 @@ const AverageRating = () => {
         </div>
         <div className='flex justify-around w-8'>
           <img src={gold_star} alt="golden star" /> 
-          <p>5</p>
+          <p>3</p>
+          {/* bar graph */}
+        </div>
+        <div className='flex justify-around w-8'>
+          <img src={gold_star} alt="golden star" /> 
+          <p>2</p>
+          {/* bar graph */}
+        </div>
+        <div className='flex justify-around w-8'>
+          <img src={gold_star} alt="golden star" /> 
+          <p>1</p>
           {/* bar graph */}
         </div>
       </div>

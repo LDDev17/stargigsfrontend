@@ -19,7 +19,8 @@
     "react-router": "^7.4.0",
     "states-us": "^1.1.1",
     "tailwindcss": "^4.1.2",
-    "usa-states": "^0.0.6"
+    "usa-states": "^0.0.6",
+    "vite-plugin-svgr": "^4.3.0"
   },
   "devDependencies": {
     "@eslint/js": "^9.21.0",
