@@ -16,10 +16,10 @@ const ClientDashboardPages = () => {
     <div className="overflow-auto relative">
       <PerformerNavbar />
       <div 
-        className="justify-center bg-cover bg-fixed bg-bottom h-screen"
+        className="justify-center bg-cover bg-scroll bg-bottom h-screen"
         style={{ backgroundImage: `url(${DashboardBg})`}}
       >
-      <div className="flex">
+      <div className="flex ">
         <Sidebar 
           expanded={isExpanded} 
           handleExpand={handleExpandClick}

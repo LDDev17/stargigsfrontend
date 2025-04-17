@@ -11,6 +11,8 @@ import { SuccessMessage1 } from './pages/SuccessMessage1'; // Import SuccessMess
 import { AboutPage } from './About/AboutPage'; // Import AboutPage
 import Reviews from './pages/Reviews'; // Import Reviews
 import ContactPage from './Contact/ContactPage'; // Corrected import path for ContactPage
+import ClientDashboardPages from './pages/ClientDashboardPages';
+import Gigs from './pages/Gigs';
 
 const App: React.FC = () => {
   return (
@@ -27,6 +29,8 @@ const App: React.FC = () => {
         <Route path="/about" element={<AboutPage />} /> {/* Add AboutPage route */}
         <Route path="/reviews" element={<Reviews />} /> {/* Add Reviews route */}
         <Route path="/contact" element={<ContactPage />} /> {/* Add ContactPage route */}
+        <Route path='/dashboard' element={<ClientDashboardPages />} />
+        <Route path='/gigs' element={<Gigs />} />
         {/* Add other routes here */}
       </Routes>
     </Router>

@@ -5,7 +5,7 @@ export const Features: React.FC = () => {
   return (
     <section className="flex flex-col gap-5 items-center px-44 py-20 max-md:px-20 max-md:py-16 max-sm:px-5 max-sm:py-10">
       <div className="flex flex-col gap-4 items-center">
-        <h2 className="text-5xl font-semibold text-black">Why it's works</h2>
+        <h2 className="text-5xl font-semibold text-black">Why it works</h2>
         <svg
           width="284"
           height="41"

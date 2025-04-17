@@ -49,13 +49,16 @@ const SearchWhen2 = () => {
             
           ]}
           classNames={{
-            root: `${defaultClassNames.root} bg-white rounded-xl shadow-xs-[#000e33] relative top-40`,
+            root: `${defaultClassNames.root} bg-white rounded-xl shadow-xs-[#000e33] relative top-40 w-9/10`,
             selected: 'text-white bg-primary shadow-(0 3px 2px 0 [#0047ff]) text-shadow-(0 1.5px 1px 0 [#001f70]) rounded-xl',
-            day: `bg-[#feefe5] text-[#1f1f1f] font-medium font-sans shadow-(0 1px 1px 0 [#000e33]) 
+            day: `group w-1 h-1 bg-[#feefe5] text-[#1f1f1f] font-medium font-sans  shadow-(0 1px 1px 0 [#000e33]) 
               hover:text-primary rounded-xl ${defaultClassNames.day}`,
             today: `outline-2 outline-primary rounded-xl hover:bg-primary hover:text-white`,
             outside: `cursor-none text-[#001754] opacity-15`,
             disabled: `cursor-none text-[#001754] opacity-15`,
+            months: `flex w-8`,
+            month_grid: `w-8`,
+            weeks: `w-8`
           }}
           />
       ) : (

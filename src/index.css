@@ -11,13 +11,16 @@
 
   --font-*: initial;
   --font: Inter, sans-serif;
+
+  --breakpoint-2xl: 90rem;
+
 }
 
-@layer base {
+/* @layer base {
   button {
-    @apply flex justify-center items-center cursor-pointer rounded-md;
+    @apply flex justify-center items-center cursor-pointer;
   }
-}
+} */
 
 .react-datepicker_day {
   color: #FEEFE5;

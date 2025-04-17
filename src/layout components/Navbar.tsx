@@ -1,4 +1,4 @@
-import { NavLink } from 'react-router';
+import { NavLink } from 'react-router-dom';
 
 import logo_light from '../assets/logos/logo2-sm-light-navbar.png';
 import LoginButton from '../design components/buttons/LoginButton';
