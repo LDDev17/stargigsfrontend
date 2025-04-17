@@ -1,5 +1,7 @@
+/// <reference types="vite-plugin-svgr/client" />
 import { NavLink } from 'react-router';
-import { useState } from 'react';
+import { JSX, useState } from 'react';
+import { set } from 'date-fns';
 
 import TextButton from '../design components/buttons/TextButton';
 import NotificationsButton from '../design components/buttons/NotificationsButton';
@@ -7,14 +9,32 @@ import NotificationsButton from '../design components/buttons/NotificationsButto
 import full_logo from '../assets/logos/logo_md_orange.png';
 import star_logo from '../assets/logos/orange_white_circle_only.png';
 import ClientIcon from '../design components/ClientIcon';
-import home_icon from '../assets/icons/home_icon.png';
-import lightbulb from '../assets/icons/Tips_updates.png';
-import messages from '../assets/icons/messages.png';
-import calendar from '../assets/icons/calendar.png';
-import dollar_sign from '../assets/icons/money.png';
-import profile from '../assets/icons/profile.png';
-import gear from '../assets/icons/settings.png';
+// import home_icon from '../assets/icons/home_icon.png';
+// import HomeOrange from '../assets/icons/HomeOrange.png';
+// import lightbulb from '../assets/icons/Tips_updates.png';
+// import GigsOrange from '../assets/icons/GigsOrange.png';
+// import messages from '../assets/icons/messages.png';
+// import MessagesOrange from '../assets/icons/MessagesOrange.png';
+// import calendar from '../assets/icons/calendar.png';
+// import CalendarOrange from '../assets/icons/CalendarOrange.png';
+// import dollar_sign from '../assets/icons/money.png';
+// import DollarOrange from '../assets/icons/MoneyOrange.png';
+// import profile from '../assets/icons/profile.png';
+// import ProfileOrange from '../assets/icons/ProfileOrange.png';
+// import gear from '../assets/icons/settings.png';
+// import GearOrange from '../assets/icons/GearOrange.png';
 import arrow from '../assets/icons/arrow-left.png';
+// import question_mark from '../assets/icons/question_mark.png';
+
+import Calendar from '../assets/svgs/calendar.svg?react';
+import DollarSign from '../assets/svgs/dollarSign.svg?react';
+import Gear from '../assets/svgs/gear.svg?react';
+import Home from '../assets/svgs/home.svg?react';
+import LightBulb from '../assets/svgs/lightBulb.svg?react';
+import Message from '../assets/svgs/message.svg?react';
+import Person from '../assets/svgs/person.svg?react';
+import QuestionMark from '../assets/svgs/questionMark.svg?react';
+import Star from '../assets/svgs/star.svg?react';
 
 interface NotificationProps {
   gigNotifications: number;
@@ -24,8 +44,13 @@ interface NotificationProps {
   profileNotifications: number;
 }
 
-const Sidebar = () => {
-  const [isExpanded, setIsExpanded] = useState(true);
+interface SideBarProps {
+  expanded: boolean,
+  handleExpand: () => void,
+}
+
+const Sidebar: React.FC<SideBarProps> = ({expanded, handleExpand}) => {
+
   const [clientNotifications, setClientNotifications] = useState<NotificationProps>({
     gigNotifications: 1,
     messageNotifications: 0,
@@ -34,223 +59,180 @@ const Sidebar = () => {
     profileNotifications: 0,
   })
 
-  // will handle small arrow button on right
-  const handleExpandClick = () => {
-    setIsExpanded(!isExpanded)
-  }
+  // const [dashboardHover, setDashboardHover] = useState(false);
+  // const [gigsHover, setGigsHover] = useState(false);
+  // const [messagesHover, setMessagesHover] = useState(false);
+  // const [calendarHover, setCalendarHover] = useState(false);
+  // const [paymentsHover, setPaymentsHover] = useState(false);
+  // const [profileHover, setProfileHover] = useState(false);
+  // const [settingsHover, setSettingsHover] = useState(false);
+  const [bgColor, setBgColor] = useState<string>('white');
 
-  const navStyle = 'flex justify-start items-center space-x-2 text-text_primary text-xs';
+  
+  const navStyle = 'flex justify-between items-center hover:text-primary text-xs';
+  const leftDivStyle = 'flex justify-start space-x-2'
 
   return (
 
-    <nav className='fixed left-0 w-[160px] py-4 h-screen'>
-      {isExpanded ? (
-      <div className='flex flex-col w-full justify-around space-y-4 px-2 border-r-2'>
+    <nav className={` ${expanded ? 'w-50': 'w-24'} bg-white h-screen z-30 py-4 relative flex flex-col justify-between px-4`}>
+     
         <div>
-          <img src={full_logo} alt="Star Gigs logo" />
+          <img src={` ${expanded ? `${full_logo}` : `${star_logo}`}`} alt="Star Gigs logo" />
         </div>
         <ClientIcon />
         <button 
-          className='absolute right-0 top-22'
-          onClick={handleExpandClick}
+          className={`absolute -right-4 top-22 ${!expanded && "rotate-180"}`}
+          onClick={handleExpand}
         >
           <img src={arrow} alt="" />
         </button>
-        {/* only appears if logged in as a Performer */}
-        <NavLink to='/'>
-          <TextButton
-            buttonText='Switch to Performer View'
-            textSize='text-xs'
-            textColor='primary'
-          />
-        </NavLink>
-        <div className='flex flex-col space-y-2'>
-          <p className='text-text_primary text-xs'>Main</p>
+        
+        <div className={`flex flex-col space-y-2 ${!expanded ? 'justify-center' : ''}`}>
+          <p className={`text-text_primary text-xs ${!expanded ? 'text-center' : ''}`}>Main</p>
           <div className='flex flex-col justify-around space-y-4 text-text_primary'>
-            <NavLink
-              to='/Dashboard'
-              className={navStyle}
-            >
-              <img src={home_icon} alt="home icon" />
-              <p>Dashboard</p>
-            </NavLink>
-            <div className='flex justify-between'>
+              {/* Dashboard */}
               <NavLink
-                to='/Gigs'
-                className={navStyle}
+                to='/Dashboard'
+                className={({isActive}) => 
+                  `flex ${expanded ? 'justify-start' : 'justify-center'} items-center space-x-2 text-text_primary text-xs hover:text-primary ${
+                    isActive ? 'bg-[#feefe5]' : 'bg-white'
+                  }`
+                }
               >
-                <img src={lightbulb} alt="lightbulb icon" />
-                <p>Gigs</p>
+                  <Home />
+                  <span className={`${!expanded && 'hidden'}`}>Dashboard</span>
               </NavLink>
-              <NotificationsButton
-                notificationNumber={clientNotifications.gigNotifications}
-              />
-            </div>
-            <div className='flex justify-between'>
+              {/* Gigs */}
               <NavLink
-                to='/Messages'
-                className={navStyle}
+                to='/gigs'
+                className={({isActive}) =>
+                  `${navStyle} ${expanded ? 'justify-between' : 'justify-end'} ${
+                    isActive ? 'bg-[#feefe5]' : 'bg-white'
+                  }`
+                }
               >
-                <img src={messages} alt="messages icon" />
-                <p>Messages</p>
+                <div className={leftDivStyle}>
+                  <LightBulb />
+                  <span className={`${!expanded && 'hidden'}`}>Gigs</span>
+                </div>
+                <NotificationsButton
+                  notificationNumber={clientNotifications.gigNotifications}
+                />
               </NavLink>
-              <NotificationsButton
-                notificationNumber={clientNotifications.messageNotifications}
-              />
-            </div>
-            <div className='flex justify-between'>
+              {/* Messages */}
               <NavLink
-                to='/Calendar'
-                className={navStyle}
+                to='/messages'
+                className={({isActive}) =>
+                  `${navStyle} ${expanded ? 'justify-between' : clientNotifications.messageNotifications ? 'justify-end' : 'justify-center'} ${
+                    isActive ? 'bg-[#feefe5]' : 'bg-white'
+                  }`
+                }
               >
-                <img src={calendar} alt="calendar icon" />
-                <p>Calendar</p>
+                <div className={leftDivStyle}>
+                  <Message />
+                  <span className={`${!expanded && 'hidden'}`}>Messages</span>
+                </div>
+                <NotificationsButton
+                  notificationNumber={clientNotifications.messageNotifications}
+                />
               </NavLink>
-              <NotificationsButton
-                notificationNumber={clientNotifications.calendarNotifications}
-              />
-            </div>
-            <div className='flex justify-between'>
+              {/* Calendar */}
               <NavLink
-                to='/Payments'
-                className={navStyle}
+                to='/calendar'
+                className={({isActive}) =>
+                  `${navStyle} ${expanded ? 'justify-between' : clientNotifications.calendarNotifications ? 'justify-end' : 'justify-center'} ${
+                    isActive ? 'bg-[#feefe5]' : 'bg-white'
+                  }`
+                }
               >
-                <img src={dollar_sign} alt="dollar sign icon" />
-                <p>Payments</p>
+                <div className={leftDivStyle}>
+                  <Calendar />
+                  <span className={`${!expanded && 'hidden'}`}>Calendar</span>
+                </div>
+                <NotificationsButton
+                  notificationNumber={clientNotifications.calendarNotifications}
+                />
               </NavLink>
-              <NotificationsButton
-                notificationNumber={clientNotifications.paymentNotifications}
-              />
-            </div>
-            <div className='flex justify-between'>
+              {/* Payments */}
               <NavLink
-                to='/Profile'
-                className={navStyle}
+                to='/payments'
+                className={({isActive}) =>
+                  `${navStyle} ${expanded ? 'justify-between' : clientNotifications.paymentNotifications ? 'justify-end space-x-2' : 'justify-center'} ${
+                    isActive ? 'bg-[#feefe5]' : 'bg-white'
+                  }`
+                }
               >
-                <img src={profile} alt="person icon" />
-                <p>Profile</p>
+                <div className={leftDivStyle}>
+                  <DollarSign />
+                  <span className={`${!expanded && 'hidden'}`}>Payments</span>
+                </div>
+                <NotificationsButton
+                  notificationNumber={clientNotifications.paymentNotifications}
+                />
               </NavLink>
-              <NotificationsButton
-                notificationNumber={clientNotifications.profileNotifications}
-              />
-            </div>
+              {/* Profile */}
+              <NavLink
+                to='/profile'
+                className={({isActive}) =>
+                  `${navStyle} ${expanded ? 'justify-between' : clientNotifications.profileNotifications ? 'justify-end' : 'justify-center'} ${
+                    isActive ? 'bg-[#feefe5]' : 'bg-white'
+                  }`
+                }
+              >
+                <div className={leftDivStyle}>
+                  <Person />
+                  <span className={`${!expanded && 'hidden'}`}>Profile</span>
+                </div>
+                <NotificationsButton
+                  notificationNumber={clientNotifications.profileNotifications}
+                />
+              </NavLink>
           </div>
         </div>
         <div className='flex flex-col space-y-2'>
-          <p className='text-text_primary text-xs'>Settings</p>
+          <p className={`text-text_primary text-xs text-center ${expanded ? 'text-start' : 'text-center'}`}>Settings</p>
           <div>
             <NavLink
               to='/Settings'
-              className={navStyle}
+              className={({isActive}) => 
+                `flex items-center space-x-2 text-text_primary text-xs hover:text-primary ${expanded ? 'justify-start' : 'justify-center'} ${
+                  isActive ? 'bg-[#feefe5]' : 'bg-white'
+                }`
+              }
             >
-              <img src={gear} alt="gear icon" />
-              <p>Settings</p>
+              <Gear />
+              <span className={`${!expanded && 'hidden'}`}>Settings</span>
             </NavLink>
-          </div>
-        </div> 
-      </div> 
-      ) : (
-      <div className='flex flex-col w-1/2 justify-around space-y-4 px-2 border-r-2'>
-        <div className='flex justify-center'>
-          <img src={star_logo} alt="Star logo" />
-        </div>
-        <div className='flex justify-center items-center'>
-          <ClientIcon />
-        </div>
-        <button 
-          className='absolute right-16 top-28 rotate-180'
-          onClick={handleExpandClick}
-        >
-          <img src={arrow} alt="" />
-        </button>
-        {/* only appears if logged in as a Performer */}
-        <NavLink to='/' className='flex justify-center'>
-          <TextButton
-            buttonText='Switch'
-            textSize='text-xs'
-            textColor='primary'
-          />
-        </NavLink>
-        <div className='flex flex-col space-y-2'>
-          <p className='text-text_primary text-center text-xs'>Main</p>
-          <div className='flex flex-col justify-evenly text-text_primary'>
-            <NavLink
-              to='/Dashboard'
-              className={navStyle}
-            >
-              <img src={home_icon} alt="home icon" />
-            </NavLink>
-            <div className='flex justify-between'>
-              <NavLink
-                to='/Gigs'
-                className={navStyle}
-              >
-                <img src={lightbulb} alt="lightbulb icon" />
-              </NavLink>
-              <NotificationsButton
-                notificationNumber={clientNotifications.gigNotifications}
+            {expanded ? (
+              <TextButton
+                buttonText='Switch to Client View'
+                textColor='primary'
+                textSize='xs'
               />
-            </div>
-            <div className='flex justify-between'>
-              <NavLink
-                to='/Messages'
-                className={navStyle}
-              >
-                <img src={messages} alt="messages icon" />
-              </NavLink>
-              <NotificationsButton
-                notificationNumber={clientNotifications.messageNotifications}
-              />
-            </div>
-            <div className='flex justify-between'>
-              <NavLink
-                to='/Calendar'
-                className={navStyle}
-              >
-                <img src={calendar} alt="calendar icon" />
-              </NavLink>
-              <NotificationsButton
-                notificationNumber={clientNotifications.calendarNotifications}
-              />
-            </div>
-            <div className='flex justify-between'>
-              <NavLink
-                to='/Payments'
-                className={navStyle}
-              >
-                <img src={dollar_sign} alt="dollar sign icon" />
-              </NavLink>
-              <NotificationsButton
-                notificationNumber={clientNotifications.paymentNotifications}
-              />
-            </div>
-            <div className='flex justify-between'>
-              <NavLink
-                to='/Profile'
-                className={navStyle}
-              >
-                <img src={profile} alt="person icon" />
-              </NavLink>
-              <NotificationsButton
-                notificationNumber={clientNotifications.profileNotifications}
-              />
-            </div>
+            ) : (
+              <div className='flex justify-center'>
+                <TextButton
+                  buttonText='Switch'
+                  textColor='primary'
+                  textSize='xs'
+                />
+              </div>
+            )}           
           </div>
         </div>
         <div>
-          <p className='text-text_primary text-center text-xs'>Settings</p>
-          <div>
-            <NavLink
-              to='/Settings'
-              className={navStyle}
-            >
-              <img src={gear} alt="gear icon" />
-              
-            </NavLink>
-          </div>
-        </div>
-      </div>
-      )}
+          <NavLink
+            to='/help'
+            className={({isActive}) => 
+              `flex ${expanded ? 'justify-start' : 'justify-center'} items-center space-x-2 text-text_primary text-xs hover:text-primary ${
+                isActive ? 'bg-[#feefe5]' : 'bg-white'
+              }`
+            }
+          >
+            <QuestionMark />
+            <span className={`${!expanded && 'hidden'}`}>Help</span>
+          </NavLink>
+        </div>       
     </nav>
   )
 }

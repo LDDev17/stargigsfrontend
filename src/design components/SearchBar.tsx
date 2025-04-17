@@ -3,6 +3,7 @@ import { useState, useEffect, useRef } from 'react';
 import SearchWhere from './SearchWhere';
 import SearchWhen from './SearchWhen';
 import SearchWhat from './SearchWhat';
+import SearchWhen2 from './SearchWhen2';
 
 import MagGlass from '../assets/icons/MagnifyingGlass.png';
 import Calendar from '../assets/icons/Calendar_today.png';
@@ -47,7 +48,7 @@ const SearchBar = () => {
       {isActive ?
         (
           <div className='flex justify-between bg-white rounded-3xl px-2
-                  bg-gradient-to-r from-primary to-light_orange w-full'>
+                  bg-gradient-to-r from-primary to-light_orange w-full '>
             <div className='flex justify-between w-full'>
               <div className='flex justify-start items-center my-1 mr-2 ml-0 space-x-1 rounded-3xl bg-white pl-2 w-1/3'>
                 
@@ -56,7 +57,7 @@ const SearchBar = () => {
               </div>
               <div className='flex justify-start items-center my-1 mr-2 ml-0 space-x-2 rounded-3xl bg-white pl-2 w-1/3'>
                 <img src={Calendar} alt="calendar icon" />
-                <SearchWhen />
+                <SearchWhen2 />
               </div>
               {/* <div className='flex justify-start my-2 mr-2 ml-0 space-x-1 rounded-3xl bg-white pl-2 pr-12'>
                 <img src={Calendar} alt="calendar icon" /> 
@@ -83,7 +84,7 @@ const SearchBar = () => {
             </div>
           </div>
           ) : (
-            <button className='flex justify-between w-[280px] bg-white rounded-3xl py-2 px-5' type='button' onClick={handleClick}>
+            <button className='flex justify-between w-[280px] bg-white rounded-3xl border-2 border-primary py-2 px-5' type='button' onClick={handleClick}>
               <p className='text-text_secondary'>Search local talent</p>
               <img src={MagGlass} alt="magnifying glass icon" />
             </button>
