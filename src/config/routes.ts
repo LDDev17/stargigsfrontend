@@ -1,15 +1,10 @@
 import LandingPage from "../pages/LandingPage";
 import About from "../pages/About";
-import Dashboard from "../pages/ClientDashboard";
+import Dashboard from "../pages/ClientDashboardPages";
 import Reviews from "../pages/Reviews";
-import { JSX } from "react";
+import RouteType from "../types/RouteType";
 
-interface RouteType {
-  path: string,
-  component: (() => JSX.Element),
-  name: string,
-  protected: boolean,
-}
+
 
 const routes: RouteType[] = [
   {

@@ -7,7 +7,7 @@ interface TextButtonType {
 
 const TextButton = (props: TextButtonType) => {
   return (
-    <button className={`flex h-[49px] py-1 text-${props.textColor} ${props.textSize}
+    <button className={`flex h-[49px] py-1 text-center text-${props.textColor} ${props.textSize}
       hover:bg-gradient-to-r from-light_orange to-primary hover:bg-clip-text 
       hover:text-transparent`}
     >

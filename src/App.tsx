@@ -1,6 +1,7 @@
 import { BrowserRouter, Route, Routes } from 'react-router';
 
 import routes from './config/routes';
+import RouteType from './types/RouteType';
 
 
 
@@ -10,7 +11,7 @@ function App() {
     <BrowserRouter>
       
         <Routes>
-          { routes.map((route: any, index: number) => (
+          { routes.map((route: RouteType, index: number) => (
             <Route
               key={index}
               path={route.path}
@@ -20,7 +21,6 @@ function App() {
             />
           ))}
         </Routes>
-      {/* Routes to be inserted here. */}
     </BrowserRouter>
   )
 }

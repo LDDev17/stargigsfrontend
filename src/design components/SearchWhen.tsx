@@ -49,7 +49,7 @@ const SearchWhen = () => {
     return (
       <div
         className={`
-          ${isSelected? 'bg-primary text-white' : ''}
+          ${isSelected? 'bg-primary text-white w-2' : ''}
           ${isInCurrentMonth ? 'bg-[#FEEFE5]' : 'bg-[#001754] opacity-15'}
         `}
       >
