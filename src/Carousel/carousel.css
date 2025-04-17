@@ -1,0 +1,163 @@
+
+* {
+  box-sizing: border-box;
+}
+
+/* Carousel container */
+.carousel-container {
+  max-width: 1200px;
+  position: relative;
+  margin: auto;
+  border: 2px solid #ccc;
+  padding: 20px;
+  border-radius: 10px;
+  min-height: 600px; /* Adjust the min-height as needed */
+}
+
+/* Carousel heading */
+.carousel-heading {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+/* Slideshow container */
+.slideshow-container {
+  position: relative;
+  margin: auto;
+  overflow: hidden;
+}
+
+/* Hide the images by default */
+.mySlides {
+  display: none;
+}
+
+/* Next & previous buttons */
+.prev, .next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  margin-top: -22px;
+  padding: 16px;
+  color: white;
+   font-size: 18px;
+  transition: 0.6s ease;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+  z-index: 1;
+}
+
+/* Position the "next button" to the right */
+.next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+/* On hover, add a black background color with a little bit see-through */
+.prev:hover, .next:hover {
+  background-color: rgba(0,0,0,0.8);
+}
+
+/* Caption text */
+.text {
+  color: #f2f2f2;
+  font-size: 15px;
+  padding: 8px 12px;
+  position: absolute;
+  bottom: 8px;
+  width: 100%;
+  text-align: center;
+}
+
+/* Number text (1/3 etc) */
+.numbertext {
+  color: #f2f2f2;
+  font-size: 12px;
+  padding: 8px 12px;
+  position: absolute;
+  top: 0;
+}
+
+/* The dots/bullets/indicators */
+.dots-container {
+  text-align: center;
+  padding: 10px;
+  border-top: 2px solid #ccc;
+  margin-top: 20px;
+}
+
+.dot {
+  cursor: pointer;
+  height: 20px; /* Increased size */
+  width: 20px; /* Increased size */
+  margin: 0 5px; /* Adjusted spacing */
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.6s ease;
+}
+
+.active, .dot:hover {
+  background-color: #717171;
+}
+
+/* Fading animation */
+.fade {
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+
+@keyframes fade {
+  from {opacity: .4}
+  to {opacity: 1}
+}
+
+/* Carousel specific styles */
+.display-area {
+  overflow: hidden;
+  width: 100%;
+}
+
+.cards-wrapper {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+}
+
+.card {
+  min-width: 600px; /* Adjust this width as needed */
+  margin-right: 10px; /* Reduced space between cards */
+}
+
+/* Loading dots */
+.loading-dots {
+  display: flex;
+  gap: 10px; /* Increased gap */
+  justify-content: center;
+  margin-top: 8px;
+}
+
+.loading-dots div {
+  width: 20px; /* Increased size */
+  height: 20px; /* Increased size */
+  background-color: #000000; /* Black dots */
+  border-radius: 50%;
+  opacity: 0.7;
+  animation: pulse 1.4s infinite ease-in-out;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 0.7;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+@media (max-width: 768px) {
+  .card {
+    min-width: 100%; /* Full width on smaller screens */
+  }
+}

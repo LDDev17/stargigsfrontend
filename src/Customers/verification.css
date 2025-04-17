@@ -1,0 +1,19 @@
+/* Ensure the continue button is black with white font */
+button.buttonblack {
+    background-color: black;
+    color: white;
+    border: none;
+  }
+  
+  /* Style the "Send code again" button */
+  button.cursor-pointer {
+    background-color: white;
+    color: black;
+    border: 2px solid black;
+  }
+  
+  /* Make the border around the code boxes slightly darker */
+  .code-input-box {
+    border-color: #333; /* Adjust the color as needed */
+  }
+  

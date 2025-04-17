@@ -1,28 +1,36 @@
-import { BrowserRouter, Route, Routes } from 'react-router';
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import LandingPage from './pages/LandingPage';
+import RoleSelectionPage from './Start/RoleSelectionPage'; // Updated import
+import { SignUpPage as PerformerSignUpPage } from './Performers/SignUpPage';
+import { SignupPage as PlannerSignUpPage } from './Customers/SignUpPage';
+import VerificationPage1 from './Customers/VerificationPage';
+import VerificationPage2 from './Customers/VerificationPage2';
+import { SuccessMessage } from './pages/SuccessMessage';
+import { SuccessMessage1 } from './pages/SuccessMessage1'; // Import SuccessMessage1
+import { AboutPage } from './About/AboutPage'; // Import AboutPage
+import Reviews from './pages/Reviews'; // Import Reviews
+import ContactPage from './Contact/ContactPage'; // Corrected import path for ContactPage
 
-import routes from './config/routes';
-
-
-
-function App() {
-
+const App: React.FC = () => {
   return (
-    <BrowserRouter>
-      
-        <Routes>
-          { routes.map((route: any, index: number) => (
-            <Route
-              key={index}
-              path={route.path}
-              element={
-                <route.component />
-              }
-            />
-          ))}
-        </Routes>
-      {/* Routes to be inserted here. */}
-    </BrowserRouter>
-  )
-}
+    <Router>
+      <Routes>
+        <Route path="/" element={<LandingPage />} />
+        <Route path="/role-selection-page" element={<RoleSelectionPage />} /> {/* Add RoleSelectionPage route */}
+        <Route path="/performer-signup" element={<PerformerSignUpPage />} />
+        <Route path="/planner-signup" element={<PlannerSignUpPage />} />
+        <Route path="/verification-page1" element={<VerificationPage1 />} />
+        <Route path="/verification-page-2" element={<VerificationPage2 />} />
+        <Route path="/verification-success" element={<SuccessMessage />} />
+        <Route path="/successmessage1" element={<SuccessMessage1 />} /> {/* Add SuccessMessage1 route */}
+        <Route path="/about" element={<AboutPage />} /> {/* Add AboutPage route */}
+        <Route path="/reviews" element={<Reviews />} /> {/* Add Reviews route */}
+        <Route path="/contact" element={<ContactPage />} /> {/* Add ContactPage route */}
+        {/* Add other routes here */}
+      </Routes>
+    </Router>
+  );
+};
 
 export default App;

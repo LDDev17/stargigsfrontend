@@ -1,9 +1,12 @@
+import React from 'react';
 import Navbar from "../layout components/Navbar";
 import LandingMain from "../layout components/LandingMain";
 import LandingTalentMeets from "../layout components/LandingTalentMeets";
 import HeroSection from "../layout components/HeroSection";
+import Footer from "../footer/Footer"; // Import the Footer component
+import Carousel from "../Carousel/Carousel"; // Import the Carousel component
 
-const LandingPage = () => {
+const LandingPage: React.FC = () => {
   return (
     <div className="flex flex-col">
       <Navbar />
@@ -11,12 +14,12 @@ const LandingPage = () => {
         <HeroSection />
         <LandingMain />
         {/* Featured Section */}
-        <div className="flex justify-center my-8">Insert Featured Section Here</div>
+        <Carousel /> {/* Insert the Carousel component here */}
         <LandingTalentMeets />
       </div>
-      <div className="flex justify-center my-8">Insert Footer Here</div>
+      <Footer /> {/* Insert the Footer component here */}
     </div>
-  )
-}
+  );
+};
 
 export default LandingPage;

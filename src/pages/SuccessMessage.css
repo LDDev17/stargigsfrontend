@@ -1,0 +1,15 @@
+/* SuccessMessage.css */
+
+@keyframes wave {
+    0%, 60%, 100% {
+      transform: initial;
+    }
+    30% {
+      transform: translateY(-10px);
+    }
+  }
+  
+  .animate-wave {
+    animation: wave 1.4s infinite ease-in-out;
+  }
+  

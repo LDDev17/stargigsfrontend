@@ -5,8 +5,6 @@ import LoginButton from '../design components/buttons/LoginButton';
 import TextButton from '../design components/buttons/TextButton';
 import SearchBar from '../design components/SearchBar';
 
-
-
 const Navbar = () => {
   return (
     <nav className="flex fixed top-0 justify-around items-center bg-text_primary w-full h-[86px] z-100">
@@ -45,7 +43,7 @@ const Navbar = () => {
           {/* conditional rendering section */}
           {/* Show Sign Up & LoginButton if user is unauthenticated */}
           <NavLink
-            to='#'
+            to='/role-selection-page'
             className='text-tertiary'
           >
             <TextButton 
