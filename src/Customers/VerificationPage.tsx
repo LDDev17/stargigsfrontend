@@ -1,5 +1,5 @@
 "use client";
-import "./verification.css";
+import "./verification.module.css";
 import { useNavigate } from "react-router-dom";
 import { BackButton } from "../Customers/BackButton";
 import { CodeInput } from "../Customers/CodeInput";

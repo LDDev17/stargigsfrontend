@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { TalentCard } from '../Carousel/TalentCard3'; // Updated path for TalentCard
 import { LoadingDots } from '../Carousel/LoadingDots'; // Updated path for LoadingDots
-import './carousel.css';
+import './carousel.module.css';
 
 const talentData = [
   {

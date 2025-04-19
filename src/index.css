@@ -16,14 +16,6 @@
 
 }
 
-/* @layer base {
-  button {
-    @apply flex justify-center items-center cursor-pointer;
-  }
-} */
 
-.react-datepicker_day {
-  color: #FEEFE5;
 
-}
 

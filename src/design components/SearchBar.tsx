@@ -1,13 +1,12 @@
 import { useState, useEffect, useRef } from 'react';
 
 import SearchWhere from './SearchWhere';
-import SearchWhen from './SearchWhen';
 import SearchWhat from './SearchWhat';
 import SearchWhen2 from './SearchWhen2';
 
 import MagGlass from '../assets/icons/MagnifyingGlass.png';
 import Calendar from '../assets/icons/Calendar_today.png';
-import MusicNote from '../assets/icons/Music_note.png';
+
 // isActive state for conditional rendering
 // text will read "Search local talent" when isActive !== true
 // text will conatin "where" "when" and "what" fields when isActive === true
@@ -78,13 +77,13 @@ const SearchBar = () => {
                 <SearchWhat />
               </div>
               
-              <button type='submit'>
+              <button type='submit' className='cursor-pointer'>
                 <img src={MagGlass} alt="magnifying glass icon" className='m-4'/>
               </button>
             </div>
           </div>
           ) : (
-            <button className='flex justify-between w-[280px] bg-white rounded-3xl border-2 border-primary py-2 px-5' type='button' onClick={handleClick}>
+            <button className='flex justify-between items-center w-[280px] bg-white rounded-3xl border-2 border-primary py-2 px-5 cursor-pointer' type='button' onClick={handleClick}>
               <p className='text-text_secondary'>Search local talent</p>
               <img src={MagGlass} alt="magnifying glass icon" />
             </button>

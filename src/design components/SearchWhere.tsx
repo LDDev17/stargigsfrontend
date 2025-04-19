@@ -113,7 +113,7 @@ const SearchWhere = () => {
             (
               <button
                 className='flex justify-start my-2 mx-0 space-x-2 rounded-3xl bg-white
-                  pl-2 w-full'
+                  pl-2 w-full cursor-pointer'
                 onClick={handleWhereMenu}
               >
                 <img src={map_pin} alt="map pin icon" />
@@ -123,12 +123,12 @@ const SearchWhere = () => {
               </button>
             ) : (
               <button
-                className='flex justify-start my-2 mx-0 space-x-2 rounded-3xl bg-white
-                  pl-2 w-full'
+                className='flex justify-start items-center my-2 mx-0 space-x-4 rounded-3xl bg-white
+                  pl-2 w-full cursor-pointer'
                 onClick={handleWhereMenu}
               >
                 <img src={map_pin} alt="map pin icon" />
-                <div className='flex flex-col'>
+                <div className='flex flex-col items-start'>
                   <p className='text-sm'>WHERE</p>
                   <p className='text-[10px]'>Location</p>
                 </div>

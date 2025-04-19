@@ -63,7 +63,7 @@ const SearchWhen2 = () => {
           />
       ) : (
         <button
-        className='flex flex-col justify-around items-start my-2 mx-0 space-x-2 rounded-3xl bg-white 
+        className='flex flex-col justify-around items-start my-2 pl-2 space-x-4 rounded-3xl bg-white 
         w-full h-full'
         onClick={handleWhenMenu}
         >

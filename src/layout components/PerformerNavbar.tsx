@@ -17,7 +17,11 @@ interface performerProps {
   city: string,
 }
 
-const PerformerNavbar = () => {
+interface ClientViewProps {
+  viewClient: boolean,
+}
+
+const PerformerNavbar: React.FC<ClientViewProps> = ({viewClient}) => {
   const [performerNotifications, setPerformerNotifications] = useState({});
   const [totalNotifications, setTotalNotifications] = useState(0);
   const [performer, setPerformer] = useState<performerProps>({
@@ -30,7 +34,7 @@ const PerformerNavbar = () => {
     city: 'Portland',
   });
   const [menuOpen, setMenuOpen] = useState(false);
-  const [clientView, setClientView] = useState(true);
+  // const [clientView, setClientView] = useState(true);
 
   useEffect(() => {
     // on load of page, make async API call to retrieve any notifications for that perfomer
@@ -49,7 +53,7 @@ const PerformerNavbar = () => {
   return (
     <div className='z-20 flex justify-end px-20 py-2 fixed bg-white top-0 right-0 w-full'>
       {/* If performers is in clientView, SearchBar will be visible */}
-      {clientView? (
+      {viewClient? (
         <div className='w-3/5 pr-20'>
           <SearchBar />
         </div>

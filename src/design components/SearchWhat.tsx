@@ -95,8 +95,8 @@ const SearchWhat = () => {
           {!isWhatOpen && whatInput?
           (
             <button
-              className='flex justify-start my-2 mx-0 space-x-2 rounded-3xl bg-white
-                pl-2 w-full'
+              className='flex justify-start items-center my-2 mx-0 space-x-2 rounded-3xl bg-white
+                pl-2 w-full cursor-pointer'
               onClick={handleWhatMenu}
             >
               <img src={music_note} alt="music note icon" />
@@ -106,14 +106,14 @@ const SearchWhat = () => {
             </button>
           ) : (
             <button
-              className='flex justify-start my-2 mx-0 space-x-2 rounded-3xl bg-white
-                pl-2 w-full'
+              className='flex justify-start items-center my-2 mx-0 space-x-4 rounded-3xl bg-white
+                pl-2 w-full cursor-pointer'
               onClick={handleWhatMenu}
             >
               <img src={music_note} alt="music note icon" />
-              <div className='flex flex-col'>
+              <div className='flex flex-col items-start'>
                 <p className='text-sm'>WHAT</p>
-                <p className='text-[10px]'>Search Local Talent</p>
+                <p className='text-[10px]'>Talent</p>
               </div>
             </button>
           )

@@ -3,7 +3,7 @@
 import { ImageSection } from "./ImageSection";
 import { PerformerSignUpForm } from "./SignUpForm";
 import Footer from "../footer/Footer"; // Import the Footer component
-import './PerformerSignUpPage.css'; // Import the CSS file
+import './PerformerSignUpPage.module.css'; // Import the CSS file
 
 export function SignUpPage() {
   return (

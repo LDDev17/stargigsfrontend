@@ -14,8 +14,8 @@ const HeroSection = () => {
           </h2>
           <p className='text-tertiary'>Find top-rated talent for your events with ease.</p>
           <div className='flex justify-center'>
-            <button className='bg-secondary hover:bg-gradient-to-r from-[#C6987F] via-[#02021E]
-                to-[#02021E]  h-[49px] py-[24px] px-[44px] m-0 text-tertiary'
+            <button className='flex justify-center items-center rounded-md bg-secondary hover:bg-gradient-to-r from-[#C6987F] via-[#02021E]
+                to-[#02021E]  h-[49px] py-[24px] px-[44px] m-0 text-tertiary cursor-pointer'
             >
               Get Started
             </button>
