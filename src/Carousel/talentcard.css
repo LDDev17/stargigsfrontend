@@ -1,111 +1,121 @@
-/* talentCard.css */
+/* Featured Talent container */
+.featured-talent {
+  padding: 20px;
+}
+
+.talent-cards-container {
+  display: flex;
+  overflow-x: auto;
+  gap: 1rem;
+  padding-bottom: 1rem;
+}
 
 .talent-card {
-    width: 285px;
-    height: 369px;
-    flex-shrink: 0;
-    background-color: white;
-    border-radius: 1.5rem;
-    box-shadow: -2px -2px 10px 0px rgba(206, 206, 206, 0.15), 2px 2px 4px 0px rgba(206, 206, 206, 0.15);
-    display: flex;
-    flex-direction: column;
-    margin: 0.5rem; /* Add margin for spacing between cards */
-  }
-  
-  .talent-card img {
-    width: 100%;
-    height: 227px;
-    border-radius: 1.5rem 1.5rem 0 0;
-    object-fit: cover;
-  }
-  
-  .talent-card .name-badge {
-    margin: 0.5rem auto;
-    padding: 0.25rem 0.5rem;
-    font-size: 0.875rem;
-    color: white;
-    background-color: #F45E00; /* Orange background */
-    border-radius: 50px;
-    text-align: center;
-  }
-  
-  .talent-card .content {
-    padding: 1rem;
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-  }
-  
-  .talent-card .header {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-  }
-  
-  .talent-card .category-badge {
-    padding: 0.25rem 0.5rem;
-    font-size: 0.875rem;
-    color: white;
-    background-color: black;
-    border-radius: 50px;
-  }
-  
-  .talent-card .location {
-    font-size: 0.75rem;
-    color: black;
-  }
-  
-  .talent-card .rating {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    gap: 0.25rem;
-  }
-  
-  .talent-card .hourly-rate {
-    font-size: 0.75rem;
-    color: black;
-  }
-  
-  .talent-card .description {
-    margin-top: 0.5rem;
-    font-size: 0.875rem;
-    color: black;
-  }
-  
-  .talent-card .actions {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-top: 1rem;
-  }
-  
-  .talent-card .hire-button {
-    padding: 0.75rem;
-    font-size: 1rem;
-    border-radius: 0.5rem;
-    background-color: #1f2937; /* Tailwind's gray-950 */
-    color: #f5f5f5; /* Tailwind's stone-50 */
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  
-  .talent-card .favorite-button {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 2.5rem;
-    height: 2.5rem;
-    border-radius: 0.5rem;
-    border: 1px solid black;
-    margin-left: auto;
-    position: relative;
-  }
-  
-  .talent-card .favorite-button img {
-    width: 1.5rem; /* Adjust size as needed */
-    height: 1.5rem; /* Adjust size as needed */
-    position: absolute;
-  }
+  width: 285px;
+  height: 369px;
+  flex-shrink: 0;
+  background-color: white;
+  border-radius: 1.5rem;
+  box-shadow: -2px -2px 10px 0px rgba(206, 206, 206, 0.15), 2px 2px 4px 0px rgba(206, 206, 206, 0.15);
+  display: flex;
+  flex-direction: column;
+  margin: 0.5rem; /* Add margin for spacing between cards */
+}
+
+.talent-card img {
+  width: 100%;
+  height: 227px;
+  border-radius: 1.5rem 1.5rem 0 0;
+  object-fit: cover;
+}
+
+.talent-card .name-badge {
+  margin: 0.5rem auto;
+  padding: 0.25rem 0.5rem;
+  font-size: 0.875rem;
+  color: white;
+  background-color: #F45E00; /* Orange background */
+  border-radius: 50px;
+  text-align: center;
+}
+
+.talent-card .content {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.talent-card .header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.talent-card .category-badge {
+  padding: 0.25rem 0.5rem;
+  font-size: 0.875rem;
+  color: white;
+  background-color: black;
+  border-radius: 50px;
+}
+
+.talent-card .location {
+  font-size: 0.75rem;
+  color: black;
+}
+
+.talent-card .rating {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.25rem;
+}
+
+.talent-card .hourly-rate {
+  font-size: 0.75rem;
+  color: black;
+}
+
+.talent-card .description {
+  margin-top: 0.5rem;
+  font-size: 0.875rem;
+  color: black;
+}
+
+.talent-card .actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 1rem;
+}
+
+.talent-card .hire-button {
+  padding: 0.75rem;
+  font-size: 1rem;
+  border-radius: 0.5rem;
+  background-color: #1f2937; /* Tailwind's gray-950 */
+  color: #f5f5f5; /* Tailwind's stone-50 */
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.talent-card .favorite-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 0.5rem;
+  border: 1px solid black;
+  margin-left: auto;
+  position: relative;
+}
+
+.talent-card .favorite-button img {
+  width: 1.5rem; /* Adjust size as needed */
+  height: 1.5rem; /* Adjust size as needed */
+  position: absolute;
+}

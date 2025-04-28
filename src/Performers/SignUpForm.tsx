@@ -1,5 +1,3 @@
-"use client";
-
 import { useNavigate } from "react-router-dom";
 import * as React from "react";
 import { InputField } from "./InputField";
@@ -12,7 +10,7 @@ export function PerformerSignUpForm() {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     // Handle form submission
-    navigate("/verification-page-2"); // Redirect to verification page 2
+    navigate("/verification-page2"); // Redirect to verification page 2
   };
 
   const handleSocialLogin = (provider: "google" | "facebook") => {

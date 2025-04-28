@@ -1,9 +1,11 @@
 "use client";
 import "./verification.module.css";
+
 import { useNavigate } from "react-router-dom";
 import { BackButton } from "../Customers/BackButton";
 import { CodeInput } from "../Customers/CodeInput";
 import { Timer } from "../Customers/Timer";
+import ContinueButton from "../buttons/ContinueButton";
 
 export default function VerificationPage1() {
   const navigate = useNavigate();
@@ -59,13 +61,7 @@ export default function VerificationPage1() {
 
             <CodeInput onComplete={handleSubmit} />
 
-            <button
-              type="submit"
-              className="buttonblack"
-              onClick={() => handleSubmit("")}
-            >
-              Submit
-            </button>
+            <ContinueButton onClick={() => handleSubmit("")} />
 
             <div className="flex gap-2.5 justify-center text-base text-black text-opacity-70">
               <button className="cursor-pointer">Send code again</button>

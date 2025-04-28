@@ -1,4 +1,3 @@
-// src/footer/Footer.tsx
 import React from 'react';
 import { FooterLogo } from './FooterLogo'; // Import the FooterLogo component
 import './footer.css'; // Import the CSS file
@@ -9,6 +8,10 @@ const Footer: React.FC = () => {
 
   const handleContactClick = () => {
     navigate('/contact'); // Navigate to the contact page
+  };
+
+  const handleBookingClick = () => {
+    navigate('/add-performer'); // Navigate to the Add Performer page
   };
 
   return (
@@ -25,7 +28,7 @@ const Footer: React.FC = () => {
           <nav className="footer-nav">
             <a href="/show-talent">Home</a> {/* Updated link for testing */}
             <a href="#about">About</a>
-            <a href="#booking">Booking</a>
+            <a href="#booking" onClick={handleBookingClick}>Booking</a> {/* Add onClick handler */}
             <a href="#contact" onClick={handleContactClick}>Contact</a> {/* Add onClick handler */}
             <a href="/show-talent1">Reviews</a> {/* Updated link for testing */}
             <a href="/talent-page-1">Talent Acts</a> {/* Updated link */}

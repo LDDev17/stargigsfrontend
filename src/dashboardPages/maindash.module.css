@@ -1,0 +1,24 @@
+.background {
+  background-image: url('Login2.jpg'); /* Replace with your image path */
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: flex-start; /* Align to the start (left) */
+  align-items: center;
+  padding-left: 10%; /* Adjust padding to move it closer to the sidebar */
+}
+
+.body {
+  background-color: white;
+  width: 90%; /* Adjust width to be more responsive */
+  max-width: 1200px; /* Set a maximum width to prevent it from being too wide */
+  height: 75%;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

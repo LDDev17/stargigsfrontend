@@ -43,9 +43,9 @@ interface ExpandProps {
 
 type SideBarProps = viewClientProps & ExpandProps;
 
-const Sidebar: React.FC<SideBarProps> = ({expanded, handleExpand, viewClient, handleViewClient}) => {
+const SidebarPerformer: React.FC<SideBarProps> = ({expanded, handleExpand, viewClient, handleViewClient}) => {
 
-  const [clientNotifications] = useState<NotificationProps>({
+  const [clientNotifications, setClientNotifications] = useState<NotificationProps>({
     performanceNotifications: 1,
     gigNotifications: 1,
     messageNotifications: 0,
@@ -99,21 +99,8 @@ const Sidebar: React.FC<SideBarProps> = ({expanded, handleExpand, viewClient, ha
           
           {/* Main Dashboard Links */}
           <div className='flex flex-col justify-around text-text_primary'>
-            
-            {/* Dashboard */}
-            <NavLink
-              to='/Dashboard'
-              className={({isActive}) =>
-                `flex ${expanded ? 'justify-start' : 'justify-center'} items-center space-x-2 -mx-4 pl-4 py-2 text-text_primary text-xs hover:text-primary ${
-                  isActive ? 'bg-[#feefe5]' : 'bg-white'
-                }`
-              }
-            >
-                <Home />
-                <span className={`${!expanded && 'hidden'}`}>Dashboard</span>
-            </NavLink>
 
-              {/* Performances */}
+            {/* Performances */}
 <NavLink
   to='/dashboard-performers'  // Updated path to DashboardPerformersPage
   className={({isActive}) =>
@@ -133,7 +120,10 @@ const Sidebar: React.FC<SideBarProps> = ({expanded, handleExpand, viewClient, ha
 
             
 
-     
+
+       
+
+
             {/* Gigs */}
             <NavLink
               to='/gigs'
@@ -243,7 +233,7 @@ const Sidebar: React.FC<SideBarProps> = ({expanded, handleExpand, viewClient, ha
             </NavLink>
             {expanded ? (
               <TextButton
-                buttonText={` ${viewClient ? 'Switch to Client View' : 'Switch to Performers View'}`}
+                buttonText={` ${viewClient ? 'Switch to Performer View' : 'Switch to Client View'}`}
                 textColor='primary'
                 textSize='text-xs'
                 onClick={handleViewClient}
@@ -278,4 +268,4 @@ const Sidebar: React.FC<SideBarProps> = ({expanded, handleExpand, viewClient, ha
   )
 }
 
-export default Sidebar;
+export default SidebarPerformer;

@@ -65,7 +65,7 @@ export const FeaturedTalent = () => {
   return (
     <section className="featured-talent">
       <h1>Featured Talent</h1>
-      <div className="flex overflow-x-auto gap-6 pb-5 max-md:grid max-md:grid-cols-2 max-sm:grid-cols-1">
+      <div className="talent-cards-container">
         {talentData.map((talent, index) => (
           <TalentCard key={index} {...talent} />
         ))}

@@ -1,36 +1,22 @@
-
 * {
   box-sizing: border-box;
 }
 
-/* Carousel container */
-.carousel-container {
-  max-width: 1200px;
-  position: relative;
-  margin: auto;
-  border: 2px solid #ccc;
-  padding: 20px;
-  border-radius: 10px;
-  min-height: 600px; /* Adjust the min-height as needed */
-}
-
-/* Carousel heading */
-.carousel-heading {
-  text-align: center;
-  font-size: 2rem;
-  margin-bottom: 20px;
-}
-
 /* Slideshow container */
 .slideshow-container {
+  max-width: 1000px;
   position: relative;
   margin: auto;
-  overflow: hidden;
 }
 
 /* Hide the images by default */
 .mySlides {
   display: none;
+  width: 100%; /* Ensure each slide takes up the full width */
+}
+
+.mySlides.active {
+  display: block;
 }
 
 /* Next & previous buttons */
@@ -42,11 +28,11 @@
   margin-top: -22px;
   padding: 16px;
   color: white;
-   font-size: 18px;
+  font-weight: bold;
+  font-size: 18px;
   transition: 0.6s ease;
   border-radius: 0 3px 3px 0;
   user-select: none;
-  z-index: 1;
 }
 
 /* Position the "next button" to the right */
@@ -90,9 +76,9 @@
 
 .dot {
   cursor: pointer;
-  height: 20px; /* Increased size */
-  width: 20px; /* Increased size */
-  margin: 0 5px; /* Adjusted spacing */
+  height: 15px;
+  width: 15px;
+  margin: 0 2px;
   background-color: #bbb;
   border-radius: 50%;
   display: inline-block;
@@ -115,49 +101,9 @@
 }
 
 /* Carousel specific styles */
-.display-area {
-  overflow: hidden;
-  width: 100%;
-}
-
 .cards-wrapper {
   display: flex;
-  transition: transform 0.5s ease-in-out;
-}
-
-.card {
-  min-width: 600px; /* Adjust this width as needed */
-  margin-right: 10px; /* Reduced space between cards */
-}
-
-/* Loading dots */
-.loading-dots {
-  display: flex;
-  gap: 10px; /* Increased gap */
-  justify-content: center;
-  margin-top: 8px;
-}
-
-.loading-dots div {
-  width: 20px; /* Increased size */
-  height: 20px; /* Increased size */
-  background-color: #000000; /* Black dots */
-  border-radius: 50%;
-  opacity: 0.7;
-  animation: pulse 1.4s infinite ease-in-out;
-}
-
-@keyframes pulse {
-  0%, 100% {
-    opacity: 0.7;
-  }
-  50% {
-    opacity: 1;
-  }
-}
-
-@media (max-width: 768px) {
-  .card {
-    min-width: 100%; /* Full width on smaller screens */
-  }
+  overflow: hidden; /* Ensure the cards stay within the container */
+  gap: 1rem;
+  padding-bottom: 1rem;
 }

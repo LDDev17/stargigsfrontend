@@ -4,8 +4,9 @@ import { useNavigate } from "react-router-dom";
 import { BackButton } from "./BackButton";
 import { CodeInput } from "./CodeInput";
 import { Timer } from "./Timer";
+import ContinueButton from "../buttons/ContinueButton";
 
-export default function VerificationPage() {
+export default function VerificationPage2() {
   const navigate = useNavigate();
 
   const handleSubmit = (code: string) => {
@@ -59,13 +60,7 @@ export default function VerificationPage() {
 
             <CodeInput onComplete={handleSubmit} />
 
-            <button
-              type="submit"
-              className="submit-button w-full h-14 text-base rounded-xl cursor-pointer border-[none]"
-              onClick={() => handleSubmit("")}
-            >
-              Submit
-            </button>
+            <ContinueButton onClick={() => handleSubmit("")} />
 
             <div className="flex gap-2.5 justify-center text-base text-black text-opacity-70">
               <button className="cursor-pointer">Send code again</button>

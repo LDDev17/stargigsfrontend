@@ -13,6 +13,10 @@ import Reviews from './pages/Reviews'; // Import Reviews
 import ContactPage from './Contact/ContactPage'; // Corrected import path for ContactPage
 import ClientDashboardPages from './pages/ClientDashboardPages';
 import Gigs from './pages/Gigs';
+import Layout from './dashboardheader/Layout'; // Import Layout
+import { PerformanceSection } from './PerformersView/PerformanceSection'; // Corrected import path
+import DashboardPerformersPage from './pages/DashboardPerformersPage'; // Import DashboardPerformersPage
+import AddPerformer from './PerformersView/AddPerformer'; // Import AddPerformer
 
 const App: React.FC = () => {
   return (
@@ -23,7 +27,7 @@ const App: React.FC = () => {
         <Route path="/performer-signup" element={<PerformerSignUpPage />} />
         <Route path="/planner-signup" element={<PlannerSignUpPage />} />
         <Route path="/verification-page1" element={<VerificationPage1 />} />
-        <Route path="/verification-page-2" element={<VerificationPage2 />} />
+        <Route path="/verification-page2" element={<VerificationPage2 />} />
         <Route path="/verification-success" element={<SuccessMessage />} />
         <Route path="/successmessage1" element={<SuccessMessage1 />} /> {/* Add SuccessMessage1 route */}
         <Route path="/about" element={<AboutPage />} /> {/* Add AboutPage route */}
@@ -31,7 +35,10 @@ const App: React.FC = () => {
         <Route path="/contact" element={<ContactPage />} /> {/* Add ContactPage route */}
         <Route path='/dashboard' element={<ClientDashboardPages />} />
         <Route path='/gigs' element={<Gigs />} />
-        {/* Add other routes here */}
+        <Route path="/layout" element={<Layout />} /> {/* Add Layout route */}
+        <Route path="/performances" element={<PerformanceSection />} /> {/* Add PerformanceSection route */}
+        <Route path="/dashboard-performers" element={<DashboardPerformersPage />} /> {/* Add DashboardPerformersPage route */}
+        <Route path="/add-performer" element={<AddPerformer />} /> {/* Add AddPerformer route */}
       </Routes>
     </Router>
   );

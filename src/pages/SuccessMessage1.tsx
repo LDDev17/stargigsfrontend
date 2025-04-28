@@ -8,7 +8,7 @@ export function SuccessMessage1() {
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      navigate('/dashboard-performer');
+      navigate('/artistdashboard');
     }, 10000); // 10 seconds
 
     return () => clearTimeout(timer); // Cleanup the timer
@@ -19,7 +19,7 @@ export function SuccessMessage1() {
       <main className="flex relative w-full min-h-screen bg-white max-md:flex-col">
         <section className="relative w-3/5 bg-black max-md:w-full max-md:h-[50vh] max-sm:h-[40vh]">
           <img
-            src="Login3.jpg"
+            src="Login3.png"
             className="object-cover size-full"
             alt="Concert background"
           />
