@@ -1,6 +1,6 @@
 import LandingPage from "../pages/LandingPage";
 import About from "../pages/About";
-import Dashboard from "../pages/ClientDashboardPages";
+import Dashboard from "../pages/PerformerDashboardPages";
 import Reviews from "../pages/Reviews";
 import RouteType from "../types/RouteType";
 

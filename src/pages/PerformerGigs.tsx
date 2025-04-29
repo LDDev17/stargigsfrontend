@@ -1,6 +1,6 @@
 import GigsButtons from "../design components/buttons/GigsButtons";
 
-const Gigs = () => {
+const PerformerGigs = () => {
   return (
     <div>
       <GigsButtons />
@@ -8,4 +8,4 @@ const Gigs = () => {
   )
 }
 
-export default Gigs
+export default PerformerGigs

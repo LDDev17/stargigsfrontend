@@ -1,11 +1,13 @@
 import { useState } from "react";
+import { Outlet } from "react-router-dom";
 
 import Sidebar from "../layout components/Sidebar";
 import PerformerNavbar from "../layout components/PerformerNavbar";
 import DashboardBg from '../assets/photos/dashboard_bg.jpg';
-import ClientMainDashboard from "../layout components/ClientMainDashboard";
+import PerformerMainDashboard from "../layout components/PerformerMainDashboard";
+import ExpandedProvider from "../Context/ExpandedProvider";
 
-const ClientDashboardPages = () => {
+const PerformerDashboardPages = () => {
   const [isExpanded, setIsExpanded] = useState(true);
   const [clientView, setClientView] = useState(true);
   
@@ -27,17 +29,19 @@ const ClientDashboardPages = () => {
         style={{ backgroundImage: `url(${DashboardBg})`}}
       >
         <div className="flex ">
-          <Sidebar 
-            expanded={isExpanded} 
-            handleExpand={handleExpandClick}
-            viewClient={clientView}
-            handleViewClient={handleClientView}
-          />
-          <ClientMainDashboard expanded={isExpanded}/>
+          <ExpandedProvider>
+            <Sidebar
+              expanded={isExpanded}
+              handleExpand={handleExpandClick}
+              viewClient={clientView}
+              handleViewClient={handleClientView}
+            />
+            <Outlet />
+          </ExpandedProvider>
         </div>
       </div>
     </div>
   )
 }
 
-export default ClientDashboardPages;
+export default PerformerDashboardPages;

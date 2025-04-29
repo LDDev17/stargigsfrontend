@@ -11,12 +11,14 @@ import { SuccessMessage1 } from './pages/SuccessMessage1'; // Import SuccessMess
 import { AboutPage } from './About/AboutPage'; // Import AboutPage
 import Reviews from './pages/Reviews'; // Import Reviews
 import ContactPage from './Contact/ContactPage'; // Corrected import path for ContactPage
-import ClientDashboardPages from './pages/ClientDashboardPages';
 import GigsPage1 from './layout components/GigsPage1'; // Updated import for GigsPage1
 import Layout from './dashboardheader/Layout'; // Import Layout
 import { PerformanceSection } from './PerformersView/PerformanceSection'; // Corrected import path
 import DashboardPerformersPage from './pages/DashboardPerformersPage'; // Import DashboardPerformersPage
 import AddPerformer from './PerformersView/AddPerformer'; // Import AddPerformer
+import PerformerDashboardPages from './pages/PerformerDashboardPages';
+import PerformerMainDashboard from './layout components/PerformerMainDashboard';
+import PerformerGigs from './pages/PerformerGigs';
 
 const App: React.FC = () => {
   return (
@@ -33,8 +35,11 @@ const App: React.FC = () => {
         <Route path="/about" element={<AboutPage />} /> {/* Add AboutPage route */}
         <Route path="/reviews" element={<Reviews />} /> {/* Add Reviews route */}
         <Route path="/contact" element={<ContactPage />} /> {/* Add ContactPage route */}
-        <Route path='/dashboard' element={<ClientDashboardPages />} />
         <Route path='/gigs-page1' element={<GigsPage1 />} /> {/* Updated route for GigsPage1 */}
+        <Route path='/performerDashboard' element={<PerformerDashboardPages />}>
+          <Route index element={<PerformerMainDashboard />}/>
+          <Route path='/performerDashboard/performerGigs' element={<PerformerGigs />}/>
+        </Route>
         <Route path="/layout" element={<Layout />} /> {/* Add Layout route */}
         <Route path="/performances" element={<PerformanceSection />} /> {/* Add PerformanceSection route */}
         <Route path="/dashboard-performers" element={<DashboardPerformersPage />} /> {/* Add DashboardPerformersPage route */}

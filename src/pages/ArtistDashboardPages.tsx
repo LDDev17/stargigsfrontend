@@ -3,7 +3,7 @@ import { useState } from "react";
 import SidebarPerformer from "../layout components/Sidebar";
 import PerformerNavbar from "../layout components/PerformerNavbar";
 import DashboardBg from '../assets/photos/dashboard_bg.jpg';
-import ClientMainDashboard from "../layout components/ClientMainDashboard";
+import ClientMainDashboard from "../layout components/PerformerMainDashboard";
 
 const ArtistDashboardPages = () => {
   const [isExpanded, setIsExpanded] = useState(true);
