@@ -136,7 +136,7 @@ const Sidebar: React.FC<SideBarProps> = ({expanded, handleExpand, viewClient, ha
      
             {/* Gigs */}
             <NavLink
-              to='/gigs'
+              to='/gigs-page1' // Updated path to GigsPage
               className={({isActive}) =>
                 `${navStyle} ${expanded ? 'justify-between pr-2' : clientNotifications.gigNotifications ? 'justify-end pr-2' : 'justify-center'} ${
                   isActive ? 'bg-[#feefe5]' : 'bg-white'

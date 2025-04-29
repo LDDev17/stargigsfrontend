@@ -12,7 +12,7 @@ import { AboutPage } from './About/AboutPage'; // Import AboutPage
 import Reviews from './pages/Reviews'; // Import Reviews
 import ContactPage from './Contact/ContactPage'; // Corrected import path for ContactPage
 import ClientDashboardPages from './pages/ClientDashboardPages';
-import Gigs from './pages/Gigs';
+import GigsPage1 from './layout components/GigsPage1'; // Updated import for GigsPage1
 import Layout from './dashboardheader/Layout'; // Import Layout
 import { PerformanceSection } from './PerformersView/PerformanceSection'; // Corrected import path
 import DashboardPerformersPage from './pages/DashboardPerformersPage'; // Import DashboardPerformersPage
@@ -34,7 +34,7 @@ const App: React.FC = () => {
         <Route path="/reviews" element={<Reviews />} /> {/* Add Reviews route */}
         <Route path="/contact" element={<ContactPage />} /> {/* Add ContactPage route */}
         <Route path='/dashboard' element={<ClientDashboardPages />} />
-        <Route path='/gigs' element={<Gigs />} />
+        <Route path='/gigs-page1' element={<GigsPage1 />} /> {/* Updated route for GigsPage1 */}
         <Route path="/layout" element={<Layout />} /> {/* Add Layout route */}
         <Route path="/performances" element={<PerformanceSection />} /> {/* Add PerformanceSection route */}
         <Route path="/dashboard-performers" element={<DashboardPerformersPage />} /> {/* Add DashboardPerformersPage route */}
