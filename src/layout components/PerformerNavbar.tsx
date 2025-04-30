@@ -51,7 +51,7 @@ const PerformerNavbar: React.FC<ClientViewProps> = ({viewClient}) => {
   }
 
   return (
-    <div className='z-20 flex justify-end px-20 py-2 fixed bg-white top-0 right-0 w-full'>
+    <div className='z-20 flex justify-end px-20 py-2 fixed bg-white top-0 right-0 w-full border-b-2 border-gray-200'>
       {/* If performers is in clientView, SearchBar will be visible */}
       {viewClient? (
         <div className='w-3/5 pr-20'>

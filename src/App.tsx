@@ -37,7 +37,7 @@ const App: React.FC = () => {
         <Route path="/contact" element={<ContactPage />} /> {/* Add ContactPage route */}
         <Route path='/gigs-page1' element={<GigsPage1 />} /> {/* Updated route for GigsPage1 */}
         <Route path='/performerDashboard' element={<PerformerDashboardPages />}>
-          <Route index element={<PerformerMainDashboard />}/>
+          <Route path='/performerDashboard/main' element={<PerformerMainDashboard />}/>
           <Route path='/performerDashboard/performerGigs' element={<PerformerGigs />}/>
         </Route>
         <Route path="/layout" element={<Layout />} /> {/* Add Layout route */}

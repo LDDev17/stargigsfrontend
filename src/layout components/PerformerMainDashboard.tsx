@@ -4,6 +4,7 @@ import { ExpandedContext } from "../Context/ExpandedContext";
 import DashboardTile from "../design components/DashboardTile";
 import DashTileType from "../types/TileType";
 import PerformerDashUpcomingTable from "./PerformerDashUpcomingTable";
+import DashBookingTable from "./DashBookingTable";
 
 const tileSampleData: DashTileType[] = [
   {
@@ -47,7 +48,7 @@ const PerformerMainDashboard = () => {
         <section className="border-r-1 border-gray-200 flex flex-col grow pr-4">
           <header>
             {/* row 1 */}
-            <div className="flex justify-start items-center space-x-2">
+            <div className="flex justify-start items-center space-x-2 pb-4">
               <h4 className="font-bold text-2xl">Morning Andrew</h4>
               <p>weather icon</p>
               <p>-Here's a quick look at your upcoming gigs, bookings, and new opportunities!</p>
@@ -89,6 +90,11 @@ const PerformerMainDashboard = () => {
           <section className="bg-[#fbfbfb] p-6 rounded-md">
             <PerformerDashUpcomingTable />
           </section>
+
+          {/* Booking Table */}
+          <footer>
+            <DashBookingTable />
+          </footer>
         </section>
 
         {/* Right Side */}

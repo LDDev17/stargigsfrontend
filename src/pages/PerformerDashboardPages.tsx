@@ -4,7 +4,6 @@ import { Outlet } from "react-router-dom";
 import Sidebar from "../layout components/Sidebar";
 import PerformerNavbar from "../layout components/PerformerNavbar";
 import DashboardBg from '../assets/photos/dashboard_bg.jpg';
-import PerformerMainDashboard from "../layout components/PerformerMainDashboard";
 import ExpandedProvider from "../Context/ExpandedProvider";
 
 const PerformerDashboardPages = () => {

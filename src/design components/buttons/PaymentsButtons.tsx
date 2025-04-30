@@ -1,13 +1,9 @@
-
-interface GigButtonProps {
+interface PaymentButonProps {
   activeTab: string;
-  setActiveTab: React.Dispatch<React.SetStateAction<string>>;
-  buttonIds: string[];
-  buttonLabels: Record<string, string>;
-}
+  seActiveTab: React.Dispatch<React.SetStateAction<string>>;
+};
 
-const GigsButtons = ({ activeTab, setActiveTab, buttonIds, buttonLabels }: GigButtonProps) => {
-
+const PaymentsButtons = ({ activeTab, setActiveTab }: PaymentButonProps) => {
   return (
     <div className="flex">
       {buttonIds.map((id, index) => {
@@ -36,4 +32,4 @@ const GigsButtons = ({ activeTab, setActiveTab, buttonIds, buttonLabels }: GigBu
   )
 }
 
-export default GigsButtons;
+export default PaymentsButtons

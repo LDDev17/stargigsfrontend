@@ -101,7 +101,7 @@ const Sidebar = ({viewClient, handleViewClient}: viewClientProps) => {
             
             {/* Dashboard */}
             <NavLink
-              to='/performerDashboard'
+              to='/performerDashboard/main'
               className={({isActive}) =>
                 `flex ${context.isExpanded ? 'justify-start' : 'justify-center'} items-center space-x-2 -mx-4 pl-4 py-2 text-text_primary text-xs hover:text-primary ${
                   isActive ? 'bg-[#feefe5]' : 'bg-white'
@@ -132,7 +132,7 @@ const Sidebar = ({viewClient, handleViewClient}: viewClientProps) => {
 
             {/* Gigs */}
             <NavLink
-              to='/gigs-page1' // Updated path to GigsPage //performerDashboard/performerGigs
+              to='/performerDashboard/performerGigs' //gigs-page1
               className={({isActive}) =>
                 `${navStyle} ${context.isExpanded ? 'justify-between pr-2' : clientNotifications.gigNotifications ? 'justify-end pr-2' : 'justify-center'} ${
                   isActive ? 'bg-[#feefe5]' : 'bg-white'

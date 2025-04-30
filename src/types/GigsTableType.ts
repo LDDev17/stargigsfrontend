@@ -2,7 +2,7 @@ interface GigsTableType {
   EventName: string;
   EventManager?: string;
   Location: string;
-  Amount?: number;
+  Amount: number;
   DateTime: string;
   GigType: string;
   Status: string;
