@@ -6,6 +6,7 @@ import HistoryTableRow from "../design components/HistoryTableRow";
 import TableFooter from "./TableFooter";
 import sampleTableData from "../SampleData/TableData";
 import GigsTableType from "../types/GigsTableType";
+import sampleGigHistoryData from "../SampleData/GigHistoryData";
 
 import Sort from '../assets/svgs/sort.svg?react';
 import Caret from '../assets/svgs/caret.svg?react';
@@ -48,12 +49,15 @@ const PerformerGigsTable = ({ activeTab }: PerformerGigsTableProps) => {
   useEffect(() => {
     if (activeTab === 'booking') {
       setTableCaption('Gigs Booking Requests')
+      setTableData(sampleTableData)
     } else if (activeTab === 'upcoming') {
       setTableCaption('Upcoming Gigs')
+      setTableData(sampleTableData)
     } else setTableCaption('Gig History')
+      setTableData(sampleGigHistoryData)
   }, [activeTab]);
 
-  const thStyling: string = 'font-normal';
+  const thStyling: string = 'font-normal whitespace-pre';
 
   return (
     <div className="flex flex-col justify-around bg-[#fbfbfb] p-2">
@@ -86,13 +90,15 @@ const PerformerGigsTable = ({ activeTab }: PerformerGigsTableProps) => {
         (
           <>
             <thead>
-              <th className={thStyling}>Event Name</th>
-              <th className={thStyling}>Event Manager</th>
-              <th className={thStyling}>Location</th>
-              <th className={thStyling}>Amount</th>
-              <th className={`${thStyling} whitespace-pre`}>Date & Time  <button><Sort /></button></th>
-              <th className={`${thStyling} whitespace-pre`}>Gig Type  <button><Sort /></button></th>
-              <th colSpan={3} className={thStyling}>Action</th>
+              <tr>
+                <th className={thStyling}>Event Name</th>
+                <th className={thStyling}>Event Manager</th>
+                <th className={thStyling}>Location</th>
+                <th className={thStyling}>Amount</th>
+                <th className={thStyling}>Date & Time  <button><Sort /></button></th>
+                <th className={thStyling}>Gig Type  <button><Sort /></button></th>
+                <th colSpan={3} className={`${thStyling} text-center`}>Action</th>
+              </tr>
             </thead>
             <tbody>
               {displayData.map((Row, index) => (
@@ -103,13 +109,15 @@ const PerformerGigsTable = ({ activeTab }: PerformerGigsTableProps) => {
         ) : activeTab === 'upcoming' ? (
               <>
                 <thead>
-                  <th className={thStyling}>Event Name</th>
-                  <th className={thStyling}>Event Manager</th>
-                  <th className={thStyling}>Location</th>
-                  <th className={`${thStyling} whitespace-pre`}>Date & Time  <button><Sort /></button></th>
-                  <th className={`${thStyling} whitespace-pre`}>Gig Type  <button><Sort /></button></th>
-                  <th className={`${thStyling} whitespace-pre`}>Status  <button><Sort /></button></th>
-                  <th className={thStyling} colSpan={2}>Action</th>
+                  <tr>
+                    <th className={thStyling}>Event Name</th>
+                    <th className={thStyling}>Event Manager</th>
+                    <th className={thStyling}>Location</th>
+                    <th className={thStyling}>Date & Time  <button><Sort /></button></th>
+                    <th className={thStyling}>Gig Type  <button><Sort /></button></th>
+                    <th className={thStyling}>Status  <button><Sort /></button></th>
+                    <th className={`${thStyling} text-center`} colSpan={2}>Action</th>
+                  </tr>
                 </thead>
                 <tbody>
                   {displayData.map((Row, index) => (
@@ -120,13 +128,15 @@ const PerformerGigsTable = ({ activeTab }: PerformerGigsTableProps) => {
             ) : (
               <>
                 <thead>
-                  <th className={thStyling}>Event Name</th>
-                  <th className={thStyling}>Event Manager</th>
-                  <th className={thStyling}>Location</th>
-                  <th className={thStyling}>Date & Time <button><Sort /></button></th>
-                  <th className={`${thStyling} whitespace-pre`}>Gig Type  <button><Sort /></button></th>
-                  <th className={thStyling}>Status <button><Sort /></button></th>
-                  <th colSpan={2} className={thStyling}>Action</th>
+                  <tr>
+                    <th className={thStyling}>Event Name</th>
+                    <th className={thStyling}>Event Manager</th>
+                    <th className={thStyling}>Location</th>
+                    <th className={thStyling}>Date & Time  <button><Sort /></button></th>
+                    <th className={thStyling}>Gig Type  <button><Sort /></button></th>
+                    <th className={thStyling}>Status  <button><Sort /></button></th>
+                    <th className={`${thStyling} pl-9`} colSpan={2}>Action</th>
+                  </tr>
                 </thead>
                 <tbody>
                   {displayData.map((Row, index) => (

@@ -8,10 +8,10 @@ const NotificationsButton = (props: NotificationButtonProps) => {
     <>
     {props.notificationNumber > 0?
     (
-      <button className="w-[16px] h-[16px] rounded-full
-        bg-primary text-white font-bold text-xs">
+      <div className="w-[16px] h-[16px] rounded-full
+        bg-primary text-white font-bold text-xs flex justify-center items-center">
         {props.notificationNumber}
-      </button>
+      </div>
     ) : (
       <></>
     )

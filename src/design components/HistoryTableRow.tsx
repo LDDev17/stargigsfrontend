@@ -15,19 +15,21 @@ const HistoryTableRow = ({ props }: HistoryRowProps) => {
       <td>{props.Location}</td>
       <td>{props.DateTime}</td>
       <td>{props.GigType}</td>
-      <td 
-      >
+      <td>
         <div className={`${props.Status.toLowerCase() === 'confirmed' ? 
-        'text-[#519c66] bg-[#d2ffc2] opacity-57' : 'text-primary bg-[#ffeedf]'} 
-         p-2 rounded-lg mr-2 max-w-24`}>{props.Status}</div>
+          'text-[#519c66] bg-[#d2ffc2] opacity-57' : 'text-primary bg-[#ffeedf]'} 
+          p-2 rounded-lg mr-2 max-w-24 text-center`}
+        >
+          {props.Status}
+        </div>
       </td>
       <td className="text-[#007aff] border-r-1 border-[#d8dadc]">
-        <button className="bg-white p-4 -mr-4 cursor-pointer">
+        <button className="bg-white p-4 -mr-3 cursor-pointer">
           <Message />
         </button>
       </td>
       <td className="border-l-1 border-[#d8dadc]">
-        <button className="bg-white p-4 ml-2 cursor-pointer">
+        <button className="bg-white p-4 ml-2 cursor-pointer text-center -mr-4">
           <XMark />
         </button>
       </td>

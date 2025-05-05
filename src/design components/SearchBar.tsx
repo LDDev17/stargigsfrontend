@@ -1,87 +1,81 @@
 import { useState, useEffect, useRef } from 'react';
+import { useForm, FormProvider } from 'react-hook-form';
 
 import SearchWhere from './SearchWhere';
 import SearchWhat from './SearchWhat';
-import SearchWhen2 from './SearchWhen2';
+import DatePickerSearch from './DatePickerSearch';
 
 import MagGlass from '../assets/icons/MagnifyingGlass.png';
-import Calendar from '../assets/icons/Calendar_today.png';
-
-// isActive state for conditional rendering
-// text will read "Search local talent" when isActive !== true
-// text will conatin "where" "when" and "what" fields when isActive === true
-// include magnifying glass at the end
 
 const SearchBar = () => {
   // state for whether the search bar is collapsed or expanded
   const [isActive, setIsActive] = useState(false);
-  const [whereActive, setWhereActive] = useState(false);
+  const [isWhenActive, setIsWhenActive] = useState<boolean>(false);
+  const [whereInput, setWhereInput] = useState<string>('');
 
   const handleClick = () => {
     setIsActive(true);
   }
+  
+  const methods = useForm();
 
-  const handleSearchClick = () => {
-    setWhereActive(true);
+  const SearchBarSubmit = (data: any) => {
+    console.log(data)
   }
 
   let searchRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    let clickHandler = (e: MouseEvent) => {
-      if (!searchRef.current?.contains(e.target as Node)){
+    if (!isActive) return;
+
+    const clickHandler = (e: MouseEvent) => {
+      const target = e.target as HTMLElement;
+      const clickedInsideSearch = searchRef.current?.contains(target);
+      const clickedCalendarPopup = document.querySelector('[role="dialog"]')?.contains(target);
+      
+      if (!clickedInsideSearch && !clickedCalendarPopup){
         setIsActive(false);
       }
+    };
+
+    document.addEventListener("mousedown", clickHandler);
+
+    return () => {
+      document.removeEventListener("mousedown", clickHandler);
     }
-
-    document.addEventListener("mousedown", clickHandler)
-
-    return() => {
-      document.removeEventListener("mousedown", clickHandler)
-    }
-
-  });
+  }, [isActive]);
 
   return (
-    <div ref={searchRef} className='flex justify-end h-[50px] transition duration-300 ease-in-out w-full'>
+    <div ref={searchRef} className='flex justify-end h-[50px] transition duration-300 ease-in-out'>
       {isActive ?
         (
-          <div className='flex justify-between bg-white rounded-3xl px-2
-                  bg-gradient-to-r from-primary to-light_orange w-full '>
-            <div className='flex justify-between w-full'>
-              <div className='flex justify-start items-center my-1 mr-2 ml-0 space-x-1 rounded-3xl bg-white pl-2 w-1/3'>
-                
-                <SearchWhere />
-                
-              </div>
-              <div className='flex justify-start items-center my-1 mr-2 ml-0 space-x-2 rounded-3xl bg-white pl-2 w-1/3'>
-                <img src={Calendar} alt="calendar icon" />
-                <SearchWhen2 />
-              </div>
-              {/* <div className='flex justify-start my-2 mr-2 ml-0 space-x-1 rounded-3xl bg-white pl-2 pr-12'>
-                <img src={Calendar} alt="calendar icon" /> 
-                <div className='flex flex-col'>
-                  <p className='text-sm'>WHEN</p>
-                  <p className='text-[10px]'>Select date</p>
-                </div>
-              </div> */}
-              {/* <div className='flex justify-start my-2 mx-0 space-x-1 rounded-3xl bg-white pl-2 w-1/3'>
-                <img src={MusicNote} alt="music note icon" />
-                <div className='flex flex-col'>
-                  <p className='text-sm'>WHAT</p>
-                  <p className='text-[10px]'>Talent</p>
-                </div>
-              </div> */}
-
-              <div className='flex justify-start items-center my-1 mr-2 ml-0 space-x-1 rounded-3xl bg-white pl-2 w-1/3'>
-                <SearchWhat />
-              </div>
+          <FormProvider {...methods}>
+            <form onSubmit={methods.handleSubmit(SearchBarSubmit)}>
+              <div className='flex justify-between bg-white rounded-3xl px-2
+                      bg-gradient-to-r from-primary to-light_orange w-full '>
+                <div className='flex justify-between w-full h-[50px]'>
+                  <div className='flex justify-start items-center my-1 mr-2 ml-0 space-x-1 rounded-3xl bg-white pl-2 min-w-0'>
               
-              <button type='submit' className='cursor-pointer'>
-                <img src={MagGlass} alt="magnifying glass icon" className='m-4'/>
-              </button>
-            </div>
-          </div>
+                    <SearchWhere
+                      whereInput={whereInput}
+                      setWhereInput={setWhereInput}
+                    />
+              
+                  </div>
+                  <div className='flex justify-start items-center my-1 mr-2 ml-0 space-x-2 rounded-3xl bg-white pl-2 pr-2 min-w-32 max-w-44'>
+                    <DatePickerSearch isWhenActive={isWhenActive} setIsWhenActive={setIsWhenActive}/>
+                  </div>
+                  <div className='flex justify-start items-center my-1 ml-0 rounded-3xl bg-white pl-2 pr-4 min-w-18'>
+                    <SearchWhat />
+                  </div>
+              
+                  <button type='submit' className='cursor-pointer'>
+                    <img src={MagGlass} alt="magnifying glass icon" className='m-4'/>
+                  </button>
+                </div>
+              </div>
+            </form>
+          </FormProvider>
           ) : (
             <button className='flex justify-between items-center w-[280px] bg-white rounded-3xl border-2 border-primary py-2 px-5 cursor-pointer' type='button' onClick={handleClick}>
               <p className='text-text_secondary'>Search local talent</p>

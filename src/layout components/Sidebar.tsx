@@ -132,7 +132,7 @@ const Sidebar = ({viewClient, handleViewClient}: viewClientProps) => {
 
             {/* Gigs */}
             <NavLink
-              to='/performerDashboard/performerGigs' //gigs-page1
+              to='/performerDashboard/gigs' //gigs-page1
               className={({isActive}) =>
                 `${navStyle} ${context.isExpanded ? 'justify-between pr-2' : clientNotifications.gigNotifications ? 'justify-end pr-2' : 'justify-center'} ${
                   isActive ? 'bg-[#feefe5]' : 'bg-white'
@@ -186,7 +186,7 @@ const Sidebar = ({viewClient, handleViewClient}: viewClientProps) => {
 
             {/* Payments */}
             <NavLink
-              to='/payments'
+              to='/performerDashboard/payments'
               className={({isActive}) =>
                 `${navStyle} ${context.isExpanded ? 'justify-between pr-2' : clientNotifications.paymentNotifications ? 'justify-end space-x-2 pr-2' : 'justify-center'} ${
                   isActive ? 'bg-[#feefe5]' : 'bg-white'

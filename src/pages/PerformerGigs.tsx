@@ -29,8 +29,8 @@ const PerformerGigs = () => {
 
   const { isExpanded } = context;
 
-  const handleModalOpen = () => setIsOpen(true);
-  const handleModalClose = () => setIsOpen(false);
+  let handleModalOpen = () => setIsOpen(true);
+  let handleModalClose = () => setIsOpen(false);
 
   return (
     <div className={`absolute right-4 bg-white rounded-xl h-screen mt-24 mb-4 flex flex-col justify-start space-y-4 p-4

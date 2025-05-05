@@ -1,7 +1,7 @@
 
 interface GigButtonProps {
   activeTab: string;
-  setActiveTab: React.Dispatch<React.SetStateAction<string>>;
+  setActiveTab: (id: string) => void;
   buttonIds: string[];
   buttonLabels: Record<string, string>;
 }

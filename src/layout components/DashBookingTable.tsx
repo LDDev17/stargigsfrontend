@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 
 import sampleBookingData from '../SampleData/BookingData';
 import BookingProps from '../types/BookingType';
@@ -24,11 +25,12 @@ const DashBookingTable = () => {
           ))}
         </tbody>
       </table>
-      <button 
+      <Link 
+        to='/performerDashboard/gigs'
         className='cursor-pointer text-gray-500 pt-4 pl-8 font-medium flex items-center whitespace-pre'
       >
         VIEW ALL REQUESTS  <Caret className='rotate-270'/>
-      </button>
+      </Link>
     </div>
   )
 }

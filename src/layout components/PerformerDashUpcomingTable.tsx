@@ -68,11 +68,13 @@ const PerformerDashUpcomingTable = () => {
       </header>
       <table className="text-black-90 text-sm text-left border-separate border-spacing-y-2 border-y-1 border-[#e1e2e9]">
         <thead>
-          <th>Event Name</th>
-          <th>Location</th>
-          <th>Date & Time</th>
-          <th>Gig Type</th>
-          <th>Status <button><Sort /></button></th>
+          <tr>
+            <th>Event Name</th>
+            <th>Location</th>
+            <th>Date & Time</th>
+            <th>Gig Type</th>
+            <th>Status <button><Sort /></button></th>
+          </tr>
         </thead>
         <tbody className="border-t-1 border-b-1 border-gray-200">
           {displayData.map((Row, index) => (

@@ -19,6 +19,7 @@ import AddPerformer from './PerformersView/AddPerformer'; // Import AddPerformer
 import PerformerDashboardPages from './pages/PerformerDashboardPages';
 import PerformerMainDashboard from './layout components/PerformerMainDashboard';
 import PerformerGigs from './pages/PerformerGigs';
+import PerformerPayments from './pages/PerformerPayments';
 
 const App: React.FC = () => {
   return (
@@ -38,7 +39,8 @@ const App: React.FC = () => {
         <Route path='/gigs-page1' element={<GigsPage1 />} /> {/* Updated route for GigsPage1 */}
         <Route path='/performerDashboard' element={<PerformerDashboardPages />}>
           <Route path='/performerDashboard/main' element={<PerformerMainDashboard />}/>
-          <Route path='/performerDashboard/performerGigs' element={<PerformerGigs />}/>
+          <Route path='/performerDashboard/gigs' element={<PerformerGigs />}/>
+          <Route path='/performerDashboard/payments' element={<PerformerPayments />}/>
         </Route>
         <Route path="/layout" element={<Layout />} /> {/* Add Layout route */}
         <Route path="/performances" element={<PerformanceSection />} /> {/* Add PerformanceSection route */}

@@ -1,12 +1,13 @@
 
 import GigsTableType from "../types/GigsTableType";
+import PaymentProps from "../types/PaymentsType";
 
 import Caret from '../assets/svgs/caret.svg?react';
 
 interface FooterProps {
   items_per_page: number;
-  tableData: GigsTableType[];
-  displayData: GigsTableType[];
+  tableData: GigsTableType[] | PaymentProps[];
+  displayData: GigsTableType[] | PaymentProps[];
   currentPage: number;
   setCurrentPage: React.Dispatch<React.SetStateAction<number>>;
 }

@@ -2,6 +2,7 @@ import { useContext, useState } from "react";
 
 import { ExpandedContext } from "../Context/ExpandedContext";
 import GigsButtons from "../design components/buttons/GigsButtons";
+import PerformerPaymentContent from "../layout components/PerformerPaymentContent";
 
 const buttonIds: string[] = [
   'history',
@@ -23,6 +24,10 @@ const PerformerPayments = () => {
 
   if (!context) throw new Error('PerformerPayments must be used within a DataProvider.');
 
+  const handleActiveTab = (id: string) => {
+    setActivePaymentTab(id)
+  }
+
   const { isExpanded } = context;
   return (
     <div className={`absolute right-4 bg-white rounded-xl h-screen mt-24 mb-4 flex flex-col justify-start space-y-4 p-4
@@ -33,11 +38,11 @@ const PerformerPayments = () => {
       </header>
       <GigsButtons 
         activeTab={activePaymentTab} 
-        setActiveTab={setActivePaymentTab}
+        setActiveTab={handleActiveTab}
         buttonIds={buttonIds}
         buttonLabels={buttonLabels}  
       />
-      {/* insert tables here */}
+      <PerformerPaymentContent activeTab={activePaymentTab}/>
     </div>
   )
 }
