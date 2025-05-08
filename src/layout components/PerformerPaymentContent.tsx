@@ -108,7 +108,7 @@ const PerformerPaymentContent = ({ activeTab }: PerformerPaymentContentProps) =>
           <>
             <table className="bg-[#fbfbfb] border-separate border-spacing-y-1 border-spacing-x-2">
               <thead>
-                <tr>
+                <tr className="font-lato">
                   <th className={thStyling}>
                     Status  <button className="cursor-pointer"><Sort /></button>
                   </th>
@@ -130,7 +130,7 @@ const PerformerPaymentContent = ({ activeTab }: PerformerPaymentContentProps) =>
                 ))}
               </tbody>
             </table>
-            <footer>
+            <footer className="mt-4 px-4 pb-2">
               <TableFooter 
                 items_per_page={items_per_page}
                 tableData={tableData}

@@ -3,7 +3,7 @@ import dots from '../assets/icons/orange_dots.png';
 
 const LandingMain = () => {
   return (
-    <main className="max-w-[1080px] m-auto grid grid-cols-4 my-24">
+    <main className="max-w-[1080px] m-auto grid grid-cols-4 my-24 font-inter">
           {/* Left Side of Main */}
           <div className="col-span-1 flex flex-col">
             <div className="flex flex-start items-end">

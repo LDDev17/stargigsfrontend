@@ -36,13 +36,6 @@ const SearchWhere = ({ whereInput, setWhereInput }: WhereProps) => {
     }
   })
   
-  // populates dropdown results with options that match the state for the searchbar: whereInput
-  const filteredOptions = () => {
-    let results = onlyStates.filter(
-      (option: stateType) => option.name.toLowerCase().includes(whereInput.toLowerCase())
-    )
-    setWhereOptions(results);
-  };
 
   // updates state as the user types in the searchbar
   // const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
@@ -50,20 +43,6 @@ const SearchWhere = ({ whereInput, setWhereInput }: WhereProps) => {
   //   setIsWhereOpen(true);
   //   filteredOptions();
   // };
-
-  // updates state and closes the dropdown when the user clicks an option from the results list
-  const handleWhereClick = (option: string) => {
-    setWhereInput(option);
-    setIsWhereOpen(false);
-    handleBlur();
-  }
-
-  // provides a timeout to let the user see they selected an option from the results list
-  const handleBlur = () => {
-    setTimeout(() => {
-      setIsWhereOpen(false);
-    }, 100);
-  }
 
   const handleWhereMenu = () => {
     setIsWhereOpen(true);

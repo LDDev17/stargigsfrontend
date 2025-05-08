@@ -85,7 +85,7 @@ const PerformerGigsTable = ({ activeTab }: PerformerGigsTableProps) => {
             </ul>}
         </div>
       </header>
-      <table className="text-sm text-left border-separate border-spacing-y-4 bg-[#fbfbfb]">
+      <table className="text-sm text-left border-separate border-spacing-y-4 bg-[#fbfbfb] text-text_secondary">
       {activeTab === 'booking' ? 
         (
           <>
@@ -135,7 +135,7 @@ const PerformerGigsTable = ({ activeTab }: PerformerGigsTableProps) => {
                     <th className={thStyling}>Date & Time  <button><Sort /></button></th>
                     <th className={thStyling}>Gig Type  <button><Sort /></button></th>
                     <th className={thStyling}>Status  <button><Sort /></button></th>
-                    <th className={`${thStyling} pl-9`} colSpan={2}>Action</th>
+                    <th className={`${thStyling} text-center`} colSpan={2}>Action</th>
                   </tr>
                 </thead>
                 <tbody>

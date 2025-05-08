@@ -10,80 +10,93 @@ import { useFormContext, Controller, useWatch } from 'react-hook-form';
 
 import Calendar from '../assets/svgs/calendar.svg?react';
 import CustomCalendarHeader from './CustomCalendarHeader';
+import { DateTime } from 'luxon';
 
 interface DatePickerProps {
   isWhenActive: boolean;
   setIsWhenActive: React.Dispatch<React.SetStateAction<boolean>>;
+  whenRef: React.RefObject<HTMLDivElement | null>;
 }
 
-const DatePickerSearch = ({ isWhenActive, setIsWhenActive }: DatePickerProps) => {
+const DatePickerSearch = ({ isWhenActive, setIsWhenActive, whenRef }: DatePickerProps) => {
   const [isCalendarOpen, setIsCalendarOpen] = useState<boolean>(false);
-
+  const [selectedDate, setSelectedDate] = useState<DateTime | null>(null);
   const { control } = useFormContext();
 
-  // watch the "date" field's value
-  const selectedDate = useWatch({ control, name: "date" });
+  const calendarRef = useRef(null);
 
-  const handleCalendarIconClick = () => {
+  // watch the "date" field's value
+  const watchDate = useWatch({ control, name: "date" });
+
+  const handleCalendarDropdown = () => {
+    setIsCalendarOpen(!isCalendarOpen);
+  };
+
+  const handleWhenActive = () => {
+    setIsWhenActive(true);
     setIsCalendarOpen(true);
   };
 
-  const handleWhenActive = () => setIsWhenActive(true);
+  const formatSelectedDate = (date: DateTime | null) => {
+    if (!date) return '';
+    return date.toLocaleString({ month: 'numeric', day: 'numeric', year: 'numeric' });
+  };
 
-  const whenRef = useRef<HTMLDivElement>(null);
-
+  // Close the calendar when clicking outside
   useEffect(() => {
-    if (!isWhenActive) return;
-
-      const whenClickHandler = (e: MouseEvent) => {
-        const target = e.target as HTMLElement;
-        const clickedInsideWhen = whenRef.current?.contains(target);
-        const clickedCalendarPopup = document.querySelector('[role="dialog"]')?.contains(target);
-        if (!clickedInsideWhen && !clickedCalendarPopup){
-          setIsWhenActive(false);
-        }
+    const handleClickOutside = (e: MouseEvent) => {
+      // Check if click was outside whenRef but not in a MUI dialog
+      if (
+        whenRef.current &&
+        !whenRef.current.contains(e.target as Node) &&
+        !isInMuiComponent(e.target as Element)
+      ) {
+        setIsCalendarOpen(false)
+        // Only deactivate the component if the user clicks outside the search bar entirely
       }
-  
-      document.addEventListener("mousedown", whenClickHandler)
-  
-      return() => {
-        document.removeEventListener("mousedown", whenClickHandler)
-      }
-    }, [isWhenActive]);
+    }
 
-  const altWhen = (
-    <button
-      className='flex justify-start items-center my-2 mx-0 space-x-4 pl-2 rounded-3xl bg-white 
-      w-full h-full cursor-pointer'
-      onClick={() => {
-        handleWhenActive();
-        setIsCalendarOpen(true);
-      }}
-    >
-      <Calendar />
-      <div className='flex flex-col items-start max-w-48'>
-        <p>WHEN</p>
-        <p className="text-[10px]">Select a date</p>
-      </div>
-    </button>
-  );
+    // Helper function to detect if click happened inside MUI components
+    const isInMuiComponent = (element: Element | null): boolean => {
+      if (!element) return false;
+      return (
+        !!element.closest('.MuiPaper-root') ||
+        !!element.closest('.MuiPopover-root') ||
+        !!element.closest('.MuiMenu-paper') ||
+        !!element.closest('.MuiSelect-select') ||
+        !!element.closest('.[role="dialog"]') ||
+        !!element.closest('[id^="mui-"]')
+      );
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [whenRef]);
+
 
   return (
-    <div ref={whenRef} className='min-w-30 h-[40px] flex items-center'>
+    <div id='calendar-header-container' ref={whenRef} className='min-w-30 h-[40px] flex items-center'>
       <LocalizationProvider dateAdapter={AdapterLuxon} adapterLocale='en-GB'>
-        {selectedDate || isWhenActive ? (
+        {watchDate || isWhenActive ? (
           <Controller
             name="date"
             control={control}
-            defaultValue={null}
+            defaultValue={selectedDate}
             render={({ field }) => (
               <DatePicker
+                ref={calendarRef}
                 label={!field.value ? "When" : undefined}
                 value={field.value}
                 open={isCalendarOpen}
                 onOpen={() => setIsCalendarOpen(true)}
                 onClose={() => setIsCalendarOpen(false)}
-                onChange={(date) => field.onChange(date)}
+                onChange={(newDate) => {
+                  field.onChange(newDate)
+                  setSelectedDate(newDate);
+                  setIsCalendarOpen(false);
+                }}
                 dayOfWeekFormatter={(date) => {
                   const dayString = date.toFormat('ccc');
                   return dayString.slice(0, 2);
@@ -92,6 +105,11 @@ const DatePickerSearch = ({ isWhenActive, setIsWhenActive }: DatePickerProps) =>
                 showDaysOutsideCurrentMonth={true}
                 slots={{
                   calendarHeader: CustomCalendarHeader,
+                  layout: (props) => (
+                    <div id="calendar-header-container">
+                      {props.children}
+                    </div>
+                  ),
                   openPickerIcon: () => null,
                   day: CustomDay
                 }}
@@ -103,6 +121,8 @@ const DatePickerSearch = ({ isWhenActive, setIsWhenActive }: DatePickerProps) =>
                 }}
                 slotProps={{
                   popper: {
+                    container: document.getElementById('calendar-header-container'),
+                    onClick: (e) => e.stopPropagation(),
                     modifiers: [
                       {
                         name: 'offset',
@@ -112,13 +132,18 @@ const DatePickerSearch = ({ isWhenActive, setIsWhenActive }: DatePickerProps) =>
                       },
                     ],
                     sx: {
+                      zindex: 1400,
                       '& .MuiPaper-root': {
                         left: '25% !important',
                         transform: 'translateX(-25%) !important',
                       },
                     },
                   },
+                  dialog: {
+                    onMouseDown: (e) => e.stopPropagation()
+                  },
                   textField: {
+                    label: '',
                     variant: 'standard',
                     sx: {
                       marginTop: '6px',
@@ -134,7 +159,7 @@ const DatePickerSearch = ({ isWhenActive, setIsWhenActive }: DatePickerProps) =>
                       disableUnderline: true,
                       startAdornment: (
                         <InputAdornment position="start">
-                          <IconButton onClick={handleCalendarIconClick}>
+                          <IconButton onClick={handleCalendarDropdown}>
                             <CalendarTodayIcon />
                           </IconButton>
                         </InputAdornment>
@@ -145,8 +170,33 @@ const DatePickerSearch = ({ isWhenActive, setIsWhenActive }: DatePickerProps) =>
               />
             )}
           />
+        ) : selectedDate ? (
+          <button
+            className='flex justify-start items-center my-2 mx-0 space-x-4 pl-2 rounded-3xl bg-white 
+            w-full h-full cursor-pointer'
+            onClick={() => {
+              handleWhenActive();
+            }}
+          >
+            <Calendar />
+            <div className='flex flex-col items-start max-w-48'>
+              <p>{formatSelectedDate(selectedDate)}</p>
+            </div>
+          </button>
         ) : (
-          altWhen
+          <button
+            className='flex justify-start items-center my-2 mx-0 space-x-4 pl-2 rounded-3xl bg-white 
+            w-full h-full cursor-pointer'
+            onClick={() => {
+              handleWhenActive();
+            }}
+          >
+            <Calendar />
+            <div className='flex flex-col items-start max-w-48'>
+              <p>WHEN</p>
+              <p className="text-[10px]">Select a date</p>
+            </div>
+          </button>
         )}
       </LocalizationProvider>
     </div>

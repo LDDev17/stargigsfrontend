@@ -33,9 +33,11 @@ const PerformerGigs = () => {
   let handleModalClose = () => setIsOpen(false);
 
   return (
-    <div className={`absolute right-4 bg-white rounded-xl h-screen mt-24 mb-4 flex flex-col justify-start space-y-4 p-4
-      ${isExpanded ? 'w-3/5 md:w-7/10 lg:w-3/4 xl:w-4/5 2xl:w-17/20' : 'w-7/10 sm:w-4/5 md:w-17/20 xl:w-9/10'}`}>
-      <header className="flex justify-start space-x-2 items-center">
+    <div className={`bg-white rounded-xl mt-24 mb-4 flex flex-col flex-grow space-y-4 p-4
+        ${isExpanded ? 'ml-60' : 'ml-32'}
+      `}
+    >
+      <header className="flex justify-start space-x-2 items-center font-inter">
         <h4 className="font-bold text-2xl">GIGS</h4>
         <p>- Manage your gigs effortlessly!</p>
       </header>
@@ -49,7 +51,7 @@ const PerformerGigs = () => {
         <TableSearchbar />
         <button
           className="cursor-pointer border-2 border-primary rounded-xl p-2 flex 
-          items-center justify-between w-20 hover:bg-[#ffece0]"
+          items-center justify-between w-20 hover:bg-[#ffece0] font-inter"
           onClick={handleModalOpen}
         >
           Filter <Sort />

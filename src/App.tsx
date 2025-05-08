@@ -21,6 +21,8 @@ import PerformerMainDashboard from './layout components/PerformerMainDashboard';
 import PerformerGigs from './pages/PerformerGigs';
 import PerformerPayments from './pages/PerformerPayments';
 
+import ClientDashboardPages from './pages-client/ClientDashboardPages';
+
 const App: React.FC = () => {
   return (
     <Router>
@@ -34,13 +36,16 @@ const App: React.FC = () => {
         <Route path="/verification-success" element={<SuccessMessage />} />
         <Route path="/successmessage1" element={<SuccessMessage1 />} /> {/* Add SuccessMessage1 route */}
         <Route path="/about" element={<AboutPage />} /> {/* Add AboutPage route */}
-        <Route path="/reviews" element={<Reviews />} /> {/* Add Reviews route */}
+        <Route path="/reviews" element={<Reviews />} /> 
         <Route path="/contact" element={<ContactPage />} /> {/* Add ContactPage route */}
         <Route path='/gigs-page1' element={<GigsPage1 />} /> {/* Updated route for GigsPage1 */}
         <Route path='/performerDashboard' element={<PerformerDashboardPages />}>
           <Route path='/performerDashboard/main' element={<PerformerMainDashboard />}/>
           <Route path='/performerDashboard/gigs' element={<PerformerGigs />}/>
           <Route path='/performerDashboard/payments' element={<PerformerPayments />}/>
+        </Route>
+        <Route path='/clientDashboard' element={<ClientDashboardPages />} >
+
         </Route>
         <Route path="/layout" element={<Layout />} /> {/* Add Layout route */}
         <Route path="/performances" element={<PerformanceSection />} /> {/* Add PerformanceSection route */}

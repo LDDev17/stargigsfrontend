@@ -7,7 +7,7 @@ import SearchBar from '../design components/SearchBar';
 
 const Navbar = () => {
   return (
-    <nav className="flex fixed top-0 justify-around items-center bg-text_primary w-full h-[86px] z-100">
+    <nav className="flex fixed top-0 justify-around items-center bg-text_primary w-full h-[86px] z-100 font-inter">
       {/* tightly wrapped inner nav box */}
       {/* <div className='flex justify-around items-center bg-text_primary w-full h-[86px] m-[20px] '> */}
         <NavLink 

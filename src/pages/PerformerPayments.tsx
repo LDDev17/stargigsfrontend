@@ -30,8 +30,10 @@ const PerformerPayments = () => {
 
   const { isExpanded } = context;
   return (
-    <div className={`absolute right-4 bg-white rounded-xl h-screen mt-24 mb-4 flex flex-col justify-start space-y-4 p-4
-      ${isExpanded ? 'w-3/5 md:w-7/10 lg:w-3/4 xl:w-4/5 2xl:w-17/20' : 'w-7/10 sm:w-4/5 md:w-17/20 xl:w-9/10'}`}>
+    <div className={`bg-white rounded-xl h-screen mt-24 mb-4 flex flex-grow flex-col 
+      justify-start space-y-4 p-4 font-inter
+      ${isExpanded ? 'ml-60' : 'ml-32'}`}
+    >
       <header className="flex justify-start space-x-2 items-center">
         <h4 className="font-bold text-2xl">Payments</h4>
         <p>- Your payment activity, all in one place</p>

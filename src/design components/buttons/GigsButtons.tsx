@@ -19,7 +19,7 @@ const GigsButtons = ({ activeTab, setActiveTab, buttonIds, buttonLabels }: GigBu
           'rounded-r-lg'
           : '';
 
-          const buttonStyle = `border-2 border-primary h-[50px] hover:bg-[#ffece0] 
+          const buttonStyle = `border-2 border-primary h-[50px] hover:bg-[#ffece0] font-inter
             cursor-pointer px-2 ${isActive ? 'text-white bg-primary font-bold' : 'bg-white'} ${roundedClass}`;
           return (
             <button

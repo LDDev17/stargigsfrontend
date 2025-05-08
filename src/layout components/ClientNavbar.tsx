@@ -9,7 +9,7 @@ import CaretDown from '../assets/icons/caret-down.svg';
 import SampleNotificationData from '../SampleData/NotificationData';
 import NotificationProps from '../types/NotificationType';
 
-interface performerProps {
+interface clientProps {
   id: number,
   first_name: string,
   last_name: string,
@@ -19,14 +19,10 @@ interface performerProps {
   city: string,
 }
 
-interface ClientViewProps {
-  viewClient: boolean,
-}
-
-const PerformerNavbar: React.FC<ClientViewProps> = ({viewClient}) => {
-  const [performerNotifications, setPerformerNotifications] = useState<NotificationProps[]>(SampleNotificationData);
+const ClientNavbar = () => {
+  const [clientNotifications, setClientNotifications] = useState<NotificationProps[]>(SampleNotificationData);
   const [totalNotifications, setTotalNotifications] = useState<number>(0);
-  const [performer, setPerformer] = useState<performerProps>({
+  const [client, setclient] = useState<clientProps>({
     id: 1,
     first_name: 'Andrew',
     last_name: 'Smith',
@@ -36,31 +32,30 @@ const PerformerNavbar: React.FC<ClientViewProps> = ({viewClient}) => {
     city: 'Portland',
   });
   const [menuOpen, setMenuOpen] = useState(false);
+  // const [clientView, setClientView] = useState(true);
 
   useEffect(() => {
     // on load of page, make async API call to retrieve any notifications for that perfomer
   }, []);
 
   useEffect(() => {
-    // when performerNotifications changes, get a sum of all notifications in the object
-    let result: number = performerNotifications.length;
+    // when clientNotifications changes, get a sum of all notifications in the object
+    let result: number = clientNotifications.length;
     setTotalNotifications(result)
-  }, [performerNotifications]);
+  }, [clientNotifications]);
 
   const handleMenuOpen = () => {
     setMenuOpen(!menuOpen);
   }
 
   return (
-    <div className='font-inter z-20 flex justify-end px-20 py-2 fixed bg-white top-0 right-0 w-full border-b-2 border-gray-200'>
-      {/* If performer is in clientView, SearchBar will be visible */}
-      {viewClient? (
-        <div className='w-3/5 pr-20'>
-          <SearchBar />
-        </div>
-      ) : (
-        <></>
-      )}
+    <div 
+      className='font-inter z-20 flex justify-end px-20 py-2 fixed bg-white top-0 right-0 
+        w-full border-b-2 border-gray-200'
+    >
+      <div className='w-3/5 pr-20'>
+        <SearchBar />
+      </div>
       
       {/* Right Cluster */}
       <div className='flex space-x-6'>
@@ -84,7 +79,7 @@ const PerformerNavbar: React.FC<ClientViewProps> = ({viewClient}) => {
         <div className='flex items-center'>
           <div className='flex flex-col'>
             <p className='text-xs'>Hello!</p>
-            <p>{performer.first_name} {performer.last_name}</p>
+            <p>{client.first_name} {client.last_name}</p>
           </div>
           <button
           // caret opens dropdown with some menu options
@@ -99,4 +94,4 @@ const PerformerNavbar: React.FC<ClientViewProps> = ({viewClient}) => {
   )
 }
 
-export default PerformerNavbar;
+export default ClientNavbar;

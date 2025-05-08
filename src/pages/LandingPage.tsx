@@ -14,10 +14,12 @@ const LandingPage: React.FC = () => {
         <HeroSection />
         <LandingMain />
         {/* Featured Section */}
-        <Carousel /> {/* Insert the Carousel component here */}
+        <div className='bg-[#cdd2d5]/30 p-8'>
+          <Carousel /> 
+        </div>
         <LandingTalentMeets />
       </div>
-      <Footer /> {/* Insert the Footer component here */}
+      <Footer /> 
     </div>
   );
 };

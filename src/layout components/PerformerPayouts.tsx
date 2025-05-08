@@ -9,7 +9,7 @@ const PerformerPayouts = () => {
 
   return (
     <div className="flex flex-col justify-start space-y-2 w-2/3">
-      <h5 className="font-bold text-xl">How you get paid</h5>
+      <h5 className="font-bold text-xl font-lato">How you get paid</h5>
       <p
         className="text-md"
       >

@@ -5,6 +5,8 @@ import DashboardTile from "../design components/DashboardTile";
 import DashTileType from "../types/TileType";
 import PerformerDashUpcomingTable from "./PerformerDashUpcomingTable";
 import DashBookingTable from "./DashBookingTable";
+import NotificationSidebar from "./NotificationSidebar";
+import DashCalendar from "./DashCalendar";
 
 const tileSampleData: DashTileType[] = [
   {
@@ -40,8 +42,9 @@ const PerformerMainDashboard = () => {
   return (
     <>
     
-      <div className={`absolute right-4 bg-white rounded-xl h-screen mt-24 mb-4 flex p-4
-        ${isExpanded ? 'w-3/5 md:w-7/10 lg:w-3/4 xl:w-4/5 2xl:w-17/20' : 'w-7/10 sm:w-4/5 md:w-17/20 xl:w-9/10'}`}
+      <div className={`bg-white rounded-xl mt-24 mb-4 flex flex-grow p-4 
+          ${isExpanded ? 'ml-60' : 'ml-32'}
+        `}
       >
 
         {/* Left Side */}
@@ -98,8 +101,14 @@ const PerformerMainDashboard = () => {
         </section>
 
         {/* Right Side */}
-        <section className="pl-4">
-          <p>Notifications</p>
+        <section className="pl-4 flex flex-col justify-start space-y-8">
+          <div>
+            <p>Notifications</p>
+            <NotificationSidebar />
+          </div>
+          <div>
+            <DashCalendar />
+          </div>
         </section>
       </div>
     

@@ -1,7 +1,6 @@
 /// <reference types="vite-plugin-svgr/client" />
 import { NavLink, Link } from 'react-router-dom';
 import { useState, useContext } from 'react';
-// import { set } from 'date-fns';
 
 import TextButton from '../design components/buttons/TextButton';
 import NotificationsButton from '../design components/buttons/NotificationsButton';
@@ -37,14 +36,14 @@ interface viewClientProps {
   handleViewClient: () => void
 }
 
-const Sidebar = ({viewClient, handleViewClient}: viewClientProps) => {
+const PerformerSidebar = ({viewClient, handleViewClient}: viewClientProps) => {
   const context = useContext(ExpandedContext);
 
   if (!context) throw new Error('isExpanded must be used within a DataProvider');
 
   const { setIsExpanded } = context;
 
-  const [clientNotifications, setClientNotifications] = useState<NotificationProps>({
+  const [performerNotifications, setPerformerNotifications] = useState<NotificationProps>({
     performanceNotifications: 1,
     gigNotifications: 1,
     messageNotifications: 0,
@@ -53,26 +52,17 @@ const Sidebar = ({viewClient, handleViewClient}: viewClientProps) => {
     profileNotifications: 0,
   })
 
-  // const [dashboardHover, setDashboardHover] = useState(false);
-  // const [gigsHover, setGigsHover] = useState(false);
-  // const [messagesHover, setMessagesHover] = useState(false);
-  // const [calendarHover, setCalendarHover] = useState(false);
-  // const [paymentsHover, setPaymentsHover] = useState(false);
-  // const [profileHover, setProfileHover] = useState(false);
-  // const [settingsHover, setSettingsHover] = useState(false);
-  // const [bgColor, setBgColor] = useState<string>('white');
-
-  
+ 
   const navStyle = 'flex justify-between items-center hover:text-primary text-xs py-2 -mx-4 pl-4';
   const leftDivStyle = 'flex justify-start items-center space-x-2'
 
   return (
 
     <nav className={` ${context.isExpanded ? 'w-50': 'w-24'} bg-white h-screen z-30 py-4 
-      fixed flex flex-col justify-between px-4 border-r-2 border-gray-200`}
+      fixed flex flex-col justify-between px-4 border-r-2 border-gray-200 font-inter`}
     >
       <div className='flex justify-start pb-4 flex-col'>
-        <Link to='/' className='flex justify-center pb-3 border-b-2 border-gray-200'>
+        <Link to='/' className={`flex justify-center border-b-2 border-gray-200 ${context.isExpanded? 'pb-5' : 'pb-3'}`}>
           <img src={` ${context.isExpanded ? `${full_logo}` : `${star_logo}`}`} alt="Star Gigs logo" />
         </Link>
         
@@ -113,10 +103,11 @@ const Sidebar = ({viewClient, handleViewClient}: viewClientProps) => {
             </NavLink>
 
             {/* Performances */}
+            {!viewClient && 
             <NavLink
-              to='/perfromances'
+              to='/performances'
               className={({isActive}) =>
-                `${navStyle} ${context.isExpanded ? 'justify-between pr-2' : clientNotifications.performanceNotifications ? 'justify-end pr-2' : 'justify-center'} ${
+                `${navStyle} ${context.isExpanded ? 'justify-between pr-2' : performerNotifications.performanceNotifications ? 'justify-end pr-2' : 'justify-center'} ${
                   isActive ? 'bg-[#feefe5]' : 'bg-white'
                 }`
               }
@@ -126,15 +117,16 @@ const Sidebar = ({viewClient, handleViewClient}: viewClientProps) => {
                 <span className={`${!context.isExpanded && 'hidden'}`}>Performances</span>
               </div>
               <NotificationsButton
-                notificationNumber={clientNotifications.performanceNotifications}
+                notificationNumber={performerNotifications.performanceNotifications}
               />
             </NavLink>
+            }
 
             {/* Gigs */}
             <NavLink
               to='/performerDashboard/gigs' //gigs-page1
               className={({isActive}) =>
-                `${navStyle} ${context.isExpanded ? 'justify-between pr-2' : clientNotifications.gigNotifications ? 'justify-end pr-2' : 'justify-center'} ${
+                `${navStyle} ${context.isExpanded ? 'justify-between pr-2' : performerNotifications.gigNotifications ? 'justify-end pr-2' : 'justify-center'} ${
                   isActive ? 'bg-[#feefe5]' : 'bg-white'
                 }`
               }
@@ -144,7 +136,7 @@ const Sidebar = ({viewClient, handleViewClient}: viewClientProps) => {
                 <span className={`${!context.isExpanded && 'hidden'}`}>Gigs</span>
               </div>
               <NotificationsButton
-                notificationNumber={clientNotifications.gigNotifications}
+                notificationNumber={performerNotifications.gigNotifications}
               />
             </NavLink>
 
@@ -152,7 +144,7 @@ const Sidebar = ({viewClient, handleViewClient}: viewClientProps) => {
             <NavLink
               to='/messages'
               className={({isActive}) =>
-                `${navStyle} ${context.isExpanded ? 'justify-between pr-2' : clientNotifications.messageNotifications ? 'justify-end pr-2' : 'justify-center'} ${
+                `${navStyle} ${context.isExpanded ? 'justify-between pr-2' : performerNotifications.messageNotifications ? 'justify-end pr-2' : 'justify-center'} ${
                   isActive ? 'bg-[#feefe5]' : 'bg-white'
                 }`
               }
@@ -162,7 +154,7 @@ const Sidebar = ({viewClient, handleViewClient}: viewClientProps) => {
                 <span className={`${!context.isExpanded && 'hidden'}`}>Messages</span>
               </div>
               <NotificationsButton
-                notificationNumber={clientNotifications.messageNotifications}
+                notificationNumber={performerNotifications.messageNotifications}
               />
             </NavLink>
 
@@ -170,7 +162,7 @@ const Sidebar = ({viewClient, handleViewClient}: viewClientProps) => {
             <NavLink
               to='/calendar'
               className={({isActive}) =>
-                `${navStyle} ${context.isExpanded ? 'justify-between pr-2' : clientNotifications.calendarNotifications ? 'justify-end pr-2' : 'justify-center'} ${
+                `${navStyle} ${context.isExpanded ? 'justify-between pr-2' : performerNotifications.calendarNotifications ? 'justify-end pr-2' : 'justify-center'} ${
                   isActive ? 'bg-[#feefe5]' : 'bg-white'
                 }`
               }
@@ -180,7 +172,7 @@ const Sidebar = ({viewClient, handleViewClient}: viewClientProps) => {
                 <span className={`${!context.isExpanded && 'hidden'}`}>Calendar</span>
               </div>
               <NotificationsButton
-                notificationNumber={clientNotifications.calendarNotifications}
+                notificationNumber={performerNotifications.calendarNotifications}
               />
             </NavLink>
 
@@ -188,7 +180,7 @@ const Sidebar = ({viewClient, handleViewClient}: viewClientProps) => {
             <NavLink
               to='/performerDashboard/payments'
               className={({isActive}) =>
-                `${navStyle} ${context.isExpanded ? 'justify-between pr-2' : clientNotifications.paymentNotifications ? 'justify-end space-x-2 pr-2' : 'justify-center'} ${
+                `${navStyle} ${context.isExpanded ? 'justify-between pr-2' : performerNotifications.paymentNotifications ? 'justify-end space-x-2 pr-2' : 'justify-center'} ${
                   isActive ? 'bg-[#feefe5]' : 'bg-white'
                 }`
               }
@@ -198,7 +190,7 @@ const Sidebar = ({viewClient, handleViewClient}: viewClientProps) => {
                 <span className={`${!context.isExpanded && 'hidden'} whitespace-pre`}>  Payments</span>
               </div>
               <NotificationsButton
-                notificationNumber={clientNotifications.paymentNotifications}
+                notificationNumber={performerNotifications.paymentNotifications}
               />
             </NavLink>
 
@@ -206,7 +198,7 @@ const Sidebar = ({viewClient, handleViewClient}: viewClientProps) => {
             <NavLink
               to='/profile'
               className={({isActive}) =>
-                `${navStyle} ${context.isExpanded ? 'justify-between pr-2' : clientNotifications.profileNotifications ? 'justify-end pr-2' : 'justify-center'} ${
+                `${navStyle} ${context.isExpanded ? 'justify-between pr-2' : performerNotifications.profileNotifications ? 'justify-end pr-2' : 'justify-center'} ${
                   isActive ? 'bg-[#feefe5]' : 'bg-white'
                 }`
               }
@@ -216,7 +208,7 @@ const Sidebar = ({viewClient, handleViewClient}: viewClientProps) => {
                 <span className={`${!context.isExpanded && 'hidden'}`}>Profile</span>
               </div>
               <NotificationsButton
-                notificationNumber={clientNotifications.profileNotifications}
+                notificationNumber={performerNotifications.profileNotifications}
               />
             </NavLink>
           </div>
@@ -274,4 +266,4 @@ const Sidebar = ({viewClient, handleViewClient}: viewClientProps) => {
   )
 }
 
-export default Sidebar;
+export default PerformerSidebar;

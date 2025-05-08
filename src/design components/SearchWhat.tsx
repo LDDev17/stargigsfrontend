@@ -31,7 +31,7 @@ const SearchWhat = () => {
   
 
   return (
-    <div ref={whatRef} className='w-full min-w-28'>
+    <div ref={whatRef} className='w-full min-w-28 font-inter'>
       <Controller
         name="talent"
         control={control}
@@ -48,13 +48,10 @@ const SearchWhat = () => {
 
           return isWhatOpen ? (
 
-      
-
-        // <div className='flex justify-start items-center mx-0 space-x-1 rounded-3xl bg-white 
-        //       pl-2 '>
-        //   {/* dropdown */}
-        //   <div className='absolute flex flex-col justify-center items-start top-8 space-x-1 
-        //     rounded-3xl bg-transparent max-h-96 max-w-36'>
+        // the input in its dropdown state
+        <div className='flex items-center space-x-2 rounded-3xl bg-white px-2 py-1'>
+          <img src={music_note} alt="music note icon" />
+          {/* dropdown */}
           <div className="relative">
             <input
               value={field.value}
@@ -79,8 +76,10 @@ const SearchWhat = () => {
                 </li>
               ))}
               </ul>
+            </div>
           </div>
       ) : field.value ? (
+          // what the button looks like after a choice has been selected
             <button
               className='flex justify-start items-center my-2 mx-0 space-x-2 rounded-3xl bg-white
                 pl-2 cursor-pointer'
@@ -92,6 +91,7 @@ const SearchWhat = () => {
               </div>
             </button>
           ) : (
+            // what the button looks like before a choice has been made
             <button
               className='flex justify-start items-center my-2 mx-0 space-x-4 rounded-3xl bg-white
                 pl-2 w-full cursor-pointer'

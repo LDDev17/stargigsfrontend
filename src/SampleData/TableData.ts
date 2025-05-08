@@ -53,7 +53,7 @@ const sampleTableData: GigsTableType[] = [
     Amount: 2899,
     DateTime: 'Apr 30, 2025 5:30 pm',
     GigType: 'SOLO',
-    Status: 'Cofirmed',
+    Status: 'Confirmed',
   },
   {
     EventName: 'Concert in the Park',
@@ -116,7 +116,7 @@ const sampleTableData: GigsTableType[] = [
     Amount: 2899,
     DateTime: 'Apr 30, 2025 5:30 pm',
     GigType: 'SOLO',
-    Status: 'Cofirmed',
+    Status: 'Confirmed',
   },
   {
     EventName: 'Concert in the Park',

@@ -24,6 +24,7 @@ const CustomDay = (
       disabled={isDisabled}
       sx={{
         backgroundColor: '#feefe5',
+        fontFamily: 'inter',
         borderRadius: '6px',
         '&:hover': {
           color: '#f45e00',
@@ -32,7 +33,7 @@ const CustomDay = (
         ...(isDisabled && {
           backgroundColor: 'white',
           color: '#001754',
-          opacity: '0.15',
+          opacity: '15',
         }),
         ...(isToday && {
           backgroundColor: '#f45e00 !important',

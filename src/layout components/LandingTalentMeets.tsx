@@ -3,7 +3,7 @@ import EllipsePhoto from "../assets/photos/Ellipse_RockBand.png";
 
 const LandingTalentMeets = () => {
   return (
-    <div className="flex justify-center space-x-48">
+    <div className="flex justify-center space-x-48 font-inter my-8">
       {/* Text Side */}
       <div className="flex flex-col space-y-4 justify-center items-start">
         <h2 className="text-4xl font-bold">WHERE TALENT MEETS <br/>OPPORTUNITY</h2>
