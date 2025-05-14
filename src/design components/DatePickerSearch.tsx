@@ -23,11 +23,12 @@ const DatePickerSearch = ({ isWhenActive, setIsWhenActive, whenRef }: DatePicker
   const [selectedDate, setSelectedDate] = useState<DateTime | null>(null);
   const { control } = useFormContext();
 
-  const calendarRef = useRef(null);
 
-  // watch the "date" field's value
+
+  // watches the "date" field's value; used to handle change to field.value
   const watchDate = useWatch({ control, name: "date" });
 
+  // flips the state of the calendar dropdown being open
   const handleCalendarDropdown = () => {
     setIsCalendarOpen(!isCalendarOpen);
   };
@@ -64,7 +65,7 @@ const DatePickerSearch = ({ isWhenActive, setIsWhenActive, whenRef }: DatePicker
         !!element.closest('.MuiPopover-root') ||
         !!element.closest('.MuiMenu-paper') ||
         !!element.closest('.MuiSelect-select') ||
-        !!element.closest('.[role="dialog"]') ||
+        !!element.closest('[role="dialog"]') ||
         !!element.closest('[id^="mui-"]')
       );
     };
@@ -77,16 +78,16 @@ const DatePickerSearch = ({ isWhenActive, setIsWhenActive, whenRef }: DatePicker
 
 
   return (
-    <div id='calendar-header-container' ref={whenRef} className='min-w-30 h-[40px] flex items-center'>
+    <div id='calendar-header-container' ref={whenRef} className='min-w-40 h-[40px] flex items-center'>
       <LocalizationProvider dateAdapter={AdapterLuxon} adapterLocale='en-GB'>
         {watchDate || isWhenActive ? (
+          // state when calendar dropdown is open to choose a date
           <Controller
             name="date"
             control={control}
             defaultValue={selectedDate}
             render={({ field }) => (
               <DatePicker
-                ref={calendarRef}
                 label={!field.value ? "When" : undefined}
                 value={field.value}
                 open={isCalendarOpen}
@@ -148,6 +149,7 @@ const DatePickerSearch = ({ isWhenActive, setIsWhenActive, whenRef }: DatePicker
                     sx: {
                       marginTop: '6px',
                       backgroundColor: 'transparent',
+                      minWidth: '180px',
                       '& .MuiInputBase-root': {
                         backgroundColor: 'transparent',
                       },
@@ -171,6 +173,7 @@ const DatePickerSearch = ({ isWhenActive, setIsWhenActive, whenRef }: DatePicker
             )}
           />
         ) : selectedDate ? (
+          // state when date has been selected
           <button
             className='flex justify-start items-center my-2 mx-0 space-x-4 pl-2 rounded-3xl bg-white 
             w-full h-full cursor-pointer'
@@ -184,6 +187,7 @@ const DatePickerSearch = ({ isWhenActive, setIsWhenActive, whenRef }: DatePicker
             </div>
           </button>
         ) : (
+          // initial state before date has been selected
           <button
             className='flex justify-start items-center my-2 mx-0 space-x-4 pl-2 rounded-3xl bg-white 
             w-full h-full cursor-pointer'

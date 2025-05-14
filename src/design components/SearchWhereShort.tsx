@@ -72,7 +72,7 @@ const SearchWhereShort = ({ whereInput, setWhereInput, whereRef, isWhereActive, 
               name="where"
               id="inputWhere"
               // placeholder='Location'
-              className='text-sm h-8 max-w-24 '
+              className='text-sm h-8 max-w-36 '
               // autoFocus
               onChange={(e) => {
                 field.onChange(e.target.value);
@@ -84,7 +84,7 @@ const SearchWhereShort = ({ whereInput, setWhereInput, whereRef, isWhereActive, 
             {/* dropdown with options */}
             {isDropdownOpen && (
             <ul className='absolute top-8 overflow-auto rounded-lg border-1 border-black
-                border-opacity-10 bg-white px-2 max-w-28'>
+                border-opacity-10 bg-white p-2 max-w-36'>
               {whereOptions.map((city, index) => (
                 <li
                   key={index}

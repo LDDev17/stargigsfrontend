@@ -27,7 +27,7 @@ const AverageRating = () => {
       {/* left side of vertical line */}
       <div className="flex flex-col mx-12 justify-center space-y-2 text-tertiary">
         <h4 className="text-xl">Average rating</h4>
-        <div className="flex text-4xl inline">
+        <div className="text-4xl inline">
           <div>{avgRating}</div> 
           <div className='flex'>
             {filledStarArr.map((item: string, i) => (<span><img key={i} src={item} /></span>))}
@@ -40,8 +40,8 @@ const AverageRating = () => {
       {/* vertical line */}
       <div className='my-6 w-1/8 border-r-1 border-tertiary'></div>
       {/* right side of vertical line */}
-      <div className='flex flex-col justify-around my-4 text-tertiary'>
-        <div className='flex justify-around w-8'>
+      <div className='flex flex-col justify-around my-4 text-tertiary ml-4'>
+        <div className='flex justify-around w-8 space-x-2'>
           <img src={gold_star} alt="golden star" /> 
           <p>5</p>
           {/* bar graph */}

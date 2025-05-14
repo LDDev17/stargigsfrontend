@@ -42,13 +42,13 @@ const PerformerMainDashboard = () => {
   return (
     <>
     
-      <div className={`bg-white rounded-xl mt-24 mb-4 flex flex-grow p-4 
+      <div className={`bg-white rounded-xl mt-24 mb-4 flex flex-grow p-8 font-inter 
           ${isExpanded ? 'ml-60' : 'ml-32'}
         `}
       >
 
         {/* Left Side */}
-        <section className="border-r-1 border-gray-200 flex flex-col grow pr-4">
+        <section className="border-r-1 border-gray-200 flex flex-col space-y-4 grow pr-4">
           <header>
             {/* row 1 */}
             <div className="flex justify-start items-center space-x-2 pb-4">
@@ -57,29 +57,29 @@ const PerformerMainDashboard = () => {
               <p>-Here's a quick look at your upcoming gigs, bookings, and new opportunities!</p>
             </div>
             {/* row 2 */}
-            <div className="flex justify-between">
-              <div className={`bg-[#ffece0] rounded-xl`}>
+            <div className="flex justify-between space-x-6">
+              <div className={`bg-[#ffece0] rounded-xl grow`}>
                 <DashboardTile
                   title={tileData[0].title}
                   amount={tileData[0].amount}
                   percentage={tileData[0].percentage}
                 />
               </div>
-              <div className={`bg-[#e6f1fd] rounded-xl`}>
+              <div className={`bg-[#e6f1fd] rounded-xl grow`}>
                 <DashboardTile
                   title={tileData[1].title}
                   amount={tileData[1].amount}
                   percentage={tileData[1].percentage}
                 />
               </div>
-              <div className={`bg-[#edeefc] rounded-xl`}>
+              <div className={`bg-[#edeefc] rounded-xl grow`}>
                 <DashboardTile
                   title={tileData[2].title}
                   amount={tileData[2].amount}
                   percentage={tileData[2].percentage}
                 />
               </div>
-              <div className={`bg-[#fff9e7] rounded-xl`}>
+              <div className={`bg-[#fff9e7] rounded-xl grow`}>
                 <DashboardTile
                   title={tileData[3].title}
                   amount={tileData[3].amount}
@@ -95,8 +95,9 @@ const PerformerMainDashboard = () => {
           </section>
 
           {/* Booking Table */}
-          <footer>
+          <footer className="flex justify-between gap-8">
             <DashBookingTable />
+            <DashCalendar />
           </footer>
         </section>
 
@@ -105,9 +106,6 @@ const PerformerMainDashboard = () => {
           <div>
             <p>Notifications</p>
             <NotificationSidebar />
-          </div>
-          <div>
-            <DashCalendar />
           </div>
         </section>
       </div>

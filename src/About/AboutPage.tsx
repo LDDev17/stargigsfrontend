@@ -2,7 +2,7 @@ import React from "react";
 import Navbar from "../layout components/Navbar";
 import { Hero } from "./Hero";
 import { Features } from "./Features";
-import Footer from "../footer/Footer";
+import Footer2 from "../layout components/Footer2";
 
 export const AboutPage: React.FC = () => {
   return (
@@ -10,7 +10,7 @@ export const AboutPage: React.FC = () => {
       <Navbar />
       <Hero />
       <Features />
-      <Footer />
+      <Footer2 />
     </main>
   );
 };

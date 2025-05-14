@@ -1,6 +1,6 @@
 import React from 'react';
 import { FooterLogo } from './FooterLogo'; // Import the FooterLogo component
-import './footer.css'; // Import the CSS file
+// import './footer.css'; // Import the CSS file
 import { useNavigate } from 'react-router-dom'; // Import useNavigate from react-router-dom
 
 const Footer: React.FC = () => {

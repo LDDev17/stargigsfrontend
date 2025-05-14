@@ -19,20 +19,28 @@ const BookingTableRow = ({ props }: TableRowType) => {
       <td>${money}</td>
       <td>{props.DateTime}</td>
       <td>{props.GigType}</td>
-      <td className="text-[#007aff] border-r-1 border-[#d8dadc]">
-        <button className="bg-white p-4 -mr-3 cursor-pointer text-center">
-          <Message />
-        </button>
+      <td className="text-center w-8">
+        <div className="px-2">
+          <button className="bg-white p-4 cursor-pointer text-[#007aff]">
+            <Message />
+          </button>
+        </div>
       </td>
-      <td>
-        <button className="bg-white p-4 -mr-3 ml-2 cursor-pointer text-center">
-          <Check />
-        </button>
+      <td className="border-[#d8dadc] border-x text-center w-8">
+        <div className="px-2">
+          <button
+            className="bg-white p-4 cursor-pointer"
+          >
+            <Check />
+          </button>
+        </div>
       </td>
-      <td className="border-l-1 border-[#d8dadc] overflow-hidden text-center">
-        <button className="bg-white p-4 cursor-pointer">
-          <XMark />
-        </button>
+      <td className="overflow-hidden text-center w-8">
+        <div className="px-2">
+          <button className="bg-white p-4 cursor-pointer">
+            <XMark />
+          </button>
+        </div>
       </td>
     </tr>
   )

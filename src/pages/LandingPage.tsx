@@ -5,6 +5,7 @@ import LandingTalentMeets from "../layout components/LandingTalentMeets";
 import HeroSection from "../layout components/HeroSection";
 import Footer from "../footer/Footer"; // Import the Footer component
 import Carousel from "../Carousel/Carousel"; // Import the Carousel component
+import Footer2 from '../layout components/Footer2';
 
 const LandingPage: React.FC = () => {
   return (
@@ -19,7 +20,7 @@ const LandingPage: React.FC = () => {
         </div>
         <LandingTalentMeets />
       </div>
-      <Footer /> 
+      <Footer2 /> 
     </div>
   );
 };

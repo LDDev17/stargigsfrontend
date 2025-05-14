@@ -21,15 +21,19 @@ const UpcomingTableRow = ({ props }: UpcomingTableRowProps) => {
         'text-[#519c66] bg-[#d2ffc2] opacity-57' : 'text-primary bg-[#ffeedf]'} 
          p-2 rounded-lg mr-2 max-w-24 text-center`}>{props.Status}</div>
       </td>
-      <td className="text-[#007aff] border-r-1 border-[#d8dadc]">
-        <button className="bg-white p-4 -mr-3 cursor-pointer">
-          <Message />
-        </button>
+      <td className="text-[#007aff] border-r-1 border-[#d8dadc] text-center w-8">
+        <div className="px-2">
+          <button className="bg-white p-4 cursor-pointer">
+            <Message />
+          </button>
+        </div>
       </td>
-      <td className="border-l-1 border-[#d8dadc]">
-        <button className="bg-white p-4 ml-2 -mr-4 cursor-pointer text-center">
-          <XMark />
-        </button>
+      <td className="text-center w-8">
+        <div className="px-2">
+          <button className="bg-white p-4 cursor-pointer text-center">
+            <XMark />
+          </button>
+        </div>
       </td>
     </tr>
   )

@@ -5,21 +5,19 @@ import GigsButtons from "../design components/buttons/GigsButtons";
 import PerformerPaymentContent from "../layout components/PerformerPaymentContent";
 
 const buttonIds: string[] = [
-  'history',
-  'reports',
   'payouts',
+  'history',
   'taxes',
 ];
 
 const buttonLabels: Record<string, string> = {
-  history: 'PAYMENT HISTORY',
-  reports: 'EARNING REPORTS',
-  payouts: 'PAYOUTS',
+  payouts: 'PAYOUTS OPTIONS',
+  history: 'PAYOUT HISTORY',
   taxes: 'TAXES',
 };
 
 const PerformerPayments = () => {
-  const [activePaymentTab, setActivePaymentTab] = useState<string>('history');
+  const [activePaymentTab, setActivePaymentTab] = useState<string>('payouts');
   const context = useContext(ExpandedContext);
 
   if (!context) throw new Error('PerformerPayments must be used within a DataProvider.');

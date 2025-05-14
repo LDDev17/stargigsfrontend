@@ -9,7 +9,9 @@ interface TaxesButtonType {
 const TaxesButton = (tax: TaxesButtonType) => {
   return (
     <button 
-      className={`flex items-center space-x-2 cursor-pointer ${tax.activeTaxTab === tax.id && 'border-b-1 border-primary'}`}
+      className={`flex items-center space-x-2 cursor-pointer 
+        ${tax.activeTaxTab === tax.id && 'border-b-1 border-primary'}
+      `}
       key={tax.id}
       id={tax.id}
       onClick={() => tax.setActiveTaxTab((tax.id))}

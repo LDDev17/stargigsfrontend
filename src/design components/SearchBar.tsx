@@ -118,7 +118,7 @@ const SearchBar = () => {
                     />
               
                   </div>
-                  <div className='flex justify-start items-center my-1 mr-2 ml-0 space-x-2 rounded-3xl bg-white pl-2 pr-2 min-w-32 max-w-44'>
+                  <div className='flex justify-start items-center my-1 mr-2 ml-0 space-x-2 rounded-3xl bg-white pl-2 pr-2 min-w-32 max-w-48'>
                     <DatePickerSearch 
                       isWhenActive={isWhenActive} 
                       setIsWhenActive={setIsWhenActive} 

@@ -77,7 +77,7 @@ const ClientSidebar = () => {
             
             {/* Dashboard */}
             <NavLink
-              to='/performerDashboard/main'
+              to='/clientDashboard/main'
               className={({isActive}) =>
                 `flex ${context.isExpanded ? 'justify-start' : 'justify-center'} items-center space-x-2 -mx-4 pl-4 py-2 text-text_primary text-xs hover:text-primary ${
                   isActive ? 'bg-[#feefe5]' : 'bg-white'
@@ -108,7 +108,7 @@ const ClientSidebar = () => {
 
             {/* Messages */}
             <NavLink
-              to='/messages'
+              to='/clientDashboard/messages'
               className={({isActive}) =>
                 `${navStyle} ${context.isExpanded ? 'justify-between pr-2' : clientNotifications.messageNotifications ? 'justify-end pr-2' : 'justify-center'} ${
                   isActive ? 'bg-[#feefe5]' : 'bg-white'
@@ -126,7 +126,7 @@ const ClientSidebar = () => {
 
             {/* Calendar */}
             <NavLink
-              to='/calendar'
+              to='/clientDashboard/calendar'
               className={({isActive}) =>
                 `${navStyle} ${context.isExpanded ? 'justify-between pr-2' : clientNotifications.calendarNotifications ? 'justify-end pr-2' : 'justify-center'} ${
                   isActive ? 'bg-[#feefe5]' : 'bg-white'
@@ -144,7 +144,7 @@ const ClientSidebar = () => {
 
             {/* Payments */}
             <NavLink
-              to='/performerDashboard/payments'
+              to='/clientDashboard/payment'
               className={({isActive}) =>
                 `${navStyle} ${context.isExpanded ? 'justify-between pr-2' : clientNotifications.paymentNotifications ? 'justify-end space-x-2 pr-2' : 'justify-center'} ${
                   isActive ? 'bg-[#feefe5]' : 'bg-white'

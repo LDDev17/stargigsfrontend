@@ -2,10 +2,10 @@
 
 export function ImageSection() {
   return (
-    <section className="relative h-full left-[section] w-[720px] max-md:w-6/12 max-sm:hidden">
+    <section className="relative h-full left-[section] w-[720px]">
       <img
         src="Login3.png"
-        className="object-cover size-full"
+        className="object-cover h-full"
         alt="Concert stage with dramatic lighting"
       />
       <img

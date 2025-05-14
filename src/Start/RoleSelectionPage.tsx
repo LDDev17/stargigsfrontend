@@ -1,18 +1,24 @@
 "use client";
 
+import { useState } from "react";
+
 import { LeftSection } from "./LeftSection";
 import RoleSelectionForm from "./RoleSelectionForm"; // Corrected import
 
 export default function RoleSelectionPage() {
+  const [selectedRole, setSelectedRole] = useState<string>('');
+
+  // handler for role changes from child component
+  const handleRoleChange = (role: string) => {
+    setSelectedRole(role);
+  };
+
   return (
     <>
-      <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap"
-        rel="stylesheet"
-      />
-      <main className="flex flex-row mx-auto w-full max-w-none h-screen bg-white max-md:flex-col max-md:max-w-[991px] max-sm:flex-col max-sm:max-w-screen-sm">
-        <LeftSection />
-        <RoleSelectionForm />
+      
+      <main className="flex w-full h-screen">
+        <LeftSection selectedRole={selectedRole} />
+        <RoleSelectionForm onRoleChange={handleRoleChange} />
       </main>
     </>
   );

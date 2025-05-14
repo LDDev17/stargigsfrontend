@@ -124,7 +124,7 @@ const PerformerSidebar = ({viewClient, handleViewClient}: viewClientProps) => {
 
             {/* Gigs */}
             <NavLink
-              to='/performerDashboard/gigs' //gigs-page1
+              to='/performerDashboard/gigs' 
               className={({isActive}) =>
                 `${navStyle} ${context.isExpanded ? 'justify-between pr-2' : performerNotifications.gigNotifications ? 'justify-end pr-2' : 'justify-center'} ${
                   isActive ? 'bg-[#feefe5]' : 'bg-white'
@@ -176,11 +176,12 @@ const PerformerSidebar = ({viewClient, handleViewClient}: viewClientProps) => {
               />
             </NavLink>
 
-            {/* Payments */}
+            {/* Payouts */}
             <NavLink
-              to='/performerDashboard/payments'
+              to='/performerDashboard/payouts'
               className={({isActive}) =>
-                `${navStyle} ${context.isExpanded ? 'justify-between pr-2' : performerNotifications.paymentNotifications ? 'justify-end space-x-2 pr-2' : 'justify-center'} ${
+                `${navStyle} ${context.isExpanded ? 'justify-between pr-2' : 
+                  performerNotifications.paymentNotifications ? 'justify-end space-x-2 pr-2' : 'justify-center'} ${
                   isActive ? 'bg-[#feefe5]' : 'bg-white'
                 }`
               }

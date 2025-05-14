@@ -23,15 +23,19 @@ const HistoryTableRow = ({ props }: HistoryRowProps) => {
           {props.Status}
         </div>
       </td>
-      <td className="text-[#007aff] border-r-1 border-[#d8dadc]">
-        <button className="bg-white p-4 -mr-3 cursor-pointer">
-          <Message />
-        </button>
+      <td className="text-[#007aff] w-8 border-r-1 border-[#d8dadc] text-center">
+        <div className="px-2">
+          <button className="bg-white p-4 cursor-pointer">
+            <Message />
+          </button>
+        </div>
       </td>
-      <td className="border-l-1 border-[#d8dadc]">
-        <button className="bg-white p-4 ml-2 cursor-pointer text-center -mr-4">
-          <XMark />
-        </button>
+      <td className="text-center w-8">
+        <div className="px-2">
+          <button className="bg-white p-4 cursor-pointer text-center">
+            <XMark />
+          </button>
+        </div>
       </td>
     </tr>
   )

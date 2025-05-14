@@ -52,47 +52,34 @@ const CustomCalendarHeader = (props: PickersCalendarHeaderProps) => {
         <ArrowBackIosNewIcon fontSize="small" />
       </IconButton>
 
-      {/* <Select
-        value={currentMonth.month}
-        onChange={handleMonthChange}
-        size="small"
-        variant="standard"
-        disableUnderline
-      >
+      <Select  
+        value={currentMonth.month}  
+        onChange={handleMonthChange}  
+        // size="small"  
+        variant="standard"  
+        disableUnderline  
+        
+        MenuProps={{  
+          // High z-index to ensure it's above other elements  
+          sx: { zIndex: 9999 },  
+          // These handlers prevent the calendar from closing  
+          onMouseDown: stopPropagation,  
+          onClick: stopPropagation,  
+          // Prevent any automatic focusing that might interfere  
+          disableAutoFocusItem: true,  
+          // Keep it within the DatePicker modal  
+          container: document.getElementById('calendar-header-container'),  
+          // Ensure the menu is positioned correctly  
+          anchorOrigin: {  
+            vertical: 'bottom',  
+            horizontal: 'left',  
+          }  
+        }}  
+        // Make sure all events are contained within the Select  
+        onMouseDown={stopPropagation}  
+        onClick={stopPropagation}  
+      >  
         {months.map((monthName, index) => (
-          <MenuItem key={monthName} value={index + 1}>
-            {monthName}
-          </MenuItem>
-        ))}
-      </Select> */}
-
-<Select  
-      value={currentMonth.month}  
-      onChange={handleMonthChange}  
-      size="small"  
-      variant="standard"  
-      disableUnderline  
-      MenuProps={{  
-        // High z-index to ensure it's above other elements  
-        sx: { zIndex: 9999 },  
-        // These handlers prevent the calendar from closing  
-        onMouseDown: stopPropagation,  
-        onClick: stopPropagation,  
-        // Prevent any automatic focusing that might interfere  
-        disableAutoFocusItem: true,  
-        // Keep it within the DatePicker modal  
-        container: document.getElementById('calendar-header-container'),  
-        // Ensure the menu is positioned correctly  
-        anchorOrigin: {  
-          vertical: 'bottom',  
-          horizontal: 'left',  
-        }  
-      }}  
-      // Make sure all events are contained within the Select  
-      onMouseDown={stopPropagation}  
-      onClick={stopPropagation}  
-    >  
-      {months.map((monthName, index) => (
           <MenuItem key={monthName} value={index + 1}
             onClick={(e) => {
               stopPropagation(e);
@@ -103,7 +90,7 @@ const CustomCalendarHeader = (props: PickersCalendarHeaderProps) => {
             
           </MenuItem>
         ))}
-    </Select>
+      </Select>
 
       <IconButton onClick={handleNextMonth}>
         <ArrowForwardIosIcon fontSize="small" />

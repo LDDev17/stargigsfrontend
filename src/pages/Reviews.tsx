@@ -3,6 +3,7 @@ import ReviewsBanner from "../layout components/ReviewsBanner";
 import AverageRating from "../layout components/AverageRating";
 import Squiggle from '../assets/icons/Squiggle.png';
 import ReviewsTile from "../design components/ReviewsTile";
+import Footer2 from "../layout components/Footer2";
 
 const Reviews = () => {
   return (
@@ -15,6 +16,7 @@ const Reviews = () => {
       </div>
       <AverageRating />
       <ReviewsTile />
+      <Footer2 />
     </div>
   )
 }

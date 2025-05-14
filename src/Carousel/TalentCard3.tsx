@@ -50,9 +50,9 @@ export const TalentCard: React.FC<TalentCardProps> = ({
         <div className="actions">
           <button className="hire-button">
             Hire Now
-            <button className="favorite-button">
-              <img src="/buttonheart.png" alt="Heart Icon" />
-            </button>
+          </button>
+          <button className="favorite-button">
+            <img src="/buttonheart.png" alt="Heart Icon" />
           </button>
         </div>
       </div>

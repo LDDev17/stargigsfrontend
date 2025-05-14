@@ -7,15 +7,9 @@ import TableFooter from "./TableFooter";
 import sampleTableData from "../SampleData/TableData";
 import GigsTableType from "../types/GigsTableType";
 import sampleGigHistoryData from "../SampleData/GigHistoryData";
+import TimePeriodButton from "../design components/buttons/TimePeriodButton";
 
 import Sort from '../assets/svgs/sort.svg?react';
-import Caret from '../assets/svgs/caret.svg?react';
-
-const timePeriodOptions = [
-  'This Month',
-  'Next Month', 
-  'Next 3 Months'
-];
 
 interface PerformerGigsTableProps {
   activeTab: string;
@@ -26,19 +20,11 @@ const PerformerGigsTable = ({ activeTab }: PerformerGigsTableProps) => {
   const [displayData, setDisplayData] = useState<GigsTableType[]>([]);
   const [currentPage, setCurrentPage] = useState<number>(1);
   const [timePeriod, setTimePeriod] = useState<string>('This Month');
-  const [buttonIsActive, setButtonIsActive] = useState<boolean>(false);
   const [tableCaption, setTableCaption] = useState<string>('Gigs Booking Requests');
 
   const items_per_page: number = 7;
 
-  const handleTimeSelection = (value: string) => (e: React.MouseEvent<HTMLLIElement>) => {
-    setTimePeriod(value)
-    setButtonIsActive(false)
-  }
-
-  const handleTimeButton = () => {
-    setButtonIsActive(!buttonIsActive)
-  }
+ 
 
   useEffect(() => {
     const start = (currentPage - 1) * items_per_page;
@@ -63,27 +49,10 @@ const PerformerGigsTable = ({ activeTab }: PerformerGigsTableProps) => {
     <div className="flex flex-col justify-around bg-[#fbfbfb] p-2">
       <header className="flex justify-between py-4">
         <p className="text-sm font-semibold">{tableCaption}</p>
-        <div className="relative">
-          <button
-            className="flex items-center whitespace-pre font-semibold text-xs cursor-pointer"
-            onClick={handleTimeButton}
-          >
-            {timePeriod} <Caret />
-          </button>
-          {buttonIsActive &&
-            <ul className="absolute w-24">
-              {timePeriodOptions.map((value, index) => (
-                <li
-                  key={index}
-                  value={value}
-                  onClick={handleTimeSelection(value)}
-                  className="cursor-pointer text-sm hover:text-primary"
-                >
-                    {value}
-                </li>
-              ))}
-            </ul>}
-        </div>
+        <TimePeriodButton 
+          timePeriod={timePeriod}
+          setTimePeriod={setTimePeriod}
+        />
       </header>
       <table className="text-sm text-left border-separate border-spacing-y-4 bg-[#fbfbfb] text-text_secondary">
       {activeTab === 'booking' ? 

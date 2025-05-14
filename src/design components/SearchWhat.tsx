@@ -56,7 +56,7 @@ const SearchWhat = () => {
             <input
               value={field.value}
               type="text"
-              className='text-sm h-6 max-w-28 -mt-2'
+              className='text-sm h-6 max-w-30 -mt-2'
               autoFocus
               onChange={(e) => handleInputChange(e.target.value)}
             />
@@ -79,14 +79,14 @@ const SearchWhat = () => {
             </div>
           </div>
       ) : field.value ? (
-          // what the button looks like after a choice has been selected
+          // what the button looks like after a choice has been made
             <button
               className='flex justify-start items-center my-2 mx-0 space-x-2 rounded-3xl bg-white
                 pl-2 cursor-pointer'
               onClick={() => setIsWhatOpen(true)}
             >
               <img src={music_note} alt="music note icon" />
-              <div className='flex flex-col'>
+              <div className='flex flex-col max-w-36'>
                 <p>{field.value}</p>
               </div>
             </button>

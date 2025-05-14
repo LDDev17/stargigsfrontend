@@ -7,7 +7,7 @@ import type {} from '@mui/x-date-pickers/themeAugmentation';
 function DashCalendar() {
   return (
     <LocalizationProvider dateAdapter={AdapterLuxon}>
-      <div>
+      <div className="bg-[#fbfbfb]">
         <DateCalendar readOnly defaultValue={DateTime.now()} />
       </div>
     </LocalizationProvider>

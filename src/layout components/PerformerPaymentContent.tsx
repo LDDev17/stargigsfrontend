@@ -4,11 +4,11 @@ import PaymentProps from "../types/PaymentsType";
 import samplePaymentData from "../SampleData/PaymentData";
 import TableFooter from "./TableFooter";
 import PaymentTableRow from "../design components/PaymentTableRow";
-import EarningReportTile from "../design components/EarningReportTile";
 import EarningTileProps from "../types/EarningsTileProps";
 import SampleEarningsData from "../SampleData/EarningsData";
 import PerformerPayouts from "./PerformerPayouts";
 import PerformerTaxes from "./PerformerTaxes";
+import TimePeriodButton from "../design components/buttons/TimePeriodButton";
 
 import Caret from '../assets/svgs/caret.svg?react';
 import Sort from '../assets/svgs/sort.svg?react';
@@ -16,12 +16,6 @@ import Sort from '../assets/svgs/sort.svg?react';
 interface PerformerPaymentContentProps {
   activeTab: string;
 };
-
-const timePeriodOptions = [
-  'This Month',
-  'Next Month', 
-  'Next 3 Months'
-];
 
 const PerformerPaymentContent = ({ activeTab }: PerformerPaymentContentProps) => {
   const [tableData, setTableData] = useState<PaymentProps[]>(samplePaymentData);
@@ -33,11 +27,6 @@ const PerformerPaymentContent = ({ activeTab }: PerformerPaymentContentProps) =>
   const [earningsData, setEarningsData] = useState<EarningTileProps[]>(SampleEarningsData);
 
   const items_per_page: number = 7;
-  
-  const handleTimeSelection = (value: string) => (e: React.MouseEvent<HTMLLIElement>) => {
-    setTimePeriod(value)
-    setButtonIsActive(false)
-  }
 
   const handleTimeButton = () => {
     setButtonIsActive(!buttonIsActive)
@@ -52,8 +41,6 @@ const PerformerPaymentContent = ({ activeTab }: PerformerPaymentContentProps) =>
   useEffect(() => {
     if (activeTab === 'history') {
       setTableCaption('Payment History')
-    } else if (activeTab === 'reports') {
-      setTableCaption('Earning Reports')
     } else if (activeTab === 'payouts') {
       setTableCaption('Payouts')
     } else setTableCaption('Taxes')
@@ -81,27 +68,10 @@ const PerformerPaymentContent = ({ activeTab }: PerformerPaymentContentProps) =>
     <div className="flex flex-col justify-around bg-[#fbfbfb] p-2">
       <header className="flex justify-between py-4">
         <p className="text-sm font-semibold">{tableCaption}</p>
-        <div className="relative">
-          <button
-            className="flex items-center whitespace-pre font-semibold text-xs cursor-pointer"
-            onClick={handleTimeButton}
-          >
-            {timePeriod} <Caret />
-          </button>
-          {buttonIsActive &&
-            <ul className="absolute w-24">
-              {timePeriodOptions.map((value, index) => (
-                <li
-                  key={index}
-                  value={value}
-                  onClick={handleTimeSelection(value)}
-                  className="cursor-pointer text-sm hover:text-primary"
-                >
-                    {value}
-                </li>
-              ))}
-            </ul>}
-        </div>
+        <TimePeriodButton 
+          timePeriod={timePeriod}
+          setTimePeriod={setTimePeriod}
+        />
       </header>
       {activeTab === 'history' ? 
         (
@@ -140,16 +110,6 @@ const PerformerPaymentContent = ({ activeTab }: PerformerPaymentContentProps) =>
               />
             </footer>
           </>
-        ) : activeTab === 'reports' ? (
-          <div className="flex justify-start space-x-4">
-            {earningsData.map((tile, index) => (
-              <EarningReportTile 
-                key={index}
-                props={tile}
-              />
-            ))}
-            
-          </div>
         ) : activeTab === 'payouts' ? (
           <PerformerPayouts />
         ) : (
