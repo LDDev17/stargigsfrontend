@@ -18,7 +18,7 @@ const UpcomingTableRow = ({ props }: UpcomingTableRowProps) => {
       <td 
       >
         <div className={`${props.Status.toLowerCase() === 'confirmed' ? 
-        'text-[#519c66] bg-[#d2ffc2] opacity-57' : 'text-primary bg-[#ffeedf]'} 
+        'text-[#519c66] bg-[#d2ffc2]/57' : 'text-primary bg-[#ffeedf]'} 
          p-2 rounded-lg mr-2 max-w-24 text-center`}>{props.Status}</div>
       </td>
       <td className="text-[#007aff] border-r-1 border-[#d8dadc] text-center w-8">

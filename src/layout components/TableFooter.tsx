@@ -3,11 +3,12 @@ import GigsTableType from "../types/GigsTableType";
 import PaymentProps from "../types/PaymentsType";
 
 import Caret from '../assets/svgs/caret.svg?react';
+import { table } from "console";
 
 interface FooterProps {
   items_per_page: number;
-  tableData: GigsTableType[] | PaymentProps[];
-  displayData: GigsTableType[] | PaymentProps[];
+  tableData: GigsTableType[] | PaymentProps[] | undefined;
+  displayData: GigsTableType[] | PaymentProps[] | undefined;
   currentPage: number;
   setCurrentPage: React.Dispatch<React.SetStateAction<number>>;
 }
@@ -21,7 +22,7 @@ const TableFooter = ({ items_per_page, tableData, displayData, currentPage, setC
   }
 
   const goNextPage = () => {
-    if (currentPage >= Math.ceil(tableData.length / items_per_page)) return;
+    if (tableData && currentPage >= Math.ceil(tableData.length / items_per_page)) return;
     setCurrentPage((prev) => prev + 1)
   }
 
@@ -36,19 +37,21 @@ const TableFooter = ({ items_per_page, tableData, displayData, currentPage, setC
           <Caret className="rotate-90"/>  Previous
         </button>
         
-        {Array.from({ length: Math.ceil(tableData.length / items_per_page) })
-        .map((e, i) => i + 1)
-        .map((val) => {
-          return (
-            <button 
-              key={val} 
-              onClick={() => setCurrentPage(val)}
-              className={`${val === currentPage && 'bg-[#ffece0] text-primary rounded-full disabled'} px-2 cursor-pointer`}
-            >
-              {val}
-            </button>
-          )
-        })}
+        {tableData &&
+          Array.from({ length: Math.ceil(tableData.length / items_per_page) })
+            .map((e, i) => i + 1)
+            .map((val) => {
+              return (
+                <button 
+                  key={val} 
+                  onClick={() => setCurrentPage(val)}
+                  className={`${val === currentPage ? 'bg-[#ffece0] text-primary rounded-full disabled' : ''} px-2 cursor-pointer`}
+                >
+                  {val}
+                </button>
+              )
+          })
+        }
         <button
           className="whitespace-pre text-gray-600 flex justify-start items-center text-md cursor-pointer"
           onClick={goNextPage}
@@ -59,9 +62,11 @@ const TableFooter = ({ items_per_page, tableData, displayData, currentPage, setC
       </div>
 
       {/* Right Side */}
-      <div>
-        <p>Showing {displayData.length} of {tableData.length} results</p>
-      </div>
+      {displayData && tableData && 
+        <div>
+          <p>Showing {displayData.length} of {tableData.length} results</p>
+        </div>
+      }
     </div>
   )
 }

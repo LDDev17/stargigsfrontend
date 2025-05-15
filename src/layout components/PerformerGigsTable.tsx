@@ -4,19 +4,17 @@ import BookingTableRow from "../design components/BookingTableRow";
 import UpcomingTableRow from "../design components/UpcomingTableRow";
 import HistoryTableRow from "../design components/HistoryTableRow";
 import TableFooter from "./TableFooter";
-import sampleTableData from "../SampleData/TableData";
 import GigsTableType from "../types/GigsTableType";
-import sampleGigHistoryData from "../SampleData/GigHistoryData";
 import TimePeriodButton from "../design components/buttons/TimePeriodButton";
 
 import Sort from '../assets/svgs/sort.svg?react';
 
 interface PerformerGigsTableProps {
   activeTab: string;
+  filteredData?: GigsTableType[];
 }
 
-const PerformerGigsTable = ({ activeTab }: PerformerGigsTableProps) => {
-  const [tableData, setTableData] = useState<GigsTableType[]>(sampleTableData);
+const PerformerGigsTable = ({ activeTab, filteredData }: PerformerGigsTableProps) => {
   const [displayData, setDisplayData] = useState<GigsTableType[]>([]);
   const [currentPage, setCurrentPage] = useState<number>(1);
   const [timePeriod, setTimePeriod] = useState<string>('This Month');
@@ -27,23 +25,22 @@ const PerformerGigsTable = ({ activeTab }: PerformerGigsTableProps) => {
  
 
   useEffect(() => {
-    const start = (currentPage - 1) * items_per_page;
-    const end = currentPage * items_per_page;
-    setDisplayData(tableData.slice(start, end));
-  }, [currentPage, tableData]);
+    if (filteredData) {
+      const start = (currentPage - 1) * items_per_page;
+      const end = currentPage * items_per_page;
+      setDisplayData(filteredData.slice(start, end));
+    };
+  }, [currentPage, filteredData]);
 
   useEffect(() => {
     if (activeTab === 'booking') {
       setTableCaption('Gigs Booking Requests')
-      setTableData(sampleTableData)
     } else if (activeTab === 'upcoming') {
       setTableCaption('Upcoming Gigs')
-      setTableData(sampleTableData)
     } else setTableCaption('Gig History')
-      setTableData(sampleGigHistoryData)
   }, [activeTab]);
 
-  const thStyling: string = 'font-normal whitespace-pre';
+  const thStyling: string = 'font-normal whitespace-pre pb-2';
 
   return (
     <div className="flex flex-col justify-around bg-[#fbfbfb] p-2">
@@ -54,7 +51,7 @@ const PerformerGigsTable = ({ activeTab }: PerformerGigsTableProps) => {
           setTimePeriod={setTimePeriod}
         />
       </header>
-      <table className="text-sm text-left border-separate border-spacing-y-4 bg-[#fbfbfb] text-text_secondary">
+      <table className="text-sm text-left border-separate border-spacing-y-3 bg-[#fbfbfb] text-text_secondary">
       {activeTab === 'booking' ? 
         (
           <>
@@ -120,7 +117,7 @@ const PerformerGigsTable = ({ activeTab }: PerformerGigsTableProps) => {
       <footer className="py-4">
           <TableFooter 
             items_per_page={items_per_page}
-            tableData={tableData}
+            tableData={filteredData}
             displayData={displayData}
             currentPage={currentPage}
             setCurrentPage={setCurrentPage}

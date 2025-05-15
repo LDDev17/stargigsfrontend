@@ -1,49 +1,35 @@
-import { useForm } from "react-hook-form";
-import { ChangeEvent, useState, useEffect } from "react";
 import Select  from 'react-select';
+import { useForm } from 'react-hook-form';
 
-import SampleGigTypeData from "../SampleData/GigTypedata";
-import GigSelectType from "../types/GigSelectType";
-import SampleManagerData from "../SampleData/EventManagerData";
+import FilterFormProps from "../types/FilterFormType";
+import FilterDataType from '../types/FilterDataType';
 
-const FilterForm = () => {
-  const [selectedGigType, setSelectedGigType] = useState<GigSelectType[]>([]);
-  const [gigTypeData, setGigTypeData] = useState<GigSelectType[]>(SampleGigTypeData);
-  const [managerData, setManagerData] = useState<string[]>(['All']);
-
-  const [managerArray, setManagerArray] = useState<string[]>([]);
-  const [locationArray, setLocationArray] = useState<string[]>([]);
-
-  const filteredGigType = () => {
-    let results: string = gigTypeData.filter(
-      (option: string) => option.includes(selectedGigType[0])
-    )
-    setGigTypeData(results)
+const FilterForm = (
+  {
+    activeGigTab,
+    gigTypeData,
+    selectedGigType,
+    setSelectedGigType,
+    managerData,
+    selectedManager,
+    setSelectedManager,
+    locationData,
+    selectedLocation,
+    setSelectedLocation,
+    statusData,
+    selectedStatus,
+    setSelectedStatus,
+    amountFrom,
+    setAmountFrom,
+    amountTo,
+    setAmountTo,
+  }: FilterFormProps) => {
+  const { register, handleSubmit } = useForm<FilterDataType>({});
+  const onFilterSubmit = (data: FilterDataType) => {
+    console.log(`Submitted Filter Form:`, data)
   };
 
-  const handleOptionChange = (event: ChangeEvent<HTMLSelectElement>) => {
-    setSelectedGigType(prevState => prevState.concat(event.target.value))
-  }
-
-  useEffect(() => {
-    async function fetchManagers() {
-      try {
-        // const response = await fetch('');
-        // const data: string[] = await response.json();
-
-        // Prepend the new value to the fetching array
-        const updatedManagers = ['All', ...SampleManagerData];
-
-        // Update the state with the new array
-        setManagerData(updatedManagers);
-      } catch (error) {
-        console.error('Error fetching items:', error);
-      }
-    }
-
-    fetchManagers();
-  }, []);
-
+  // Custom styles for react-select
   const customStyles = {
     control: (provided: any) => ({
       ...provided,
@@ -53,7 +39,7 @@ const FilterForm = () => {
       boxShadow: 'none',
       minHeight: '48px',
       height: '48px',
-      width: '240px',
+      width: '100%',
       fontSize: '16px',
     }),
     option: (provided: any, state: any) => ({
@@ -71,45 +57,168 @@ const FilterForm = () => {
     valueContainer: (provided: any) => ({
       ...provided,
       padding: '0 4px',
+      textAlign: 'left',
     })
   }
 
   return (
     <div className="rounded-xl">
-      <form action="" className="flex flex-col justify-between items-start p-4">
+      <form onSubmit={handleSubmit(onFilterSubmit)} className="flex flex-col justify-between items-start p-4 space-y-2">
         <p className="font-medium text-xl font-inter">Filter</p>
-        <div className="font-lato">
-          <label 
-            htmlFor="gigType"
-          >
-            Gig Type
-          </label>
+        
+        {/* Gig Type Select */}
+        <div className="font-lato w-full flex flex-col space-y-2">
+          <p className='text-left'>Gig Type</p>
           <Select 
             isMulti
+            id="gigType"
+            {...register('gigType')}
             options={gigTypeData}
             styles={customStyles}
             components={{ IndicatorSeparator: () => null }}
-            onChange={(selected) => {
-              const selectedValues = selected.map((opt) => opt.value);
-              setSelectedGigType(selectedValues)
-
-              // Filter out selected options
-              const updatedOptions = SampleGigTypeData.filter(
-                (opt) => !selectedValues.includes(opt.value)
-              );
-              setGigTypeData(updatedOptions);
+            value={selectedGigType}
+            onChange={(selectedOptions) => {
+              if (Array.isArray(selectedOptions)) {
+                const isAllSelected = selectedOptions.some(option => option.value === 'All');
+                if (isAllSelected && selectedOptions.length > 1 && selectedOptions[0].value === 'All') {
+                  // If 'All' was chosen first, remove 'All' from the selection
+                  setSelectedGigType(selectedOptions.filter(option => option.value !== 'All'));
+                } else if (isAllSelected && selectedOptions.length > 1 && selectedOptions[0].value !== 'All') {
+                  // If 'All' was chosen second, remove other options from the selection
+                  setSelectedGigType(selectedOptions.filter(option => option.value === 'All'));
+                } else if (selectedOptions.length > 2) {
+                  // If more than 2 options are selected, remove the first one
+                  setSelectedGigType(selectedOptions.slice(1));
+                } else {
+                  // Otherwise, set the selected options
+                  setSelectedGigType(selectedOptions);
+                }
+              }
             }}
           />
         </div>
-        <div>
-          <label htmlFor="manager">
+
+        {/* Event Manager Select */}
+        <div className='w-full flex flex-col space-y-2'>
+          <p className='text-left'>
             Event Manager
-          </label>
+          </p>
           <Select 
+            id="manager"
+            {...register('manager')}
             options={managerData}
             styles={customStyles}
             components={{ IndicatorSeparator: () => null }}
+            value={selectedManager}
+            onChange={(selectedOption) => {
+              if (selectedOption) {
+                const isAllSelected = selectedOption.value === 'All';
+                if (isAllSelected) {
+                  // If 'All' is selected, clear all other selections
+                  setSelectedManager({ value: 'All', label: 'All' });
+                } else {
+                  // Otherwise, set the selected options
+                  setSelectedManager(selectedOption);
+                }
+              }
+            }}
           />
+        </div>
+
+        {/* Location Select */}
+        <div className='w-full flex flex-col space-y-2'>
+          <p className='text-left'>
+            Location
+          </p>
+          <Select
+            id="location"
+            {...register('location')}
+            options={locationData}
+            styles={customStyles}
+            components={{ IndicatorSeparator: () => null }}
+            value={selectedLocation}
+            onChange={(selectedOption) => {
+              if (selectedOption) {
+                const isAllSelected = selectedOption.value === 'All';
+                if (isAllSelected) {
+                  // If 'All' is selected, clear all other selections
+                  setSelectedLocation({ value: 'All', label: 'All' });
+                } else {
+                  // Otherwise, set the selected options
+                  setSelectedLocation(selectedOption);
+                }
+              }
+            }}
+          />
+        </div>
+
+        {/* Status Select */}
+        {/* If activeGigTab = 'booking' there is no data, otherwise there is */}
+        {activeGigTab !== 'booking' &&
+          <div className='w-full flex flex-col space-y-2'>
+            <p className='text-left'>Status</p>
+            <Select
+              id="status"
+              {...register('status')}
+              options={statusData}
+              styles={customStyles}
+              components={{ IndicatorSeparator: () => null }}
+              value={selectedStatus}
+              onChange={(selectedOption) => {
+                if (selectedOption) {
+                  const isAllSelected = selectedOption.value === 'All';
+                  if (isAllSelected) {
+                    // If 'All' is selected, clear all other selections
+                    setSelectedStatus({ value: 'All', label: 'All' });
+                  } else {
+                    // Otherwise, set the selected options
+                    setSelectedStatus(selectedOption);
+                  }
+                }
+              }}
+            />
+          </div>
+        }
+
+        {/* Amount Inputs */}
+        <div className='flex flex-col space-y-2'>
+          <p className='text-left'>Amount</p>
+          <div className="flex space-x-2">
+            <label className='text-[10px] text-black-100 flex flex-col text-left'>
+              From
+              <input
+                id="amountFrom"
+                {...register('amountFrom')}
+                type="number"
+                className="text-text_primary text-md bg-white border border-[#e1e2e9] 
+                  rounded-xl p-2 grow gap-4"
+                value={amountFrom}
+                onChange={(e) => {
+                  const value = parseFloat(e.target.value);
+                  if (!isNaN(value)) {
+                    setAmountFrom(value);
+                  }
+                }}
+              />
+            </label>
+            <label className='text-[10px] text-[#1c1d22] flex flex-col text-left'>
+              To
+              <input
+                id="amountTo"
+                {...register('amountTo')}
+                type="number"
+                className="text-text_primary text-md bg-white border border-[#e1e2e9] 
+                  rounded-xl p-2 grow"
+                value={amountTo}
+                onChange={(e) => {
+                  const value = parseFloat(e.target.value);
+                  if (!isNaN(value)) {
+                    setAmountTo(value);
+                  }
+                }}
+              />
+            </label>
+          </div>
         </div>
       </form>
     </div>

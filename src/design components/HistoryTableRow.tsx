@@ -7,6 +7,8 @@ interface HistoryRowProps {
   props: GigsTableType;
 };
 
+const colWidths = ['20%', '15%', '15%', '15%', '15%', '10%', '5%', '5%'];
+
 const HistoryTableRow = ({ props }: HistoryRowProps) => {
   return (
     <tr className="text-text_secondary font-normal">
@@ -17,13 +19,15 @@ const HistoryTableRow = ({ props }: HistoryRowProps) => {
       <td>{props.GigType}</td>
       <td>
         <div className={`${props.Status.toLowerCase() === 'confirmed' ? 
-          'text-[#519c66] bg-[#d2ffc2] opacity-57' : 'text-primary bg-[#ffeedf]'} 
+          'text-[#519c66] bg-[#d2ffc2]/57' : 'text-primary bg-[#ffeedf]'} 
           p-2 rounded-lg mr-2 max-w-24 text-center`}
         >
           {props.Status}
         </div>
       </td>
-      <td className="text-[#007aff] w-8 border-r-1 border-[#d8dadc] text-center">
+      <td 
+        className="text-[#007aff] w-8 border-r border-[#d8dadc] text-center"
+      >
         <div className="px-2">
           <button className="bg-white p-4 cursor-pointer">
             <Message />
