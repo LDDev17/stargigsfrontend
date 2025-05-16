@@ -16,7 +16,7 @@ const DashBookingTable = () => {
   }, [bookingData])
 
   return (
-    <div className='bg-[#fbfbfb] p-4 grow'>
+    <div className='bg-[#fbfbfb] p-4'>
       <h5 className='font-medium text-sm pl-8 pb-2'>Gig Booking Requests</h5>
       <table className='border-separate border-spacing-y-2 border-spacing-x-8'>
         <tbody>

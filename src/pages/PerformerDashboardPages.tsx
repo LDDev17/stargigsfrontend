@@ -21,7 +21,10 @@ const PerformerDashboardPages = () => {
         style={{ backgroundImage: `url(${DashboardBg})` }}
       />
       <div className="relative z-10 overflow-auto">
-        <PerformerNavbar viewClient={clientView} />
+        <PerformerNavbar 
+          viewClient={clientView} 
+          handleViewClient={handleClientView}
+        />
         {/* <div className="flex"> */}
         <ExpandedProvider>
           <div className="flex  space-x-2 w-full">

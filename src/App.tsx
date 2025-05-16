@@ -14,7 +14,6 @@ import ContactPage from './Contact/ContactPage'; // Corrected import path for Co
 import GigsPage1 from './layout components/GigsPage1'; // Updated import for GigsPage1
 import Layout from './dashboardheader/Layout'; // Import Layout
 import { PerformanceSection } from './PerformersView/PerformanceSection'; // Corrected import path
-import DashboardPerformersPage from './pages/DashboardPerformersPage'; // Import DashboardPerformersPage
 import AddPerformer from './PerformersView/AddPerformer'; // Import AddPerformer
 import PerformerDashboardPages from './pages/PerformerDashboardPages';
 import PerformerMainDashboard from './layout components/PerformerMainDashboard';
@@ -47,7 +46,6 @@ const App: React.FC = () => {
         {ClientRoutes() }
         <Route path="/layout" element={<Layout />} /> {/* Add Layout route */}
         <Route path="/performances" element={<PerformanceSection />} /> {/* Add PerformanceSection route */}
-        <Route path="/dashboard-performers" element={<DashboardPerformersPage />} /> {/* Add DashboardPerformersPage route */}
         <Route path="/add-performer" element={<AddPerformer />} /> {/* Add AddPerformer route */}
       </Routes>
     </Router>

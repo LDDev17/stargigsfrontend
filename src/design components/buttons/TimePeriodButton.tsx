@@ -45,7 +45,10 @@ const TimePeriodButton = ({ timePeriod, setTimePeriod }: TimeSelectionProps) => 
             />
           </button>
           {buttonIsActive &&
-            <div className='absolute w-24 bg-white border-b border-x rounded-b-lg border-[#969696]/75'>
+            <div 
+              className='absolute w-24 bg-white border-b border-x rounded-b-lg 
+                border-[#969696]/75 z-20'
+            >
               <ul className=" mx-2 py-2 border-t-1 flex flex-col justify-evenly h-30">
                 {timeOptions.map((value, index) => (
                   <li

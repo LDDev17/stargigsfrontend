@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useContext } from "react";
 import { ExpandedContext } from "../Context/ExpandedContext";
+import { DateTime } from "luxon";
 
 import DashboardTile from "../design components/DashboardTile";
 import DashTileType from "../types/TileType";
@@ -32,6 +33,7 @@ const tileSampleData: DashTileType[] = [
 ]
 
 const PerformerMainDashboard = () => {
+  const today = DateTime.now();
   const context = useContext(ExpandedContext);
   const [tileData, setTileData] = useState<DashTileType[]>(tileSampleData);
 
@@ -48,7 +50,7 @@ const PerformerMainDashboard = () => {
       >
 
         {/* Left Side */}
-        <section className="border-r-1 border-gray-200 flex flex-col space-y-4 grow pr-4">
+        <section className="flex flex-col space-y-4 grow pr-4">
           <header>
             {/* row 1 */}
             <div className="flex justify-start items-center space-x-2 pb-4">
@@ -96,8 +98,12 @@ const PerformerMainDashboard = () => {
 
           {/* Booking Table */}
           <footer className="flex justify-between gap-8">
-            <DashBookingTable />
-            <DashCalendar />
+            <div>
+              <DashBookingTable />
+            </div>
+            <div>
+              <DashCalendar calendarDate={today} />
+            </div>
           </footer>
         </section>
 

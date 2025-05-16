@@ -4,11 +4,21 @@ import { AdapterLuxon } from "@mui/x-date-pickers/AdapterLuxon"
 import { DateTime } from "luxon";
 import type {} from '@mui/x-date-pickers/themeAugmentation';
 
-function DashCalendar() {
+// TODO: change colors
+// TODO: change header layout
+
+interface DashCalendarProps {
+  calendarDate: DateTime<boolean> | null | undefined;
+};
+
+function DashCalendar({ calendarDate }: DashCalendarProps) {
   return (
     <LocalizationProvider dateAdapter={AdapterLuxon}>
       <div className="bg-[#fbfbfb]">
-        <DateCalendar readOnly defaultValue={DateTime.now()} />
+        <DateCalendar 
+          readOnly 
+          value={calendarDate}
+        />
       </div>
     </LocalizationProvider>
   )
