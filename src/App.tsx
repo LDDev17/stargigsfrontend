@@ -5,9 +5,7 @@ import RoleSelectionPage from './Start/RoleSelectionPage'; // Updated import
 import { SignUpPage as PerformerSignUpPage } from './Performers/SignUpPage';
 import { SignupPage as PlannerSignUpPage } from './Customers/SignUpPage';
 import VerificationPageClient from './Customers/VerificationPageClient';
-import VerificationPage2 from './Customers/VerificationPagePerformer';
 import { SuccessMessage } from './pages/SuccessMessage';
-import { SuccessMessage1 } from './pages/SuccessMessage1'; // Import SuccessMessage1
 import { AboutPage } from './About/AboutPage'; // Import AboutPage
 import Reviews from './pages/Reviews'; // Import Reviews
 import ContactPage from './Contact/ContactPage'; // Corrected import path for ContactPage
@@ -35,9 +33,7 @@ const App: React.FC = () => {
         <Route path="/performer-signup" element={<PerformerSignUpPage />} />
         <Route path="/planner-signup" element={<PlannerSignUpPage />} />
         <Route path="/verification-client" element={<VerificationPageClient />} />
-        <Route path="/verification-performer" element={<VerificationPage2 />} />
         <Route path="/verification-success" element={<SuccessMessage />} />
-        <Route path="/successmessage1" element={<SuccessMessage1 />} /> {/* Add SuccessMessage1 route */}
         <Route path="/about" element={<AboutPage />} /> {/* Add AboutPage route */}
         <Route path="/reviews" element={<Reviews />} />
         <Route path="/contact" element={<ContactPage />} /> {/* Add ContactPage route */}

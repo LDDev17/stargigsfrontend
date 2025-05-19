@@ -1,12 +1,13 @@
 "use client";
-import React, { useRef, useState } from "react";
+import { useRef } from "react";
 
 interface CodeInputProps {
-  onComplete: (code: string) => void;
+  // onComplete: (code: string) => void;
+  code: string[];
+  setCode: React.Dispatch<React.SetStateAction<string[]>>;
 }
 
-export const CodeInput: React.FC<CodeInputProps> = ({ onComplete }) => {
-  const [code, setCode] = useState<string[]>(Array(5).fill(""));
+export const CodeInput = ({ code, setCode }: CodeInputProps) => {
   const inputRefs = useRef<(HTMLInputElement | null)[]>([]);
 
   const handleChange = (index: number, value: string) => {
@@ -21,10 +22,10 @@ export const CodeInput: React.FC<CodeInputProps> = ({ onComplete }) => {
       inputRefs.current[index + 1]?.focus();
     }
 
-    // Check if code is complete
-    if (newCode.every((digit) => digit) && newCode.join("").length === 5) {
-      onComplete(newCode.join(""));
-    }
+    // // Check if code is complete
+    // if (newCode.every((digit) => digit) && newCode.join("").length === 5) {
+    //   onComplete(newCode.join(""));
+    // }
   };
 
   const handleKeyDown = (

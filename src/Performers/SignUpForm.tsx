@@ -1,4 +1,3 @@
-import { useNavigate } from "react-router-dom";
 import type { FormEvent } from "react";
 import { signUp } from 'aws-amplify/auth';
 
@@ -7,8 +6,13 @@ import { InputField } from "./InputField";
 // import { SocialLoginButton } from "./SocialLoginButton";
 import BackButton from "../design components/buttons/BackButton";
 import TextButton from "../design components/buttons/TextButton";
+import SignUpStepType from "../types/SignUpStepType";
 
 
+interface PerformerSignUpFormProps {
+  setUserEmail: (email: string) => void;
+  setSignUpStep: (signUpStep: SignUpStepType) => void;
+};
 
 interface SignUpFormElements extends HTMLFormControlsCollection {
   email: HTMLInputElement;
@@ -20,8 +24,7 @@ interface SignUpForm extends HTMLFormElement {
   readonly elements: SignUpFormElements;
 };
 
-export function PerformerSignUpForm() {
-  const navigate = useNavigate();
+export function PerformerSignUpForm({ setUserEmail, setSignUpStep }: PerformerSignUpFormProps) {
 
   const handleSignUp = async (event: FormEvent<SignUpForm>) => {
     event.preventDefault();
@@ -30,17 +33,30 @@ export function PerformerSignUpForm() {
     if (form.password !== form.confirmPassword) {
       throw new Error("Passwords do not match");
     }
-    // ... validate inputs
-    await signUp({
-      username: form.elements.email.value,
-      password: form.elements.password.value,
-    })
-      .then(() => {
-        navigate("/verification-performer");
-      })
-      .catch((error) => {
-        console.error("Error signing up:", error);
+
+    const email: string = form.elements.email.value;
+    const password: string = form.elements.password.value;
+
+    try {
+      const { isSignUpComplete, userId, nextStep } = await signUp({
+        username: email,
+        password: password,
+        options: {
+          userAttributes: {
+            email: email,
+          },
+          autoSignIn: { enabled: true }, // Enable auto sign-in after sign-up
+        }
       });
+
+      setUserEmail(email);
+      console.log("Sign up result:", { isSignUpComplete, userId, nextStep });
+      setSignUpStep('confirmation');
+    } catch (error) {
+      console.error("Error signing up:", error);
+      setSignUpStep('error');
+      // Handle error (e.g., show a message to the user)
+    };
   };
 
   // TODO: Uncomment this function to implement social sign-ups
