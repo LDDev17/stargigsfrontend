@@ -82,7 +82,7 @@ const RoleSelectionForm = ({ onRoleChange }: RoleSelectionProps) => {
                   cursor-pointer transition-all peer-checked:border-primary peer-checked:bg-[#ffece0]
                   text-md text-secondary peer-checked:text-primary'
               >
-                Planning Events/Shopping for Performances
+                As a Client: Planning Events/Shopping for Performances
               </label>
             </div>
           </div>

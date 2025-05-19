@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import SearchBar from '../design components/SearchBar';
@@ -18,11 +18,16 @@ interface performerProps {
   email: string,
   phone: number,
   city: string,
+  state: string,
+  profile_pic?: string,
 }
 
 interface ClientViewProps {
   viewClient: boolean,
   handleViewClient: () => void,
+  textColor: string,
+  bgColor: string,
+  notificationColor: string,
 }
 
 interface MenuItemProps {
@@ -31,19 +36,20 @@ interface MenuItemProps {
   onClick: () => void,
 }
 
-const PerformerNavbar = ({viewClient, handleViewClient}: ClientViewProps) => {
+const PerformerNavbar = (
+  {
+    viewClient, 
+    handleViewClient,
+    textColor,
+    bgColor,
+    notificationColor,
+  }: ClientViewProps) => {
   const [performerNotifications, setPerformerNotifications] = useState<NotificationProps[]>(SampleNotificationData);
   const [totalNotifications, setTotalNotifications] = useState<number>(0);
-  const [performer, setPerformer] = useState<performerProps>({
-    id: 1,
-    first_name: 'Andrew',
-    last_name: 'Smith',
-    user_name: 'andrew_smith',
-    email: 'andrew@smith.com',
-    phone: 5555555555,
-    city: 'Portland',
-  });
+  const [performer, setPerformer] = useState<performerProps | undefined>();
   const [menuOpen, setMenuOpen] = useState<boolean>(false);
+
+  let dropDownRef = useRef<HTMLDivElement | null>(null);
 
   const handleMenuOpen = () => {
     setMenuOpen(!menuOpen);
@@ -79,6 +85,24 @@ const PerformerNavbar = ({viewClient, handleViewClient}: ClientViewProps) => {
         },
       },
     {
+      id: 'profile',
+      text: 'Profile',
+      onClick: () => {
+        console.log('Profile clicked')
+        // TODO: navigate to profile page
+        handleMenuOpen();
+      },
+    },
+    {
+      id: 'settings',
+      text: 'Settings',
+      onClick: () => {
+        console.log('Settings clicked')
+        // TODO: navigate to settings page
+        handleMenuOpen();
+      },
+    },
+    {
       id: 'logout',
       text: 'Logout',
       onClick: () => {
@@ -91,7 +115,26 @@ const PerformerNavbar = ({viewClient, handleViewClient}: ClientViewProps) => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    // on load of page, make async API call to retrieve any notifications for that perfomer
+    // Fetch the performer data from the API or use sample data
+    // For now, we are using sample data
+    setPerformer(
+      {
+        id: 1,
+        first_name: 'Andrew',
+        last_name: 'Smith',
+        user_name: 'andrew_smith',
+        email: 'andrew@smith.com',
+        phone: 5555555555,
+        city: 'Portland',
+        state: 'Oregon',
+        profile_pic: Avatar,
+      }
+    );
+  }, []);
+
+  // useEffect to get the performerNotifications from the API or use sample data
+  useEffect(() => {
+    setPerformerNotifications(SampleNotificationData);
   }, []);
 
   useEffect(() => {
@@ -100,75 +143,110 @@ const PerformerNavbar = ({viewClient, handleViewClient}: ClientViewProps) => {
     setTotalNotifications(result)
   }, [performerNotifications]);
 
-  
+  // useEffect to close the dropdown when clicking outside of it
+  useEffect(() => {
+    let dropDownHandler = (e: MouseEvent) => {
+      if (dropDownRef && dropDownRef.current ) {
+        if (!dropDownRef.current?.contains(e.target as Node)) {
+          setMenuOpen(false);
+        }
+      }
+    }
+    document.addEventListener('mousedown', dropDownHandler);
+
+    return () => {
+      document.removeEventListener('mousedown', dropDownHandler);
+    }
+  });
 
   return (
-    <div className='font-inter z-20 flex justify-end px-20 py-2 fixed bg-white 
+    <div className='font-inter z-20 flex justify-end pl-20 pr-10 py-2 fixed bg-white 
       top-0 right-0 w-full border-b-2 border-gray-200'
     >
       {/* If performer is in clientView, SearchBar will be visible */}
-      {viewClient? (
+      {viewClient &&
         <div className='w-3/5 pr-20'>
           <SearchBar />
         </div>
-      ) : (
-        <></>
-      )}
+      }
       
       {/* Right Cluster */}
       <div className='flex space-x-6'>
         {/* notification div */}
         <button className='flex justify-center items-center'>
-          {/* will probably include onClick here to display small dropdown with notifications listed */}
+          {/* TODO: include onClick here to display small dropdown with notifications listed */}
           <img 
             src={NotificationBell} 
             alt="notification bell" 
             className='size-6'
           />
+          {/* If there are notifications, display the number of notifications */}
           <div className='relative -top-2 right-2'>
-            <NotificationsButton
-              notificationNumber={totalNotifications}
-            />
+            {totalNotifications > 0 && (
+              <NotificationsButton
+                notificationNumber={totalNotifications}
+                notificationColor={notificationColor}
+              />
+            )}
           </div>
         </button>
+        {/* If performer has data and has a profile_pic, render the image */}
+        {/* TODO: setup default image */}
         <div>
-          <img src={Avatar} alt="profile picture" />
+          {performer?.profile_pic && (
+            <img src={performer.profile_pic} alt="profile picture" />
+          )}
         </div>
         <div className='flex items-center'>
           <div className='flex flex-col relative'>
             <p className='text-xs'>Hello!</p>
-            <button
-            // caret opens dropdown with some menu options
-            onClick={handleMenuOpen}
-            className='flex items-center h-10 cursor-pointer space-x-2 border border-black/10
-              hover:bg-[#f5f4fb] rounded-lg px-2 py-1 z-20'
-            >
-              <p>{performer.first_name} {performer.last_name}</p>
-              <Caret 
-                className={`transition-transform duration-300 ease-in-out 
-                  ${menuOpen ? 'rotate-180' : 'rotate-0'}
-              `}
-              />
+            
+            {/* If performer is defined, render the following dropdown */}
+            {performer && (
+            <div ref={dropDownRef}>
+              <button
+                // caret opens dropdown with some menu options
+                onClick={handleMenuOpen}
+                className={`flex items-center h-10 cursor-pointer space-x-2 border 
+                  border-black/10 rounded-lg px-2 py-1 z-20 min-w-42
+                  ${bgColor === 'bg-[#feefe5]' && 'hover:bg-[#feefe5]'}
+                  ${bgColor === 'bg-purple-200' && 'hover:bg-purple-200'}
+                  `}
+              >
+                <p>{performer.first_name} {performer.last_name}</p>
+                <Caret 
+                  className={`transition-transform duration-300 ease-in-out 
+                    ${menuOpen ? 'rotate-180' : 'rotate-0'}
+                `}
+                />
               </button>
-              {menuOpen && (
-                <div 
-                  className='absolute bg-white border border-black/10 rounded-lg 
-                    z-40 mt-16'
-                >
-                  <ul className='p-2'>
-                    {menuItems.map((item) => (
-                      <li 
-                        key={item.id} 
-                        onClick={item.onClick}
-                        className='hover:text-primary cursor-pointer text-md'
-                      >
-                        {item.text}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              )}
+
+              {/* Actual Dropdown element */}
+              {/* If menuOpen is true, menu comes into view. If false, it fades away */}
+              <div 
+                className={`absolute bg-white border border-black/10 rounded-lg 
+                  z-40 mt-2 min-w-42 transition-all duration-100 ease-in-out
+                  ${menuOpen ? 'opacity-100 scale-100 pointer-events-auto' : 'opacity-0 scale-95 pointer-events-none'}
+                `}
+              >
+                <ul className='p-2'>
+                  {menuItems.map((item) => (
+                    <li 
+                      key={item.id} 
+                      onClick={item.onClick}
+                      className={`
+                        hover:${textColor} 
+                        cursor-pointer text-md`
+                      }
+                    >
+                      {item.text}
+                    </li>
+                  ))}
+                </ul>
+              </div>
             </div>
+            )}
+          </div>
         </div>
       </div>
     </div>

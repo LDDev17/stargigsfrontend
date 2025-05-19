@@ -8,7 +8,7 @@ const DashUpcomingTableRow = ({ props }: DashUpcomingRowProps) => {
 
   return (
     <tr>
-      <td className="p-2 m-2">{props.EventName}</td>
+      <td className=" m-2">{props.EventName}</td>
       <td>{props.Location}</td>
       <td>{props.DateTime}</td>
       <td>{props.GigType}</td>

@@ -4,8 +4,8 @@ import LandingPage from './pages/LandingPage';
 import RoleSelectionPage from './Start/RoleSelectionPage'; // Updated import
 import { SignUpPage as PerformerSignUpPage } from './Performers/SignUpPage';
 import { SignupPage as PlannerSignUpPage } from './Customers/SignUpPage';
-import VerificationPage1 from './Customers/VerificationPage';
-import VerificationPage2 from './Customers/VerificationPage2';
+import VerificationPageClient from './Customers/VerificationPageClient';
+import VerificationPage2 from './Customers/VerificationPagePerformer';
 import { SuccessMessage } from './pages/SuccessMessage';
 import { SuccessMessage1 } from './pages/SuccessMessage1'; // Import SuccessMessage1
 import { AboutPage } from './About/AboutPage'; // Import AboutPage
@@ -19,8 +19,12 @@ import PerformerDashboardPages from './pages/PerformerDashboardPages';
 import PerformerMainDashboard from './layout components/PerformerMainDashboard';
 import PerformerGigs from './pages/PerformerGigs';
 import PerformerPayments from './pages/PerformerPayments';
-
 import ClientRoutes from './config/ClientRoutes';
+import { Amplify } from 'aws-amplify';
+import outputs from '../amplify_outputs.json'
+import PerformerPerformance from './pages/PerformerPerformance';
+
+Amplify.configure(outputs);
 
 const App: React.FC = () => {
   return (
@@ -30,8 +34,8 @@ const App: React.FC = () => {
         <Route path="/role-selection-page" element={<RoleSelectionPage />} /> {/* Add RoleSelectionPage route */}
         <Route path="/performer-signup" element={<PerformerSignUpPage />} />
         <Route path="/planner-signup" element={<PlannerSignUpPage />} />
-        <Route path="/verification-page1" element={<VerificationPage1 />} />
-        <Route path="/verification-page2" element={<VerificationPage2 />} />
+        <Route path="/verification-client" element={<VerificationPageClient />} />
+        <Route path="/verification-performer" element={<VerificationPage2 />} />
         <Route path="/verification-success" element={<SuccessMessage />} />
         <Route path="/successmessage1" element={<SuccessMessage1 />} /> {/* Add SuccessMessage1 route */}
         <Route path="/about" element={<AboutPage />} /> {/* Add AboutPage route */}
@@ -42,8 +46,9 @@ const App: React.FC = () => {
           <Route path='main' element={<PerformerMainDashboard />} />
           <Route path='gigs' element={<PerformerGigs />} />
           <Route path='payouts' element={<PerformerPayments />} />
+          <Route path='performances' element={<PerformerPerformance />} />
         </Route>
-        {ClientRoutes() }
+        {ClientRoutes()}
         <Route path="/layout" element={<Layout />} /> {/* Add Layout route */}
         <Route path="/performances" element={<PerformanceSection />} /> {/* Add PerformanceSection route */}
         <Route path="/add-performer" element={<AddPerformer />} /> {/* Add AddPerformer route */}

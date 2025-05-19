@@ -18,15 +18,19 @@ const buttonLabels: Record<string, string> = {
 
 const PerformerPayments = () => {
   const [activePaymentTab, setActivePaymentTab] = useState<string>('payouts');
+  
+  // context is an object of isExpanded and setIsExpanded that controls the width
+  // of the sidebar and the main content of the page
   const context = useContext(ExpandedContext);
-
   if (!context) throw new Error('PerformerPayments must be used within a DataProvider.');
+  // isExpanded is part of the context object and is a boolean that determines
+  // if the sidebar and main content are expanded or not
+  const { isExpanded } = context;
 
   const handleActiveTab = (id: string) => {
     setActivePaymentTab(id)
   }
 
-  const { isExpanded } = context;
   return (
     <div className={`bg-white rounded-xl h-screen mt-24 mb-4 flex flex-grow flex-col 
       justify-start space-y-4 p-4 font-inter

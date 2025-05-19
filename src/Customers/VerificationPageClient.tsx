@@ -2,12 +2,12 @@
 import "./verification.module.css";
 
 import { useNavigate } from "react-router-dom";
-import { BackButton } from "../Customers/BackButton";
-import { CodeInput } from "../Customers/CodeInput";
-import { Timer } from "../Customers/Timer";
+import { BackButton } from "./BackButton";
+import { CodeInput } from "./CodeInput";
+import { Timer } from "./Timer";
 import ContinueButton from "../buttons/ContinueButton";
 
-export default function VerificationPage1() {
+export default function VerificationPageClient() {
   const navigate = useNavigate();
 
   const handleSubmit = (code: string) => {

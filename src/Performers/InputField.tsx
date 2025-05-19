@@ -4,6 +4,7 @@ import * as React from "react";
 interface InputFieldProps {
   label: string;
   type: string;
+  name: string;
   placeholder: string;
   showPasswordToggle?: boolean;
 }
@@ -11,6 +12,7 @@ interface InputFieldProps {
 export function InputField({
   label,
   type,
+  name,
   placeholder,
   showPasswordToggle,
 }: InputFieldProps) {
@@ -52,11 +54,16 @@ export function InputField({
   return (
     <div className="flex flex-col gap-1.5">
       <label className="text-sm leading-5 text-black font-lato">{label}</label>
-      <div className="flex items-center px-4 py-4 bg-white rounded-xl border border-solid border-zinc-300">
+      <div 
+        className="flex items-center px-4 py-4 bg-white rounded-xl border 
+          border-solid border-zinc-300 focus-within:border-primary"
+      >
         <input
           type={inputType}
+          name={name}
           placeholder={placeholder}
-          className="w-full text-base leading-7 border-[none] text-black text-opacity-50 font-inter"
+          className="w-full text-base leading-7 border-[none] text-black text-opacity-50 
+          font-inter outline-none"
         />
         {showPasswordToggle && (
           <button

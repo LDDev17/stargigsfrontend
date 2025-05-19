@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import { ExpandedContext } from "../Context/ExpandedContext";
 import { DateTime } from "luxon";
 
@@ -41,15 +41,22 @@ const PerformerMainDashboard = () => {
 
   const { isExpanded } = context;
 
+  // useEffect to set data for the dashboard tiles
+  // Starting with sample data
+  // Later will make a series of calls to bookings, performances?, payouts, and ratings
+  useEffect(() => {
+    // Make API call to get the dashboard data
+    setTileData(tileSampleData);
+  }, []);
+
   return (
     <>
     
-      <div className={`bg-white rounded-xl mt-24 mb-4 flex flex-col space-y-4 p-8 font-inter 
+      <div className={`bg-white rounded-xl mt-24 mb-4 flex grow space-y-4 p-8 font-inter 
           ${isExpanded ? 'ml-60' : 'ml-32'}
         `}
       >
-        {/* Main or everything but Footer */}
-        <main className="flex">
+          
           {/* Left Side */}
           <section className="flex flex-col space-y-4 grow pr-4">
             <header>
@@ -97,7 +104,15 @@ const PerformerMainDashboard = () => {
               <PerformerDashUpcomingTable />
             </section>
 
-            
+            {/* Booking Table */}
+            <footer className="flex gap-8 h-84">
+              <div className="h-full grow-2">
+                <DashBookingTable />
+              </div>
+              <div className="h-full grow-1">
+                <DashCalendar calendarDate={today} />
+              </div>
+            </footer>
           </section>
 
           {/* Right Side */}
@@ -107,17 +122,8 @@ const PerformerMainDashboard = () => {
               <NotificationSidebar />
             </div>
           </section>
-        </main>
 
-        {/* Booking Table */}
-        <footer className="flex gap-8 h-84">
-          <div className="h-full grow-2">
-            <DashBookingTable />
-          </div>
-          <div className="h-full grow-1">
-            <DashCalendar calendarDate={today} />
-          </div>
-        </footer>
+        
       </div>
     
       

@@ -8,16 +8,23 @@ import DashBookingRow from '../design components/DashBookingRow';
 import Caret from '../assets/svgs/caret.svg?react';
 
 const DashBookingTable = () => {
-  const [bookingData, setBookingData] = useState<BookingProps[]>(sampleBookingData);
+  const [bookingData, setBookingData] = useState<BookingProps[]>([]);
   const [displayData, setDisplayData] = useState<BookingProps[]>([]);
 
+  // useEffect to set the data for all of the pages
+  useEffect(() => {
+    // Make API call to get the booking data
+    setBookingData(sampleBookingData);
+  }, [bookingData]);
+
+  // useEffect to set the data on the selected page
   useEffect(() => {
     setDisplayData(bookingData.slice(0,3))
   }, [bookingData])
 
   return (
     <div className='bg-[#fbfbfb] p-4 h-full'>
-      <h5 className='font-medium text-sm pl-8 pb-2'>Gig Booking Requests</h5>
+      <h5 className='font-medium text-sm pl-8 py-2'>Gig Booking Requests</h5>
       <table className='border-separate border-spacing-y-2 border-spacing-x-8'>
         <tbody>
           {displayData.map((Row, index) => (

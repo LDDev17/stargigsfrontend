@@ -4,13 +4,10 @@ import PaymentProps from "../types/PaymentsType";
 import samplePaymentData from "../SampleData/PaymentData";
 import TableFooter from "./TableFooter";
 import PaymentTableRow from "../design components/PaymentTableRow";
-import EarningTileProps from "../types/EarningsTileProps";
-import SampleEarningsData from "../SampleData/EarningsData";
 import PerformerPayouts from "./PerformerPayouts";
 import PerformerTaxes from "./PerformerTaxes";
 import TimePeriodButton from "../design components/buttons/TimePeriodButton";
 
-import Caret from '../assets/svgs/caret.svg?react';
 import Sort from '../assets/svgs/sort.svg?react';
 
 interface PerformerPaymentContentProps {
@@ -22,15 +19,9 @@ const PerformerPaymentContent = ({ activeTab }: PerformerPaymentContentProps) =>
   const [displayData, setDisplayData] = useState<PaymentProps[]>([]);
   const [currentPage, setCurrentPage] = useState<number>(1);
   const [timePeriod, setTimePeriod] = useState<string>('This Month');
-  const [buttonIsActive, setButtonIsActive] = useState<boolean>(false);
   const [tableCaption, setTableCaption] = useState<string>('Payment History');
-  const [earningsData, setEarningsData] = useState<EarningTileProps[]>(SampleEarningsData);
 
   const items_per_page: number = 7;
-
-  const handleTimeButton = () => {
-    setButtonIsActive(!buttonIsActive)
-  }
 
   useEffect(() => {
     const start = (currentPage - 1) * items_per_page;
@@ -46,21 +37,9 @@ const PerformerPaymentContent = ({ activeTab }: PerformerPaymentContentProps) =>
     } else setTableCaption('Taxes')
   }, [activeTab]);
 
-  let dropdownRef = useRef<HTMLDivElement>(null);
+  let dropDownRef = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
-    let clickHandler = (e: MouseEvent) => {
-      if (!dropdownRef.current?.contains(e.target as Node)) {
-        setButtonIsActive(false);
-      }
-    }
-
-    document.addEventListener("mousedown", clickHandler)
-
-    return() => {
-      document.removeEventListener("mousedown", clickHandler)
-    }
-  });
+  
 
   const thStyling: string = 'font-normal text-left whitespace-nowrap  gap-1';
 
@@ -71,6 +50,7 @@ const PerformerPaymentContent = ({ activeTab }: PerformerPaymentContentProps) =>
         <TimePeriodButton 
           timePeriod={timePeriod}
           setTimePeriod={setTimePeriod}
+          dropDownRef={dropDownRef}
         />
       </header>
       {activeTab === 'history' ? 

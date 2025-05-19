@@ -16,7 +16,7 @@ const timeOptions: string[] = [
   'Last Year',
 ]
 
-const TimePeriodButton = ({ timePeriod, setTimePeriod, dropDownRef }: TimeSelectionProps) => {
+const TimePeriodButtonUp = ({ timePeriod, setTimePeriod, dropDownRef }: TimeSelectionProps) => {
   const [buttonIsActive, setButtonIsActive] = useState<boolean>(false);
 
   const handleTimeSelection = (value: string) => () => {
@@ -52,7 +52,7 @@ const TimePeriodButton = ({ timePeriod, setTimePeriod, dropDownRef }: TimeSelect
       <button
             className={`flex w-full justify-between items-center whitespace-pre font-medium text-xs 
               cursor-pointer border border-[#969696]/75 p-2 ${
-              buttonIsActive? 'rounded-t-lg border-b-0' : 'rounded-lg'
+              buttonIsActive? 'rounded-b-lg border-t-0' : 'rounded-lg'
               }
             `}
             onClick={handleTimeButton}
@@ -68,10 +68,10 @@ const TimePeriodButton = ({ timePeriod, setTimePeriod, dropDownRef }: TimeSelect
           {/* Dropdown Menu */}
           {buttonIsActive &&
             <div 
-              className='absolute w-24 bg-white border-b border-x rounded-b-lg 
-                border-[#969696]/75 z-20'
+              className='absolute w-24 bg-white border-t border-x rounded-t-lg 
+                border-[#969696]/75 z-20 -translate-y-38'
             >
-              <ul className=" mx-2 py-2 border-t-1 flex flex-col justify-evenly h-30">
+              <ul className=" mx-2 py-2 border-b-1 flex flex-col justify-evenly h-30">
                 {timeOptions.map((value, index) => (
                   <li
                     key={index}
@@ -87,4 +87,4 @@ const TimePeriodButton = ({ timePeriod, setTimePeriod, dropDownRef }: TimeSelect
   )
 }
 
-export default TimePeriodButton
+export default TimePeriodButtonUp

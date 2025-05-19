@@ -1,11 +1,11 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 
 import BookingTableRow from "../design components/BookingTableRow";
 import UpcomingTableRow from "../design components/UpcomingTableRow";
 import HistoryTableRow from "../design components/HistoryTableRow";
 import TableFooter from "./TableFooter";
 import GigsTableType from "../types/GigsTableType";
-import TimePeriodButton from "../design components/buttons/TimePeriodButton";
+import TimePeriodButtonUp from "../design components/buttons/TimePeriodButtonUp";
 
 import Sort from '../assets/svgs/sort.svg?react';
 
@@ -22,7 +22,7 @@ const PerformerGigsTable = ({ activeTab, filteredData }: PerformerGigsTableProps
 
   const items_per_page: number = 7;
 
- 
+  let dropDownRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
     if (filteredData) {
@@ -46,9 +46,10 @@ const PerformerGigsTable = ({ activeTab, filteredData }: PerformerGigsTableProps
     <div className="flex flex-col justify-around bg-[#fbfbfb] p-2">
       <header className="flex justify-between py-4">
         <p className="text-sm font-semibold">{tableCaption}</p>
-        <TimePeriodButton 
+        <TimePeriodButtonUp
           timePeriod={timePeriod}
           setTimePeriod={setTimePeriod}
+          dropDownRef={dropDownRef}
         />
       </header>
       <table className="text-sm text-left border-separate border-spacing-y-3 bg-[#fbfbfb] text-text_secondary">

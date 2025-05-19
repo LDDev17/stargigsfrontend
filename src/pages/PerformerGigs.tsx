@@ -1,4 +1,4 @@
-import { useContext, useState, useEffect, use } from "react";
+import { useContext, useState, useEffect } from "react";
 
 import GigsButtons from "../design components/buttons/GigsButtons";
 import { ExpandedContext } from "../Context/ExpandedContext";
