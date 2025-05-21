@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 
-import SearchBar from '../design components/SearchBar';
+import SearchBar from '../pages-general/general-components/searchbar/SearchBar';
 import NotificationsButton from '../design components/buttons/NotificationsButton';
 
 import NotificationBell from '../assets/icons/bell.svg';
@@ -49,22 +49,22 @@ const ClientNavbar = () => {
   }
 
   return (
-    <div 
+    <div
       className='font-inter z-20 flex justify-end px-20 py-2 fixed bg-white top-0 right-0 
         w-full border-b-2 border-gray-200'
     >
       <div className='w-3/5 pr-20'>
         <SearchBar />
       </div>
-      
+
       {/* Right Cluster */}
       <div className='flex space-x-6'>
         {/* notification div */}
         <button className='flex justify-center items-center'>
           {/* will probably include onClick here to display small dropdown with notifications listed */}
-          <img 
-            src={NotificationBell} 
-            alt="notification bell" 
+          <img
+            src={NotificationBell}
+            alt="notification bell"
             className='size-6'
           />
           <div className='relative -top-2 right-2'>
@@ -82,11 +82,11 @@ const ClientNavbar = () => {
             <p>{client.first_name} {client.last_name}</p>
           </div>
           <button
-          // caret opens dropdown with some menu options
+            // caret opens dropdown with some menu options
             onClick={() => handleMenuOpen}
             className='flex items-end h-10'
           >
-            <img src={CaretDown} alt="down facing caret" className='size-6'/>
+            <img src={CaretDown} alt="down facing caret" className='size-6' />
           </button>
         </div>
       </div>

@@ -1,10 +1,8 @@
-import LandingPage from "../pages/LandingPage";
-import About from "../pages/About";
-import Dashboard from "../pages/PerformerDashboardPages";
-import Reviews from "../pages/Reviews";
+import LandingPage from "../pages-general/landing-page/LandingPage";
+import About from "../pages-general/About";
+import Dashboard from "../pages-performer/performer-dashboard/PerformerDashboardPages";
+import Reviews from "../pages-general/reviews-page/Reviews";
 import RouteType from "../types/RouteType";
-
-
 
 const routes: RouteType[] = [
   // {

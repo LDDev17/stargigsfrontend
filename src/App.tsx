@@ -1,26 +1,22 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import LandingPage from './pages/LandingPage';
+import LandingPage from './pages-general/landing-page/LandingPage';
 import RoleSelectionPage from './Start/RoleSelectionPage'; // Updated import
-import { SignUpPage as PerformerSignUpPage } from './Performers/SignUpPage';
-import { SignupPage as PlannerSignUpPage } from './Customers/SignUpPage';
-import VerificationPageClient from './Customers/VerificationPageClient';
-import { SuccessMessage } from './pages/SuccessMessage';
+import { SignUpPage as PerformerSignUpPage } from './PerformersSignUp/SignUpPage';
+
 import { AboutPage } from './About/AboutPage'; // Import AboutPage
-import Reviews from './pages/Reviews'; // Import Reviews
+import Reviews from './pages-general/reviews-page/Reviews'; // Import Reviews
 import ContactPage from './Contact/ContactPage'; // Corrected import path for ContactPage
-import GigsPage1 from './layout components/GigsPage1'; // Updated import for GigsPage1
-import Layout from './dashboardheader/Layout'; // Import Layout
 import { PerformanceSection } from './PerformersView/PerformanceSection'; // Corrected import path
 import AddPerformer from './PerformersView/AddPerformer'; // Import AddPerformer
-import PerformerDashboardPages from './pages/PerformerDashboardPages';
-import PerformerMainDashboard from './layout components/PerformerMainDashboard';
-import PerformerGigs from './pages/PerformerGigs';
-import PerformerPayments from './pages/PerformerPayments';
+import PerformerDashboardPages from './pages-performer/performer-dashboard/PerformerDashboardPages';
+import PerformerMainDashboard from './pages-performer/performer-dashboard/PerformerMainDashboard';
+import PerformerGigs from './pages-performer/performer-gigs/PerformerGigs';
+import PerformerPayments from './pages-performer/performer-payouts/PerformerPayments';
 import ClientRoutes from './config/ClientRoutes';
 import { Amplify } from 'aws-amplify';
 import outputs from '../amplify_outputs.json'
-import PerformerPerformance from './pages/PerformerPerformance';
+import PerformerPerformance from './pages-performer/performer-performances/PerformerPerformance';
 
 Amplify.configure(outputs);
 
@@ -31,13 +27,10 @@ const App: React.FC = () => {
         <Route path="/" element={<LandingPage />} />
         <Route path="/role-selection-page" element={<RoleSelectionPage />} /> {/* Add RoleSelectionPage route */}
         <Route path="/performer-signup" element={<PerformerSignUpPage />} />
-        <Route path="/planner-signup" element={<PlannerSignUpPage />} />
-        <Route path="/verification-client" element={<VerificationPageClient />} />
-        <Route path="/verification-success" element={<SuccessMessage />} />
+
         <Route path="/about" element={<AboutPage />} /> {/* Add AboutPage route */}
         <Route path="/reviews" element={<Reviews />} />
         <Route path="/contact" element={<ContactPage />} /> {/* Add ContactPage route */}
-        <Route path='/gigs-page1' element={<GigsPage1 />} /> {/* Updated route for GigsPage1 */}
         <Route path='/performerDashboard' element={<PerformerDashboardPages />}>
           <Route path='main' element={<PerformerMainDashboard />} />
           <Route path='gigs' element={<PerformerGigs />} />
@@ -45,7 +38,6 @@ const App: React.FC = () => {
           <Route path='performances' element={<PerformerPerformance />} />
         </Route>
         {ClientRoutes()}
-        <Route path="/layout" element={<Layout />} /> {/* Add Layout route */}
         <Route path="/performances" element={<PerformanceSection />} /> {/* Add PerformanceSection route */}
         <Route path="/add-performer" element={<AddPerformer />} /> {/* Add AddPerformer route */}
       </Routes>

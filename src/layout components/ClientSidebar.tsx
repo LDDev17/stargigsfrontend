@@ -79,8 +79,8 @@ const ClientSidebar = () => {
             <NavLink
               to='/clientDashboard/main'
               className={({isActive}) =>
-                `flex ${context.isExpanded ? 'justify-start' : 'justify-center'} items-center space-x-2 -mx-4 pl-4 py-2 text-text_primary text-xs hover:text-primary ${
-                  isActive ? 'bg-[#feefe5]' : 'bg-white'
+                `flex ${context.isExpanded ? 'justify-start' : 'justify-center'} items-center space-x-2 -mx-4 pl-4 py-2 text-text_primary text-xs hover:text-clientPurple ${
+                  isActive ? 'bg-clientBg' : 'bg-white'
                 }`
               }
             >
@@ -93,7 +93,7 @@ const ClientSidebar = () => {
               to='/clientDashboard/events'
               className={({isActive}) =>
                 `${navStyle} ${context.isExpanded ? 'justify-between pr-2' : clientNotifications.eventNotifications ? 'justify-end pr-2' : 'justify-center'} ${
-                  isActive ? 'bg-[#feefe5]' : 'bg-white'
+                  isActive ? 'bg-clientBg' : 'bg-white'
                 }`
               }
             >
@@ -102,6 +102,7 @@ const ClientSidebar = () => {
                 <span className={`${!context.isExpanded && 'hidden'}`}>Gigs</span>
               </div>
               <NotificationsButton
+                notificationColor='bg-clientPurple'
                 notificationNumber={clientNotifications.eventNotifications}
               />
             </NavLink>
@@ -111,7 +112,7 @@ const ClientSidebar = () => {
               to='/clientDashboard/messages'
               className={({isActive}) =>
                 `${navStyle} ${context.isExpanded ? 'justify-between pr-2' : clientNotifications.messageNotifications ? 'justify-end pr-2' : 'justify-center'} ${
-                  isActive ? 'bg-[#feefe5]' : 'bg-white'
+                  isActive ? 'bg-clientBg' : 'bg-white'
                 }`
               }
             >
@@ -120,6 +121,7 @@ const ClientSidebar = () => {
                 <span className={`${!context.isExpanded && 'hidden'}`}>Messages</span>
               </div>
               <NotificationsButton
+                notificationColor='bg-clientPurple'
                 notificationNumber={clientNotifications.messageNotifications}
               />
             </NavLink>
@@ -129,7 +131,7 @@ const ClientSidebar = () => {
               to='/clientDashboard/calendar'
               className={({isActive}) =>
                 `${navStyle} ${context.isExpanded ? 'justify-between pr-2' : clientNotifications.calendarNotifications ? 'justify-end pr-2' : 'justify-center'} ${
-                  isActive ? 'bg-[#feefe5]' : 'bg-white'
+                  isActive ? 'bg-clientBg' : 'bg-white'
                 }`
               }
             >
@@ -138,6 +140,7 @@ const ClientSidebar = () => {
                 <span className={`${!context.isExpanded && 'hidden'}`}>Calendar</span>
               </div>
               <NotificationsButton
+                notificationColor='bg-clientPurple'
                 notificationNumber={clientNotifications.calendarNotifications}
               />
             </NavLink>
@@ -147,7 +150,7 @@ const ClientSidebar = () => {
               to='/clientDashboard/payment'
               className={({isActive}) =>
                 `${navStyle} ${context.isExpanded ? 'justify-between pr-2' : clientNotifications.paymentNotifications ? 'justify-end space-x-2 pr-2' : 'justify-center'} ${
-                  isActive ? 'bg-[#feefe5]' : 'bg-white'
+                  isActive ? 'bg-clientBg' : 'bg-white'
                 }`
               }
             >
@@ -156,6 +159,7 @@ const ClientSidebar = () => {
                 <span className={`${!context.isExpanded && 'hidden'} whitespace-pre`}>  Payments</span>
               </div>
               <NotificationsButton
+                notificationColor='bg-clientPurple'
                 notificationNumber={clientNotifications.paymentNotifications}
               />
             </NavLink>
@@ -165,7 +169,7 @@ const ClientSidebar = () => {
               to='/profile'
               className={({isActive}) =>
                 `${navStyle} ${context.isExpanded ? 'justify-between pr-2' : clientNotifications.profileNotifications ? 'justify-end pr-2' : 'justify-center'} ${
-                  isActive ? 'bg-[#feefe5]' : 'bg-white'
+                  isActive ? 'bg-clientBg' : 'bg-white'
                 }`
               }
             >
@@ -174,6 +178,7 @@ const ClientSidebar = () => {
                 <span className={`${!context.isExpanded && 'hidden'}`}>Profile</span>
               </div>
               <NotificationsButton
+                notificationColor='bg-clientPurple'
                 notificationNumber={clientNotifications.profileNotifications}
               />
             </NavLink>
@@ -191,9 +196,9 @@ const ClientSidebar = () => {
             <NavLink
               to='/Settings'
               className={({isActive}) =>
-                `flex items-center space-x-2 text-text_primary text-xs hover:text-primary 
+                `flex items-center space-x-2 text-text_primary text-xs hover:text-clientPurple 
                 ${context.isExpanded ? 'justify-start pr-2' : 'justify-center'} ${
-                  isActive ? 'bg-[#feefe5]' : 'bg-white'
+                  isActive ? 'bg-clientBg' : 'bg-white'
                 }`
               }
             >
@@ -207,8 +212,8 @@ const ClientSidebar = () => {
         <NavLink
           to='/help'
           className={({isActive}) => 
-            `flex ${context ? 'justify-start' : 'justify-center'} items-center space-x-2 text-text_primary text-xs hover:text-primary ${
-              isActive ? 'bg-[#feefe5]' : 'bg-white'
+            `flex ${context ? 'justify-start' : 'justify-center'} items-center space-x-2 text-text_primary text-xs hover:text-clientPurple ${
+              isActive ? 'bg-clientBg' : 'bg-white'
             }`
           }
         >

@@ -1,10 +1,10 @@
 interface InvoiceRowProps {
-  performerName: string;
-  date: string;
+  invoiceId: number;
+  performerUsername: string;
+  dateAttempted: string;
   paymentMethod: string;
-  amount: number;
+  amountPaid: number;
   status: 'PAID' | 'PENDING' | 'FAILED';
-  invoiceLink: string;
 };
 
 export default InvoiceRowProps;

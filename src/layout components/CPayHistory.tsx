@@ -1,26 +1,29 @@
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 
 import InvoiceHistoryRow from "../design components/InvoiceHistoryRow";
 import InvoiceRowProps from "../types/InvoiceHistoryType";
 import SampleInvoiceData from "../SampleData/InvoiceData";
-import TimePeriodButton from "../design components/buttons/TimePeriodButton";
+import TimePeriodButtonUp from "../design components/buttons/TimePeriodButtonUp";
 
-const timePeriodOptions = [
-  'This Month',
-  'Next Month', 
-  'Next 3 Months'
-];
 
 const CPayHistory = () => {
-  const [invoiceData, setInvoiceData] = useState<InvoiceRowProps[]>(SampleInvoiceData);
+  const [invoiceTableData, setInvoiceTableData] = useState<InvoiceRowProps[]>([]);
   const [timePeriod, setTimePeriod] = useState<string>('This Month');
+  
+
+  let dropDownRef = useRef<null>(null);
+
+  useEffect(() => {
+    // make API call to get invoice data onMount and when timePeriod changes
+    setInvoiceTableData(SampleInvoiceData);
+  }, [timePeriod])
 
   return (
     <div className="font-inter">
       <header className="flex justify-between">
         <p className="font-bold text-md text-[#111927] py-4">Invoice History</p>
-        <TimePeriodButton 
-          timePeriodOptions={timePeriodOptions}
+        <TimePeriodButtonUp 
+          dropDownRef={dropDownRef}
           timePeriod={timePeriod}
           setTimePeriod={setTimePeriod}
         />
@@ -38,15 +41,15 @@ const CPayHistory = () => {
             </tr>
           </thead>
           <tbody>
-            {invoiceData.map((invoice, index) => (
+            {invoiceTableData.map((invoice) => (
               <InvoiceHistoryRow
-                key={index}
-                performerName={invoice.performerName}
-                date={invoice.date}
+                key={invoice.invoiceId}
+                invoiceId={invoice.invoiceId}
+                dateAttempted={invoice.dateAttempted}
+                performerUsername={invoice.performerUsername}
                 paymentMethod={invoice.paymentMethod}
-                amount={invoice.amount}
+                amountPaid={invoice.amountPaid}
                 status={invoice.status}
-                invoiceLink={invoice.invoiceLink}
               />
             ))}
           </tbody>
