@@ -36,7 +36,7 @@ const PerformerGigs = () => {
   const [filteredData, setFilteredData] = useState<GigsTableType[]>([]);
   const [formData, setFormData] = useState<GigsTableType[]>(sampleTableData);
   const [gigTypeData, setGigTypeData] = useState<SelectOptionType[]>([]);
-  const [selectedGigType, setSelectedGigType] = useState<SelectOptionType[]>([]);
+  const [selectedGigType, setSelectedGigType] = useState<SelectOptionType>();
   const [managerData, setManagerData] = useState<SelectOptionType[]>([]);
   const [selectedManager, setSelectedManager] = useState<SelectOptionType>();
   const [locationData, setLocationData] = useState<SelectOptionType[]>([]);
@@ -143,7 +143,7 @@ const PerformerGigs = () => {
   // Reset filter data when active tab changes
   useEffect(() => {
     setFilterData({
-      gigType: [],
+      gigType: '',
       manager: '',
       location: '',
       status: '',

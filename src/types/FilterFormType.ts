@@ -3,8 +3,8 @@ import SelectOptionType from "./SelectedOptionType";
 interface FilterFormProps {
   activeGigTab: string;
   gigTypeData: SelectOptionType[];
-  selectedGigType: SelectOptionType[];
-  setSelectedGigType: React.Dispatch<React.SetStateAction<SelectOptionType[]>>;
+  selectedGigType: SelectOptionType | undefined;
+  setSelectedGigType: React.Dispatch<React.SetStateAction<SelectOptionType | undefined>>;
   managerData: SelectOptionType[];
   selectedManager: SelectOptionType | undefined;
   setSelectedManager: React.Dispatch<React.SetStateAction<SelectOptionType | undefined>>;

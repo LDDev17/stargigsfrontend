@@ -1,7 +1,7 @@
 import Navbar from "../general-components/Navbar";
 import ReviewsBanner from "./ReviewsBanner";
 import AverageRating from "./AverageRating";
-import ReviewsTile from "../../design components/ReviewsTile";
+import ReviewsTile from "./ReviewsTile";
 import Footer2 from "../general-components/Footer2";
 
 import Squiggle from '../../assets/icons/Squiggle.png';

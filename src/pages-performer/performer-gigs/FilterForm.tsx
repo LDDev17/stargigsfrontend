@@ -25,8 +25,10 @@ const FilterForm = (
     setAmountTo,
   }: FilterFormProps) => {
   const { register, handleSubmit } = useForm<FilterDataType>({});
+  
   const onFilterSubmit = (data: FilterDataType) => {
     console.log(`Submitted Filter Form:`, data)
+    // TODO: add filtering logic
   };
 
   // Custom styles for react-select
@@ -70,29 +72,15 @@ const FilterForm = (
         <div className="font-lato w-full flex flex-col space-y-2">
           <p className='text-left'>Gig Type</p>
           <Select 
-            isMulti
             id="gigType"
             {...register('gigType')}
             options={gigTypeData}
             styles={customStyles}
             components={{ IndicatorSeparator: () => null }}
             value={selectedGigType}
-            onChange={(selectedOptions) => {
-              if (Array.isArray(selectedOptions)) {
-                const isAllSelected = selectedOptions.some(option => option.value === 'All');
-                if (isAllSelected && selectedOptions.length > 1 && selectedOptions[0].value === 'All') {
-                  // If 'All' was chosen first, remove 'All' from the selection
-                  setSelectedGigType(selectedOptions.filter(option => option.value !== 'All'));
-                } else if (isAllSelected && selectedOptions.length > 1 && selectedOptions[0].value !== 'All') {
-                  // If 'All' was chosen second, remove other options from the selection
-                  setSelectedGigType(selectedOptions.filter(option => option.value === 'All'));
-                } else if (selectedOptions.length > 2) {
-                  // If more than 2 options are selected, remove the first one
-                  setSelectedGigType(selectedOptions.slice(1));
-                } else {
-                  // Otherwise, set the selected options
-                  setSelectedGigType(selectedOptions);
-                }
+            onChange={(selectedOption) => {
+              if (selectedOption) {
+                setSelectedGigType(selectedOption);
               }
             }}
           />
@@ -112,14 +100,7 @@ const FilterForm = (
             value={selectedManager}
             onChange={(selectedOption) => {
               if (selectedOption) {
-                const isAllSelected = selectedOption.value === 'All';
-                if (isAllSelected) {
-                  // If 'All' is selected, clear all other selections
-                  setSelectedManager({ value: 'All', label: 'All' });
-                } else {
-                  // Otherwise, set the selected options
-                  setSelectedManager(selectedOption);
-                }
+                setSelectedManager(selectedOption);
               }
             }}
           />
@@ -139,14 +120,7 @@ const FilterForm = (
             value={selectedLocation}
             onChange={(selectedOption) => {
               if (selectedOption) {
-                const isAllSelected = selectedOption.value === 'All';
-                if (isAllSelected) {
-                  // If 'All' is selected, clear all other selections
-                  setSelectedLocation({ value: 'All', label: 'All' });
-                } else {
-                  // Otherwise, set the selected options
-                  setSelectedLocation(selectedOption);
-                }
+                setSelectedLocation(selectedOption);
               }
             }}
           />
@@ -166,14 +140,7 @@ const FilterForm = (
               value={selectedStatus}
               onChange={(selectedOption) => {
                 if (selectedOption) {
-                  const isAllSelected = selectedOption.value === 'All';
-                  if (isAllSelected) {
-                    // If 'All' is selected, clear all other selections
-                    setSelectedStatus({ value: 'All', label: 'All' });
-                  } else {
-                    // Otherwise, set the selected options
-                    setSelectedStatus(selectedOption);
-                  }
+                  setSelectedStatus(selectedOption);
                 }
               }}
             />

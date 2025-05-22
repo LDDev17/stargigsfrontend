@@ -1,11 +1,12 @@
 import { NavLink } from 'react-router-dom';
 
 import logo_light from '../../assets/logos/logo2-sm-light-navbar.png';
-import LoginButton from '../../design components/buttons/LoginButton';
+import OrangeButton from '../../design components/buttons/OrangeButton';
 import TextButton from '../../design components/buttons/TextButton';
 import SearchBar from './searchbar/SearchBar';
 
 const Navbar = () => {
+
   return (
     <nav className="flex fixed top-0 justify-around items-center bg-text_primary w-full h-[86px] z-100 font-inter">
       {/* tightly wrapped inner nav box */}
@@ -27,6 +28,8 @@ const Navbar = () => {
           className='text-tertiary'
         >
           <TextButton
+            textHoverFrom='from-light_orange'
+            textHoverTo='to-primary'
             buttonText='Reviews'
             textColor='white'
           />
@@ -36,6 +39,8 @@ const Navbar = () => {
           className='text-tertiary'
         >
           <TextButton
+            textHoverFrom='from-light_orange'
+            textHoverTo='to-primary'
             buttonText='About'
             textColor='white'
           />
@@ -47,11 +52,16 @@ const Navbar = () => {
           className='text-tertiary'
         >
           <TextButton
+            textHoverFrom='from-light_orange'
+            textHoverTo='to-primary'
             buttonText='Sign Up'
             textColor='white'
           />
         </NavLink>
-        <LoginButton />
+        <OrangeButton
+          LinkText='Login'
+          pageUrl='/login'
+        />
         {/* Show Profile picture and notification bell if authenticated */}
         {/* TODO: Need Logout button or is that included in dropdown from profile picture?*/}
       </div>

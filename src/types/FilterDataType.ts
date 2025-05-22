@@ -1,5 +1,5 @@
 interface FilterDataType {
-  gigType: string[];
+  gigType: string;
   manager: string;
   location: string;
   status: string;

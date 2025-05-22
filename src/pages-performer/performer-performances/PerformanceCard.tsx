@@ -1,6 +1,6 @@
 import Calendar from '../../assets/svgs/calendar.svg?react';
 import PerformanceCardType from '../../types/PerformanceCardType';
-import GigTypeIcon from '../../design components/gigTypeIcon';
+import GigTypeIcon from './gigTypeIcon';
 
 
 // Reusable Gig Ad Card component for the performances section
