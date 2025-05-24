@@ -1,0 +1,98 @@
+/* Custom CSS for RoleSelectionForm */
+.role-selection-form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 5px;
+    min-height: 100vh;
+  }
+  
+  .role-selection-container {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 10px;
+    border-radius: 10px;
+    width: 388px;
+    margin: auto;
+  }
+  
+  .role-selection-title {
+    font-size: 4rem;
+    font-weight: bold;
+    color: #1f2937;
+    line-height: 52.2px;
+  }
+  
+  .role-selection-description {
+    margin-bottom: 5px;
+    font-size: 1.25rem;
+    line-height: 2rem;
+    color: #6b7280;
+  }
+  
+  .role-selection-options {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+  }
+  
+  /* .role-selection-button {
+    padding: 4px;
+    font-size: 1rem;
+    text-align: center;
+    color: white;
+    background-color: black;
+    border-radius: 10px;
+    cursor: pointer;
+  } */
+  
+  .role-selection-login {
+    margin-top: 8px;
+    font-size: 1.125rem;
+    line-height: 1.75rem;
+    text-align: center;
+    color: #475569;
+  }
+  
+  .role-selection-login-button {
+    color: white;
+    background-color: #f45e00;
+    cursor: pointer;
+    padding: 2px;
+    border-radius: 5px;
+  }
+  
+  /* Custom CSS for RadioOption */
+  .radio-option {
+    display: flex;
+    gap: 3px;
+    align-items: center;
+    padding: 6px 4px;
+    border-radius: 10px;
+    border: 1px solid #d1d5db;
+    cursor: pointer;
+    width: 100%;
+    text-align: left;
+    justify-content: space-between; /* Ensures the content is close to the borders */
+  }
+  
+  .radio-icon {
+    width: 18px;
+    height: 18px;
+  }
+  
+  .radio-label {
+    font-size: 1rem;
+    font-weight: medium;
+    line-height: 1.75rem;
+  }
+  
+  .radio-label-selected {
+    color: #f45e00;
+  }
+  
+  .radio-label-unselected {
+    color: #6b7280;
+  }
+  

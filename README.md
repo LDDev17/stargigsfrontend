@@ -1,113 +1,54 @@
-git# 🌟 Star Gigs
+# React + TypeScript + Vite
 
-**🚧 This project is currently a work in progress. Features and design are subject to change. 🚧**
+This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-Star Gigs is a modern, React-based web application designed to connect event planners with local performers. Whether you're organizing a wedding, corporate event, or private party, Star Gigs makes it easy to discover and book the right talent. The platform features intuitive search tools, real user reviews, and a sleek, responsive design.
+Currently, two official plugins are available:
 
----
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
-## 🚀 Features
+## Expanding the ESLint configuration
 
-- **Landing Page** – A welcoming homepage that introduces users to the platform.
-- **Talent Search** – Filter performers by location, date, and performance type.
-- **User Reviews** – Read feedback and ratings from past clients.
-- **User Dashboard** – Personalized dashboards for logged-in users.
-- **Mobile-Responsive UI** – Built with TailwindCSS to ensure great usability across devices.
+If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
 
----
-
-## 🧠 Tech Stack
-
-- **React** – Frontend UI development
-- **TypeScript** – Strongly typed JavaScript
-- **Vite** – Lightning-fast development/build tooling
-- **TailwindCSS** – Utility-first CSS styling
-- **React Router** – Client-side navigation
-- **React Hook Form** – Form management and validation
-- **React Datepicker** – Friendly UI for selecting event dates
-
----
-
-## 📁 Project Structure
-
-```
-src/
-├── assets/               # Static images, icons, logos
-├── config/               # App configuration (e.g., routes)
-├── design components/    # Reusable UI elements (buttons, inputs, etc.)
-├── layout components/    # Layout-related components (Navbar, Footer)
-├── pages/                # Page-level React components
-├── types/                # TypeScript type definitions
-├── App.tsx               # Main application component
-├── main.tsx              # Entry point for rendering
-├── index.css             # Global styles
-└── vite-env.d.ts         # Vite environment types
+```js
+export default tseslint.config({
+  extends: [
+    // Remove ...tseslint.configs.recommended and replace with this
+    ...tseslint.configs.recommendedTypeChecked,
+    // Alternatively, use this for stricter rules
+    ...tseslint.configs.strictTypeChecked,
+    // Optionally, add this for stylistic rules
+    ...tseslint.configs.stylisticTypeChecked,
+  ],
+  languageOptions: {
+    // other options...
+    parserOptions: {
+      project: ['./tsconfig.node.json', './tsconfig.app.json'],
+      tsconfigRootDir: import.meta.dirname,
+    },
+  },
+})
 ```
 
----
+You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
 
-## ⚙️ Getting Started
+```js
+// eslint.config.js
+import reactX from 'eslint-plugin-react-x'
+import reactDom from 'eslint-plugin-react-dom'
 
-1. **Clone the Repository**
-
-```bash
-git clone <repository-url>
-cd stargigs-codingtemple
+export default tseslint.config({
+  plugins: {
+    // Add the react-x and react-dom plugins
+    'react-x': reactX,
+    'react-dom': reactDom,
+  },
+  rules: {
+    // other rules...
+    // Enable its recommended typescript rules
+    ...reactX.configs['recommended-typescript'].rules,
+    ...reactDom.configs.recommended.rules,
+  },
+})
 ```
-
-2. **Install Dependencies**
-
-```bash
-npm install
-```
-
-3. **Start Development Server**
-
-```bash
-npm run dev
-```
-
-4. Visit the app at: [http://localhost:5173](http://localhost:5173)
-
----
-
-## 📜 Available Scripts
-
-- `npm run dev` – Launches development server
-- `npm run build` – Builds the app for production
-- `npm run preview` – Previews the production build locally
-- `npm run lint` – Runs ESLint for code checks
-
----
-
-## 🤝 Contributing
-
-We welcome contributions!
-
-1. Fork this repo
-2. Create a new branch:  
-   `git checkout -b feature/your-feature-name`
-3. Make your changes and commit:  
-   `git commit -m "Added new feature"`
-4. Push to your branch:  
-   `git push origin feature/your-feature-name`
-5. Open a pull request!
-
----
-
-## 📄 License
-
-This project is licensed under the **MIT License** – feel free to use and adapt!
-
----
-
-## 🙌 Acknowledgments
-
-- Inspired by the challenges of event planning and local talent discovery.
-- Built with ❤️ using modern web technologies.
-
----
-
-## 📬 Contact
-
-Have questions, ideas, or feedback? Reach out to me.
