@@ -1,6 +1,6 @@
 /// <reference types="vite-plugin-svgr/client" />
 import { NavLink, Link } from 'react-router-dom';
-import { useState, useContext } from 'react';
+import { useState, useContext, useEffect } from 'react';
 
 import NotificationsButton from '../design-components/buttons/NotificationsButton';
 import { ExpandedContext } from '../Context/ExpandedContext';
@@ -18,7 +18,7 @@ import LightBulb from '../assets/svgs/lightBulb.svg?react';
 import Message from '../assets/svgs/message.svg?react';
 import Person from '../assets/svgs/person.svg?react';
 import QuestionMark from '../assets/svgs/questionMark.svg?react';
-import Star from '../assets/svgs/star.svg?react';
+// import Star from '../assets/svgs/star.svg?react';
 
 interface ClientNotificationProps {
   eventNotifications: number;
@@ -35,14 +35,21 @@ const ClientSidebar = () => {
 
   const { setIsExpanded } = context;
 
-  const [clientNotifications, setClientNotifications] = useState<ClientNotificationProps>({
-    eventNotifications: 1,
-    messageNotifications: 0,
-    calendarNotifications: 0,
-    paymentNotifications: 2,
-    profileNotifications: 0,
+  const [clientNotifications, setClientNotifications] = useState<ClientNotificationProps | undefined>();
+
+  useEffect(() => {
+    setClientNotifications({
+      eventNotifications: 1,
+      messageNotifications: 0,
+      calendarNotifications: 0,
+      paymentNotifications: 2,
+      profileNotifications: 0,
+    })
   })
 
+  if (!clientNotifications) {
+    return;
+  }
 
   const navStyle = 'flex justify-between items-center hover:text-primary text-xs py-2 -mx-4 pl-4';
   const leftDivStyle = 'flex justify-start items-center space-x-2'
