@@ -99,7 +99,9 @@ const RoleSelectionForm = ({ onRoleChange }: RoleSelectionProps) => {
           <TextButton
             buttonText='Login'
             textColor='primary'
-
+            textHoverFrom='from-light_orange'
+            textHoverTo='to-primary'
+            onClick={() => navigate('/login')}
           />
         </div>
       </div>

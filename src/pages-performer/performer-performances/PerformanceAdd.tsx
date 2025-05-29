@@ -2,7 +2,7 @@ import { ExpandedContext } from "../../Context/ExpandedContext"
 import { useContext, useState, useRef } from "react"
 import Select from 'react-select';
 import { useForm } from "react-hook-form";
-import { DateTime } from "luxon";
+// import { DateTime } from "luxon";
 
 import PerformanceAddType from "../../types/PerformanceAddType";
 import OrangeButton from "../../design-components/buttons/OrangeButton";
@@ -19,7 +19,7 @@ const PerformanceAdd = () => {
   const [gigType, setGigType] = useState<SelectOptionType[]>([]);
   const [location, setLocation] = useState<SelectOptionType>();
   const rateRef = useRef<HTMLInputElement>(null);
-  const [availability, setAvailability] = useState<DateTime[]>([]);
+  // const [availability, setAvailability] = useState<DateTime[]>([]);
   const titleRef = useRef<HTMLInputElement>(null);
   const descriptionRef = useRef<HTMLTextAreaElement>(null);
 

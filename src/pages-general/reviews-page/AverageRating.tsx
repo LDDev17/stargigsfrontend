@@ -6,11 +6,12 @@ import gold_star from '../../assets/icons/gold_star.png';
 
 
 const AverageRating = () => {
-  const [avgRating, setAvgRating] = useState(3.5);
+  const [avgRating, setAvgRating] = useState(0);
 
   useEffect(() => {
     // use custom hook to retrieve ratings and set data to avgRating
     // setAvgRating(data);
+    setAvgRating(3.5)
   })
 
   // use this to determine number of gold stars

@@ -5,7 +5,6 @@ import samplePaymentData from "../../SampleData/PaymentData";
 import TableFooter from "../performer-gigs/TableFooter";
 import PaymentTableRow from "./PaymentTableRow";
 import PerformerPayouts from "./PerformerPayouts";
-import PerformerTaxes from "./PerformerTaxes";
 import TimePeriodButtonUp from "../../design-components/buttons/TimePeriodButtonUp";
 
 import Sort from '../../assets/svgs/sort.svg?react';
@@ -95,7 +94,7 @@ const PerformerPaymentContent = ({ activeTab }: PerformerPaymentContentProps) =>
         ) : activeTab === 'payouts' ? (
           <PerformerPayouts />
         ) : (
-          <PerformerTaxes />
+          <></>
         )
       }
     </div>
