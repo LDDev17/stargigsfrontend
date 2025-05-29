@@ -7,8 +7,6 @@ import { SignUpPage as PerformerSignUpPage } from './PerformersSignUp/SignUpPage
 import { AboutPage } from './pages-general/About/AboutPage'; // Import AboutPage
 import Reviews from './pages-general/reviews-page/Reviews'; // Import Reviews
 import ContactPage from './pages-general/Contact/ContactPage'; // Corrected import path for ContactPage
-import { PerformanceSection } from './PerformersView/PerformanceSection'; // Corrected import path
-import AddPerformer from './PerformersView/AddPerformer'; // Import AddPerformer
 import PerformerDashboardPages from './pages-performer/performer-dashboard/PerformerDashboardPages';
 import PerformerMainDashboard from './pages-performer/performer-dashboard/PerformerMainDashboard';
 import PerformerGigs from './pages-performer/performer-gigs/PerformerGigs';
@@ -38,8 +36,6 @@ const App: React.FC = () => {
           <Route path='performances' element={<PerformerPerformance />} />
         </Route>
         {ClientRoutes()}
-        <Route path="/performances" element={<PerformanceSection />} /> {/* Add PerformanceSection route */}
-        <Route path="/add-performer" element={<AddPerformer />} /> {/* Add AddPerformer route */}
       </Routes>
     </Router>
   );
