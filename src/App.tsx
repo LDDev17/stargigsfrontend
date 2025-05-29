@@ -12,11 +12,11 @@ import PerformerMainDashboard from './pages-performer/performer-dashboard/Perfor
 import PerformerGigs from './pages-performer/performer-gigs/PerformerGigs';
 import PerformerPayments from './pages-performer/performer-payouts/PerformerPayments';
 import ClientRoutes from './config/ClientRoutes';
-import { Amplify } from 'aws-amplify';
-import outputs from '../amplify_outputs.json'
+// import { Amplify } from 'aws-amplify';
+// import outputs from '../amplify_outputs.json'
 import PerformerPerformance from './pages-performer/performer-performances/PerformerPerformance';
 
-Amplify.configure(outputs);
+// Amplify.configure(outputs);
 
 const App: React.FC = () => {
   return (
