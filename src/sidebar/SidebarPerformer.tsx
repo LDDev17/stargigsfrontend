@@ -3,13 +3,13 @@ import { NavLink, Link } from 'react-router-dom';
 import { useState } from 'react';
 // import { set } from 'date-fns';
 
-import TextButton from '../design components/buttons/TextButton';
-import NotificationsButton from '../design components/buttons/NotificationsButton';
+import TextButton from '../design-components/buttons/TextButton';
+import NotificationsButton from '../design-components/buttons/NotificationsButton';
 
 import full_logo from '../assets/logos/logo_md_orange.png';
 import star_logo from '../assets/logos/orange_white_circle_only.png';
-import ClientIcon from '../design components/ClientIcon';
-import PerformerIcon from '../design components/PerformerIcon';
+import ClientIcon from '../design-components/ClientIcon';
+import PerformerIcon from '../design-components/PerformerIcon';
 import arrow from '../assets/icons/arrow-left.png';
 
 import Calendar from '../assets/svgs/calendar.svg?react';
@@ -43,7 +43,7 @@ interface ExpandProps {
 
 type SideBarProps = viewClientProps & ExpandProps;
 
-const SidebarPerformer: React.FC<SideBarProps> = ({expanded, handleExpand, viewClient, handleViewClient}) => {
+const SidebarPerformer: React.FC<SideBarProps> = ({ expanded, handleExpand, viewClient, handleViewClient }) => {
 
   const [clientNotifications, setClientNotifications] = useState<NotificationProps>({
     performanceNotifications: 1,
@@ -63,20 +63,20 @@ const SidebarPerformer: React.FC<SideBarProps> = ({expanded, handleExpand, viewC
   // const [settingsHover, setSettingsHover] = useState(false);
   // const [bgColor, setBgColor] = useState<string>('white');
 
-  
+
   const navStyle = 'flex justify-between items-center hover:text-primary text-xs py-2 -mx-4 pl-4';
   const leftDivStyle = 'flex justify-start space-x-2'
 
   return (
 
-    <nav className={` ${expanded ? 'w-50': 'w-24'} bg-white h-screen z-30 py-4 
+    <nav className={` ${expanded ? 'w-50' : 'w-24'} bg-white h-screen z-30 py-4 
       fixed flex flex-col justify-between px-4 border-r-2 border-gray-200`}
     >
       <div className='flex justify-start pb-4 flex-col'>
         <Link to='/' className='flex justify-center pb-3 border-b-2 border-gray-200'>
           <img src={` ${expanded ? `${full_logo}` : `${star_logo}`}`} alt="Star Gigs logo" />
         </Link>
-        
+
         {/* Renders Client Icon if Performer is in ClientView and PerformerIcon if not */}
         {viewClient ? (
           <ClientIcon />
@@ -90,46 +90,44 @@ const SidebarPerformer: React.FC<SideBarProps> = ({expanded, handleExpand, viewC
             className={`${!expanded && "rotate-180"} size-6 -mt-2 cursor-pointer border-transparent border-0 rounded-md`}
             onClick={handleExpand}
           >
-            <img src={arrow} alt=""/>
+            <img src={arrow} alt="" />
           </button>
         </div>
-        
+
         <main className={`flex flex-col space-y-1 -mt-2 ${!expanded ? 'justify-center' : ''}`}>
           <p className={`text-text_primary text-xs ${!expanded ? 'text-center' : ''}`}>Main</p>
-          
+
           {/* Main Dashboard Links */}
           <div className='flex flex-col justify-around text-text_primary'>
 
             {/* Performances */}
-<NavLink
-  to='/dashboard-performers'  // Updated path to DashboardPerformersPage
-  className={({isActive}) =>
-    `${navStyle} ${expanded ? 'justify-between pr-2' : clientNotifications.performanceNotifications ? 'justify-end pr-2' : 'justify-center'} ${
-      isActive ? 'bg-[#feefe5]' : 'bg-white'
-    }`
-  }
->
-  <div className={leftDivStyle}>
-    <Star />
-    <span className={`${!expanded && 'hidden'}`}>Performances</span>
-  </div>
-  <NotificationsButton
-    notificationNumber={clientNotifications.performanceNotifications}
-  />
-</NavLink>
-
-            
+            <NavLink
+              to='/dashboard-performers'  // Updated path to DashboardPerformersPage
+              className={({ isActive }) =>
+                `${navStyle} ${expanded ? 'justify-between pr-2' : clientNotifications.performanceNotifications ? 'justify-end pr-2' : 'justify-center'} ${isActive ? 'bg-[#feefe5]' : 'bg-white'
+                }`
+              }
+            >
+              <div className={leftDivStyle}>
+                <Star />
+                <span className={`${!expanded && 'hidden'}`}>Performances</span>
+              </div>
+              <NotificationsButton
+                notificationNumber={clientNotifications.performanceNotifications}
+              />
+            </NavLink>
 
 
-       
+
+
+
 
 
             {/* Gigs */}
             <NavLink
               to='/gigs'
-              className={({isActive}) =>
-                `${navStyle} ${expanded ? 'justify-between pr-2' : clientNotifications.gigNotifications ? 'justify-end pr-2' : 'justify-center'} ${
-                  isActive ? 'bg-[#feefe5]' : 'bg-white'
+              className={({ isActive }) =>
+                `${navStyle} ${expanded ? 'justify-between pr-2' : clientNotifications.gigNotifications ? 'justify-end pr-2' : 'justify-center'} ${isActive ? 'bg-[#feefe5]' : 'bg-white'
                 }`
               }
             >
@@ -145,9 +143,8 @@ const SidebarPerformer: React.FC<SideBarProps> = ({expanded, handleExpand, viewC
             {/* Messages */}
             <NavLink
               to='/messages'
-              className={({isActive}) =>
-                `${navStyle} ${expanded ? 'justify-between pr-2' : clientNotifications.messageNotifications ? 'justify-end pr-2' : 'justify-center'} ${
-                  isActive ? 'bg-[#feefe5]' : 'bg-white'
+              className={({ isActive }) =>
+                `${navStyle} ${expanded ? 'justify-between pr-2' : clientNotifications.messageNotifications ? 'justify-end pr-2' : 'justify-center'} ${isActive ? 'bg-[#feefe5]' : 'bg-white'
                 }`
               }
             >
@@ -163,9 +160,8 @@ const SidebarPerformer: React.FC<SideBarProps> = ({expanded, handleExpand, viewC
             {/* Calendar */}
             <NavLink
               to='/calendar'
-              className={({isActive}) =>
-                `${navStyle} ${expanded ? 'justify-between pr-2' : clientNotifications.calendarNotifications ? 'justify-end pr-2' : 'justify-center'} ${
-                  isActive ? 'bg-[#feefe5]' : 'bg-white'
+              className={({ isActive }) =>
+                `${navStyle} ${expanded ? 'justify-between pr-2' : clientNotifications.calendarNotifications ? 'justify-end pr-2' : 'justify-center'} ${isActive ? 'bg-[#feefe5]' : 'bg-white'
                 }`
               }
             >
@@ -181,9 +177,8 @@ const SidebarPerformer: React.FC<SideBarProps> = ({expanded, handleExpand, viewC
             {/* Payments */}
             <NavLink
               to='/payments'
-              className={({isActive}) =>
-                `${navStyle} ${expanded ? 'justify-between pr-2' : clientNotifications.paymentNotifications ? 'justify-end space-x-2 pr-2' : 'justify-center'} ${
-                  isActive ? 'bg-[#feefe5]' : 'bg-white'
+              className={({ isActive }) =>
+                `${navStyle} ${expanded ? 'justify-between pr-2' : clientNotifications.paymentNotifications ? 'justify-end space-x-2 pr-2' : 'justify-center'} ${isActive ? 'bg-[#feefe5]' : 'bg-white'
                 }`
               }
             >
@@ -199,9 +194,8 @@ const SidebarPerformer: React.FC<SideBarProps> = ({expanded, handleExpand, viewC
             {/* Profile */}
             <NavLink
               to='/profile'
-              className={({isActive}) =>
-                `${navStyle} ${expanded ? 'justify-between pr-2' : clientNotifications.profileNotifications ? 'justify-end pr-2' : 'justify-center'} ${
-                  isActive ? 'bg-[#feefe5]' : 'bg-white'
+              className={({ isActive }) =>
+                `${navStyle} ${expanded ? 'justify-between pr-2' : clientNotifications.profileNotifications ? 'justify-end pr-2' : 'justify-center'} ${isActive ? 'bg-[#feefe5]' : 'bg-white'
                 }`
               }
             >
@@ -222,9 +216,8 @@ const SidebarPerformer: React.FC<SideBarProps> = ({expanded, handleExpand, viewC
           <div className='flex flex-col space-y-2'>
             <NavLink
               to='/Settings'
-              className={({isActive}) =>
-                `flex items-center space-x-2 text-text_primary text-xs hover:text-primary ${expanded ? 'justify-start pr-2' : 'justify-center'} ${
-                  isActive ? 'bg-[#feefe5]' : 'bg-white'
+              className={({ isActive }) =>
+                `flex items-center space-x-2 text-text_primary text-xs hover:text-primary ${expanded ? 'justify-start pr-2' : 'justify-center'} ${isActive ? 'bg-[#feefe5]' : 'bg-white'
                 }`
               }
             >
@@ -254,16 +247,15 @@ const SidebarPerformer: React.FC<SideBarProps> = ({expanded, handleExpand, viewC
       <footer>
         <NavLink
           to='/help'
-          className={({isActive}) => 
-            `flex ${expanded ? 'justify-start' : 'justify-center'} items-center space-x-2 text-text_primary text-xs hover:text-primary ${
-              isActive ? 'bg-[#feefe5]' : 'bg-white'
+          className={({ isActive }) =>
+            `flex ${expanded ? 'justify-start' : 'justify-center'} items-center space-x-2 text-text_primary text-xs hover:text-primary ${isActive ? 'bg-[#feefe5]' : 'bg-white'
             }`
           }
         >
           <QuestionMark />
           <span className={`${!expanded && 'hidden'}`}>Help</span>
         </NavLink>
-      </footer>       
+      </footer>
     </nav>
   )
 }

@@ -1,6 +1,6 @@
 import { useContext, useState, useEffect } from "react";
 
-import GigsButtons from "../../design components/buttons/GigsButtons";
+import GigsButtons from "../../design-components/buttons/GigsButtons";
 import { ExpandedContext } from "../../Context/ExpandedContext";
 import TableSearchbar from "./TableSearchbar";
 import PerformerGigsTable from "./PerformerGigsTable";

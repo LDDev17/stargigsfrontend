@@ -1,11 +1,15 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 import NotificationCard from "./NotificationCard";
 import SampleNotificationData from "../../SampleData/NotificationData";
 import NotificationProps from "../../types/NotificationType";
 
 const NotificationSidebar = () => {
-  const [notifications, setNotifications] = useState<NotificationProps[]>(SampleNotificationData);
+  const [notifications, setNotifications] = useState<NotificationProps[]>([]);
+
+  useEffect(() => {
+    setNotifications(SampleNotificationData)
+  }, []);
 
   return (
     <div className="flex flex-col items-start p-2 space-y-4 ">

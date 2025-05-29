@@ -3,9 +3,9 @@ import { JSX } from "react";
 
 import ClientDashboardPages from "../pages-client/ClientDashboardPages";
 import ClientPaymentMain from "../pages-client/client-payment/ClientPaymentMain";
-import CPayPerformerDetails from "../layout components/CPayPerformerDetails";
-import CPayCompletePayment from "../layout components/CPayCompletePayment";
-import CPayHistory from "../layout components/CPayHistory";
+import CPayPerformerDetails from "../pages-client/client-payment/CPayPerformerDetails";
+import CPayCompletePayment from "../pages-client/client-payment/CPayCompletePayment";
+import CPayHistory from "../pages-client/client-payment/CPayHistory";
 
 const ClientRoutes = (): JSX.Element => {
   return (

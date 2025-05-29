@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 
 import SearchBar from '../pages-general/general-components/searchbar/SearchBar';
-import NotificationsButton from '../design components/buttons/NotificationsButton';
+import NotificationsButton from '../design-components/buttons/NotificationsButton';
 
 import NotificationBell from '../assets/icons/bell.svg';
 import Avatar from '../assets/icons/Avatar.png';

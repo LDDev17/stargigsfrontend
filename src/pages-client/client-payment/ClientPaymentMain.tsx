@@ -2,7 +2,7 @@ import { useState, useContext, useEffect } from "react"
 import { Outlet, useLocation } from "react-router-dom";
 
 import { ExpandedContext } from "../../Context/ExpandedContext";
-import ClientPaymentButton from "../../design components/buttons/ClientPaymentButton";
+import ClientPaymentButton from "../../design-components/buttons/ClientPaymentButton";
 
 const paymentButtonLabels: Record<string, string> = {
   details: 'Payment',

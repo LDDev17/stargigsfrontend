@@ -1,7 +1,7 @@
 import { useContext, useState } from "react";
 
 import { ExpandedContext } from "../../Context/ExpandedContext";
-import GigsButtons from "../../design components/buttons/GigsButtons";
+import GigsButtons from "../../design-components/buttons/GigsButtons";
 import PerformerPaymentContent from "./PerformerPaymentContent";
 
 const buttonIds: string[] = [

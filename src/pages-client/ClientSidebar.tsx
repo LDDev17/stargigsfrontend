@@ -2,12 +2,12 @@
 import { NavLink, Link } from 'react-router-dom';
 import { useState, useContext } from 'react';
 
-import NotificationsButton from '../design components/buttons/NotificationsButton';
+import NotificationsButton from '../design-components/buttons/NotificationsButton';
 import { ExpandedContext } from '../Context/ExpandedContext';
 
 import full_logo from '../assets/logos/logo_md_orange.png';
 import star_logo from '../assets/logos/orange_white_circle_only.png';
-import ClientIcon from '../design components/ClientIcon';
+import ClientIcon from '../design-components/ClientIcon';
 import arrow from '../assets/icons/arrow-left.png';
 
 import Calendar from '../assets/svgs/calendar.svg?react';
@@ -43,20 +43,20 @@ const ClientSidebar = () => {
     profileNotifications: 0,
   })
 
-  
+
   const navStyle = 'flex justify-between items-center hover:text-primary text-xs py-2 -mx-4 pl-4';
   const leftDivStyle = 'flex justify-start items-center space-x-2'
 
   return (
 
-    <nav className={` ${context.isExpanded ? 'w-50': 'w-24'} bg-white h-screen z-30 py-4 
+    <nav className={` ${context.isExpanded ? 'w-50' : 'w-24'} bg-white h-screen z-30 py-4 
       fixed flex flex-col justify-between px-4 border-r-2 border-gray-200 font-inter`}
     >
       <div className='flex justify-start pb-4 flex-col'>
-        <Link to='/' className={`flex justify-center border-b-2 border-gray-200 ${context.isExpanded? 'pb-5' : 'pb-3'}`}>
+        <Link to='/' className={`flex justify-center border-b-2 border-gray-200 ${context.isExpanded ? 'pb-5' : 'pb-3'}`}>
           <img src={` ${context.isExpanded ? `${full_logo}` : `${star_logo}`}`} alt="Star Gigs logo" />
         </Link>
-        
+
         <ClientIcon />
 
         {/* Expand Button */}
@@ -65,35 +65,33 @@ const ClientSidebar = () => {
             className={`${!context.isExpanded && "rotate-180"} size-6 -mt-2 cursor-pointer border-transparent border-0 rounded-md`}
             onClick={() => setIsExpanded(!context.isExpanded)}
           >
-            <img src={arrow} alt=""/>
+            <img src={arrow} alt="" />
           </button>
         </div>
-        
+
         <main className={`flex flex-col space-y-1 -mt-2 ${!context.isExpanded ? 'justify-center' : ''}`}>
           <p className={`text-text_primary text-xs ${!context.isExpanded ? 'text-center' : ''}`}>Main</p>
-          
+
           {/* Main Dashboard Links */}
           <div className='flex flex-col justify-around text-text_primary'>
-            
+
             {/* Dashboard */}
             <NavLink
               to='/clientDashboard/main'
-              className={({isActive}) =>
-                `flex ${context.isExpanded ? 'justify-start' : 'justify-center'} items-center space-x-2 -mx-4 pl-4 py-2 text-text_primary text-xs hover:text-clientPurple ${
-                  isActive ? 'bg-clientBg' : 'bg-white'
+              className={({ isActive }) =>
+                `flex ${context.isExpanded ? 'justify-start' : 'justify-center'} items-center space-x-2 -mx-4 pl-4 py-2 text-text_primary text-xs hover:text-clientPurple ${isActive ? 'bg-clientBg' : 'bg-white'
                 }`
               }
             >
-                <Home />
-                <span className={`${!context.isExpanded && 'hidden'}`}>Dashboard</span>
+              <Home />
+              <span className={`${!context.isExpanded && 'hidden'}`}>Dashboard</span>
             </NavLink>
 
             {/* Events */}
             <NavLink
               to='/clientDashboard/events'
-              className={({isActive}) =>
-                `${navStyle} ${context.isExpanded ? 'justify-between pr-2' : clientNotifications.eventNotifications ? 'justify-end pr-2' : 'justify-center'} ${
-                  isActive ? 'bg-clientBg' : 'bg-white'
+              className={({ isActive }) =>
+                `${navStyle} ${context.isExpanded ? 'justify-between pr-2' : clientNotifications.eventNotifications ? 'justify-end pr-2' : 'justify-center'} ${isActive ? 'bg-clientBg' : 'bg-white'
                 }`
               }
             >
@@ -110,9 +108,8 @@ const ClientSidebar = () => {
             {/* Messages */}
             <NavLink
               to='/clientDashboard/messages'
-              className={({isActive}) =>
-                `${navStyle} ${context.isExpanded ? 'justify-between pr-2' : clientNotifications.messageNotifications ? 'justify-end pr-2' : 'justify-center'} ${
-                  isActive ? 'bg-clientBg' : 'bg-white'
+              className={({ isActive }) =>
+                `${navStyle} ${context.isExpanded ? 'justify-between pr-2' : clientNotifications.messageNotifications ? 'justify-end pr-2' : 'justify-center'} ${isActive ? 'bg-clientBg' : 'bg-white'
                 }`
               }
             >
@@ -129,9 +126,8 @@ const ClientSidebar = () => {
             {/* Calendar */}
             <NavLink
               to='/clientDashboard/calendar'
-              className={({isActive}) =>
-                `${navStyle} ${context.isExpanded ? 'justify-between pr-2' : clientNotifications.calendarNotifications ? 'justify-end pr-2' : 'justify-center'} ${
-                  isActive ? 'bg-clientBg' : 'bg-white'
+              className={({ isActive }) =>
+                `${navStyle} ${context.isExpanded ? 'justify-between pr-2' : clientNotifications.calendarNotifications ? 'justify-end pr-2' : 'justify-center'} ${isActive ? 'bg-clientBg' : 'bg-white'
                 }`
               }
             >
@@ -148,9 +144,8 @@ const ClientSidebar = () => {
             {/* Payments */}
             <NavLink
               to='/clientDashboard/payment'
-              className={({isActive}) =>
-                `${navStyle} ${context.isExpanded ? 'justify-between pr-2' : clientNotifications.paymentNotifications ? 'justify-end space-x-2 pr-2' : 'justify-center'} ${
-                  isActive ? 'bg-clientBg' : 'bg-white'
+              className={({ isActive }) =>
+                `${navStyle} ${context.isExpanded ? 'justify-between pr-2' : clientNotifications.paymentNotifications ? 'justify-end space-x-2 pr-2' : 'justify-center'} ${isActive ? 'bg-clientBg' : 'bg-white'
                 }`
               }
             >
@@ -167,9 +162,8 @@ const ClientSidebar = () => {
             {/* Profile */}
             <NavLink
               to='/profile'
-              className={({isActive}) =>
-                `${navStyle} ${context.isExpanded ? 'justify-between pr-2' : clientNotifications.profileNotifications ? 'justify-end pr-2' : 'justify-center'} ${
-                  isActive ? 'bg-clientBg' : 'bg-white'
+              className={({ isActive }) =>
+                `${navStyle} ${context.isExpanded ? 'justify-between pr-2' : clientNotifications.profileNotifications ? 'justify-end pr-2' : 'justify-center'} ${isActive ? 'bg-clientBg' : 'bg-white'
                 }`
               }
             >
@@ -187,18 +181,16 @@ const ClientSidebar = () => {
 
         {/* Settings Div */}
         <div className='flex flex-col space-y-2 mt-2 pt-2 border-t-2 border-gray-200'>
-          <p className={`text-text_primary text-xs text-center ${
-            context.isExpanded ? 'text-start' : 'text-center'}`}
+          <p className={`text-text_primary text-xs text-center ${context.isExpanded ? 'text-start' : 'text-center'}`}
           >
             Settings
           </p>
           <div className='flex flex-col space-y-2'>
             <NavLink
               to='/Settings'
-              className={({isActive}) =>
+              className={({ isActive }) =>
                 `flex items-center space-x-2 text-text_primary text-xs hover:text-clientPurple 
-                ${context.isExpanded ? 'justify-start pr-2' : 'justify-center'} ${
-                  isActive ? 'bg-clientBg' : 'bg-white'
+                ${context.isExpanded ? 'justify-start pr-2' : 'justify-center'} ${isActive ? 'bg-clientBg' : 'bg-white'
                 }`
               }
             >
@@ -211,16 +203,15 @@ const ClientSidebar = () => {
       <footer>
         <NavLink
           to='/help'
-          className={({isActive}) => 
-            `flex ${context ? 'justify-start' : 'justify-center'} items-center space-x-2 text-text_primary text-xs hover:text-clientPurple ${
-              isActive ? 'bg-clientBg' : 'bg-white'
+          className={({ isActive }) =>
+            `flex ${context ? 'justify-start' : 'justify-center'} items-center space-x-2 text-text_primary text-xs hover:text-clientPurple ${isActive ? 'bg-clientBg' : 'bg-white'
             }`
           }
         >
           <QuestionMark />
           <span className={`${!context && 'hidden'}`}>Help</span>
         </NavLink>
-      </footer>       
+      </footer>
     </nav>
   )
 }

@@ -2,8 +2,8 @@ import { useState, FormEvent } from "react";
 
 import { CodeInput } from "./CodeInput";
 import { Timer } from "./Timer";
-import PerformerIcon from "../design components/PerformerIcon";
-import BackButton from "../design components/buttons/BackButton";
+import PerformerIcon from "../design-components/PerformerIcon";
+import BackButton from "../design-components/buttons/BackButton";
 import { autoSignIn, confirmSignUp } from "aws-amplify/auth";
 import SignUpStepType from "../types/SignUpStepType";
 
@@ -56,10 +56,10 @@ export default function VerificationPagePerformer({ userEmail, setSignUpStep }: 
     }
   }
 
- 
+
 
   return (
-    <section 
+    <section
       className="flex flex-col space-y-12 md:space-y-18 lg:space-y-24 p-10  
       font-inter justify-center items-center"
     >
@@ -67,7 +67,7 @@ export default function VerificationPagePerformer({ userEmail, setSignUpStep }: 
         <BackButton />
       </header>
 
-      <form 
+      <form
         className="mx-auto max-w-[388px]"
         onSubmit={handleConfirmSignUp}
       >
@@ -82,7 +82,7 @@ export default function VerificationPagePerformer({ userEmail, setSignUpStep }: 
             </p>
           </header>
 
-          <CodeInput 
+          <CodeInput
             // onComplete={handleSubmit} 
             code={code}
             setCode={setCode}
@@ -92,9 +92,9 @@ export default function VerificationPagePerformer({ userEmail, setSignUpStep }: 
             type="submit"
             className="text-white rounded-xl py-3"
             disabled={isLoading}
-            style={{ backgroundColor: "black"}}
+            style={{ backgroundColor: "black" }}
           >
-            {isLoading? 'Verifying...' : 'Submit'}
+            {isLoading ? 'Verifying...' : 'Submit'}
           </button>
 
           <div className="flex gap-2.5 justify-center text-base text-black text-opacity-70">

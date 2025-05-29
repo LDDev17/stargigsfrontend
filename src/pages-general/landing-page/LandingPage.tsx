@@ -2,7 +2,7 @@ import Navbar from "../general-components/Navbar";
 import LandingMain from "./LandingMain";
 import LandingTalentMeets from "./LandingTalentMeets";
 import HeroSection from "./HeroSection";
-import Carousel from "../../Carousel/Carousel"; // Import the Carousel component
+import Carousel from "./Carousel/Carousel"; // Import the Carousel component
 import Footer2 from '../general-components/Footer2';
 
 const LandingPage = () => {

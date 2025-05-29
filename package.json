@@ -34,11 +34,9 @@
     "react-router": "^7.4.0",
     "react-router-dom": "^7.5.0",
     "react-select": "^5.10.1",
-    "states-us": "^1.1.1",
     "styled-components": "^6.1.17",
     "tailwind-clip-path": "^1.0.0",
     "tailwindcss": "^4.1.2",
-    "usa-states": "^0.0.6",
     "vite-plugin-svgr": "^4.3.0"
   },
   "devDependencies": {

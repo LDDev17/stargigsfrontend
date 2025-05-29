@@ -5,7 +5,7 @@ import { useForm } from "react-hook-form";
 import { DateTime } from "luxon";
 
 import PerformanceAddType from "../../types/PerformanceAddType";
-import OrangeButton from "../../design components/buttons/OrangeButton";
+import OrangeButton from "../../design-components/buttons/OrangeButton";
 import SampleGigTypeData from "../../SampleData/GigTypedata";
 import SelectOptionType from "../../types/SelectedOptionType";
 import locationData from "./locationData";
@@ -98,11 +98,11 @@ const PerformanceAdd = () => {
           <OrangeButton
             LinkText="Save Performance"
             pageUrl=''
-            // TODO: add onClick to save Performance as is
+          // TODO: add onClick to save Performance as is
           />
         </div>
       </header>
-      <form 
+      <form
         className="grid grid-rows-6 grid-cols-2"
         onSubmit={handleSubmit(handlePerformanceSubmit)}
       >
@@ -142,7 +142,7 @@ const PerformanceAdd = () => {
         {/* Location Select */}
         <div>
           <label htmlFor="location" className="font-lato text-sm">Location</label>
-          <Select 
+          <Select
             id="location"
             {...register('location')}
             styles={customStyles}
@@ -180,8 +180,8 @@ const PerformanceAdd = () => {
         {/* Title Input */}
         <div>
           <label htmlFor="title">Title</label>
-          <input 
-            type="text" 
+          <input
+            type="text"
             id="title"
             defaultValue='Enter performance title'
             ref={titleRef}
@@ -191,8 +191,8 @@ const PerformanceAdd = () => {
         {/* Description Input */}
         <div>
           <label htmlFor="description">Description</label>
-          <textarea 
-            name="description" 
+          <textarea
+            name="description"
             id="description"
             defaultValue='Tell us about your performance'
             ref={descriptionRef}

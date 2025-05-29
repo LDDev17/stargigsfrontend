@@ -6,7 +6,7 @@ import TableFooter from "../performer-gigs/TableFooter";
 import PaymentTableRow from "./PaymentTableRow";
 import PerformerPayouts from "./PerformerPayouts";
 import PerformerTaxes from "./PerformerTaxes";
-import TimePeriodButtonUp from "../../design components/buttons/TimePeriodButtonUp";
+import TimePeriodButtonUp from "../../design-components/buttons/TimePeriodButtonUp";
 
 import Sort from '../../assets/svgs/sort.svg?react';
 
@@ -15,7 +15,7 @@ interface PerformerPaymentContentProps {
 };
 
 const PerformerPaymentContent = ({ activeTab }: PerformerPaymentContentProps) => {
-  const [tableData, setTableData] = useState<PaymentProps[]>(samplePaymentData);
+  const [tableData, setTableData] = useState<PaymentProps[]>([]);
   const [displayData, setDisplayData] = useState<PaymentProps[]>([]);
   const [currentPage, setCurrentPage] = useState<number>(1);
   const [timePeriod, setTimePeriod] = useState<string>('This Month');
@@ -39,7 +39,9 @@ const PerformerPaymentContent = ({ activeTab }: PerformerPaymentContentProps) =>
 
   let dropDownRef = useRef<HTMLDivElement>(null);
 
-
+  useEffect(() => {
+    setTableData(samplePaymentData)
+  }, []);
 
   const thStyling: string = 'font-normal text-left whitespace-nowrap  gap-1';
 

@@ -1,15 +1,15 @@
 import { useState, useEffect, useRef } from "react";
 
-import InvoiceHistoryRow from "../design components/InvoiceHistoryRow";
-import InvoiceRowProps from "../types/InvoiceHistoryType";
-import SampleInvoiceData from "../SampleData/InvoiceData";
-import TimePeriodButtonUp from "../design components/buttons/TimePeriodButtonUp";
+import InvoiceHistoryRow from "./InvoiceHistoryRow";
+import InvoiceRowProps from "../../types/InvoiceHistoryType";
+import SampleInvoiceData from "../../SampleData/InvoiceData";
+import TimePeriodButtonUp from "../../design-components/buttons/TimePeriodButtonUp";
 
 
 const CPayHistory = () => {
   const [invoiceTableData, setInvoiceTableData] = useState<InvoiceRowProps[]>([]);
   const [timePeriod, setTimePeriod] = useState<string>('This Month');
-  
+
 
   let dropDownRef = useRef<null>(null);
 
@@ -22,7 +22,7 @@ const CPayHistory = () => {
     <div className="font-inter">
       <header className="flex justify-between">
         <p className="font-bold text-md text-[#111927] py-4">Invoice History</p>
-        <TimePeriodButtonUp 
+        <TimePeriodButtonUp
           dropDownRef={dropDownRef}
           timePeriod={timePeriod}
           setTimePeriod={setTimePeriod}

@@ -1,7 +1,7 @@
 import { Outlet } from "react-router-dom";
 
-import ClientSidebar from "../layout components/ClientSidebar";
-import ClientNavbar from "../layout components/ClientNavbar";
+import ClientSidebar from "./ClientSidebar";
+import ClientNavbar from "./ClientNavbar";
 import DashboardBg from '../assets/photos/dashboard_bg.jpg';
 import ExpandedProvider from "../Context/ExpandedProvider";
 

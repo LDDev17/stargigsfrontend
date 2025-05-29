@@ -1,12 +1,12 @@
 import { NavLink } from 'react-router';
 import { useState } from 'react';
 
-import TextButton from '../design components/buttons/TextButton';
-import NotificationsButton from '../design components/buttons/NotificationsButton';
+import TextButton from '../design-components/buttons/TextButton';
+import NotificationsButton from '../design-components/buttons/NotificationsButton';
 
 import full_logo from '../assets/logos/logo_md_orange.png';
 import star_logo from '../assets/logos/orange_white_circle_only.png';
-import ClientIcon from '../design components/ClientIcon';
+import ClientIcon from '../design-components/ClientIcon';
 import home_icon from '../assets/icons/home_icon.png';
 import HomeOrange from '../assets/icons/HomeOrange.png';
 import lightbulb from '../assets/icons/Tips_updates.png';
@@ -37,7 +37,7 @@ interface SideBarProps {
   handleExpand: () => void,
 }
 
-const Sidebar: React.FC<SideBarProps> = ({expanded, handleExpand}) => {
+const Sidebar: React.FC<SideBarProps> = ({ expanded, handleExpand }) => {
   // const [isExpanded, setIsExpanded] = useState(true);
   const [clientNotifications, setClientNotifications] = useState<NotificationProps>({
     gigNotifications: 1,
@@ -69,213 +69,213 @@ const Sidebar: React.FC<SideBarProps> = ({expanded, handleExpand}) => {
   return (
     <>
       {expanded ? (
-      <nav className='flex grow-none w-[200px] py-4 h-screen pl-4 z-30 bg-white'>
-        <div className='grid grid-cols-5 w-full h-full gap-2 border-r-2 border-gray-200'>
-          <NavLink to='/' className='col-span-5 pl-2 mr-2 h-12 border-b-2 border-[#F6F6F6]'>
-            <img src={full_logo} alt="Star Gigs logo"/>
-          </NavLink>
-          <div className='row-start-2 max-h-8'>
-            <ClientIcon />
-          </div>
-          <button 
-            className='relative -right-33 top-8 size-6'
-            onClick={() => handleExpand()}
-          >
-            <img src={arrow} alt="arrow for expanding menu" />
-          </button>
-          
-          <div className='row-start-3 col-span-full grid grid-cols-1 gap-2'>
-            <p className='text-text_primary text-xs'>Main</p>
-            <div className='text-text_primary grid grid-rows-6 grid-columns-5 gap-4'>
-              <div 
-                className={`row-start-1 col-span-full bg-${bgColor}`}
-                onClick={changeBg}
-              >
-                <NavLink
-                  to='/Dashboard'
-                  className={navStyle}
-                  onMouseOver={() => setDashboardHover(true)}
-                  onMouseOut={() => setDashboardHover(false)}
-                  
+        <nav className='flex grow-none w-[200px] py-4 h-screen pl-4 z-30 bg-white'>
+          <div className='grid grid-cols-5 w-full h-full gap-2 border-r-2 border-gray-200'>
+            <NavLink to='/' className='col-span-5 pl-2 mr-2 h-12 border-b-2 border-[#F6F6F6]'>
+              <img src={full_logo} alt="Star Gigs logo" />
+            </NavLink>
+            <div className='row-start-2 max-h-8'>
+              <ClientIcon />
+            </div>
+            <button
+              className='relative -right-33 top-8 size-6'
+              onClick={() => handleExpand()}
+            >
+              <img src={arrow} alt="arrow for expanding menu" />
+            </button>
+
+            <div className='row-start-3 col-span-full grid grid-cols-1 gap-2'>
+              <p className='text-text_primary text-xs'>Main</p>
+              <div className='text-text_primary grid grid-rows-6 grid-columns-5 gap-4'>
+                <div
+                  className={`row-start-1 col-span-full bg-${bgColor}`}
+                  onClick={changeBg}
                 >
-                  {dashboardHover? (
-                    <img src={HomeOrange} alt='orange home icon' />
-                  ) : (
-                    <img src={home_icon} alt="home icon" />
-                  )}
-                  
-                  <p>Dashboard</p>
-                </NavLink>
-              </div>
-              <div className='w-full col-span-full row-start-2 flex justify-between'>
-                <div className=''>
                   <NavLink
-                    to='/Gigs'
+                    to='/Dashboard'
                     className={navStyle}
-                    onMouseOver={() => setGigsHover(true)}
-                    onMouseOut={() => setGigsHover(false)}
-                    onClick={() => changeBg}
+                    onMouseOver={() => setDashboardHover(true)}
+                    onMouseOut={() => setDashboardHover(false)}
+
                   >
-                    {gigsHover?
-                      (
-                        <img src={GigsOrange} alt='orange lightbulb icon' />
-                      ) : (
-                        <img src={lightbulb} alt="lightbulb icon" />
-                      )
-                    }
-                    <p>Gigs</p>
+                    {dashboardHover ? (
+                      <img src={HomeOrange} alt='orange home icon' />
+                    ) : (
+                      <img src={home_icon} alt="home icon" />
+                    )}
+
+                    <p>Dashboard</p>
                   </NavLink>
                 </div>
-                <div className='row-start-2 col-start-5'>
+                <div className='w-full col-span-full row-start-2 flex justify-between'>
+                  <div className=''>
+                    <NavLink
+                      to='/Gigs'
+                      className={navStyle}
+                      onMouseOver={() => setGigsHover(true)}
+                      onMouseOut={() => setGigsHover(false)}
+                      onClick={() => changeBg}
+                    >
+                      {gigsHover ?
+                        (
+                          <img src={GigsOrange} alt='orange lightbulb icon' />
+                        ) : (
+                          <img src={lightbulb} alt="lightbulb icon" />
+                        )
+                      }
+                      <p>Gigs</p>
+                    </NavLink>
+                  </div>
+                  <div className='row-start-2 col-start-5'>
+                    <NotificationsButton
+                      notificationNumber={clientNotifications.gigNotifications}
+                    />
+                  </div>
+                </div>
+                <div className='row-start-3 col-span-3'>
+                  <NavLink
+                    to='/Messages'
+                    className={navStyle}
+                    onMouseOver={() => setMessagesHover(true)}
+                    onMouseOut={() => setMessagesHover(false)}
+                    onClick={() => changeBg}
+                  >
+                    {messagesHover ? (
+                      <img src={MessagesOrange} alt="orange messages icon" />
+                    ) : (
+                      <img src={messages} alt="messages icon" />
+                    )}
+                    <p>Messages</p>
+                  </NavLink>
+                </div>
+                <div className='row-start-3 col-start-5'>
                   <NotificationsButton
-                    notificationNumber={clientNotifications.gigNotifications}
+                    notificationNumber={clientNotifications.messageNotifications}
+                  />
+                </div>
+                <div className='row-start-4 col-span-3'>
+                  <NavLink
+                    to='/Calendar'
+                    className={navStyle}
+                    onMouseOver={() => setCalendarHover(true)}
+                    onMouseOut={() => setCalendarHover(false)}
+                    onClick={() => changeBg}
+                  >
+                    {calendarHover ? (
+                      <img src={CalendarOrange} alt="orange calendar icon" />
+                    ) : (
+                      <img src={calendar} alt="calendar icon" />
+                    )}
+                    <p>Calendar</p>
+                  </NavLink>
+                </div>
+                <div className='row-start-4 col-start-5'>
+                  <NotificationsButton
+                    notificationNumber={clientNotifications.calendarNotifications}
+                  />
+                </div>
+                <div className='row-start-5 col-span-3'>
+                  <NavLink
+                    to='/Payments'
+                    className={navStyle}
+                    onMouseOver={() => setPaymentsHover(true)}
+                    onMouseOut={() => setPaymentsHover(false)}
+                    onClick={() => changeBg}
+                  >
+                    {paymentsHover ? (
+                      <img src={DollarOrange} alt="orange dollar icon" />
+                    ) : (
+                      <img src={dollar_sign} alt="dollar sign icon" />
+                    )}
+                    <p>Payments</p>
+                  </NavLink>
+                </div>
+                <div className='row-start-5 col-start-5'>
+                  <NotificationsButton
+                    notificationNumber={clientNotifications.paymentNotifications}
+                  />
+                </div>
+                <div className='row-start-6 col-span-3'>
+                  <NavLink
+                    to='/Profile'
+                    className={navStyle}
+                    onMouseOver={() => setProfileHover(true)}
+                    onMouseOut={() => setProfileHover(false)}
+                    onClick={() => changeBg}
+                  >
+                    {profileHover ?
+                      (
+                        <img src={ProfileOrange} alt="orange profile icon" />
+                      ) : (
+                        <img src={profile} alt="profile icon" />
+                      )
+                    }
+
+                    <p>Profile</p>
+                  </NavLink>
+                </div>
+                <div className='row-start-6 col-start-5'>
+                  <NotificationsButton
+                    notificationNumber={clientNotifications.profileNotifications}
                   />
                 </div>
               </div>
-              <div className='row-start-3 col-span-3'>
-                <NavLink
-                  to='/Messages'
-                  className={navStyle}
-                  onMouseOver={() => setMessagesHover(true)}
-                  onMouseOut={() => setMessagesHover(false)}
-                  onClick={() => changeBg}
-                >
-                  {messagesHover? (
-                    <img src={MessagesOrange} alt="orange messages icon" />
-                  ) : (
-                    <img src={messages} alt="messages icon" />
-                  )}
-                  <p>Messages</p>
+            </div>
+            <div className='row-start-4 row-end-10 col-span-full flex flex-col justify-start mr-2 border-t-2 border-[#F6F6F6]'>
+              <p className='text-text_primary text-xs my-4'>Settings</p>
+              <div className='flex flex-col w-full space-y-2'>
+                <div>
+                  <NavLink
+                    to='/Settings'
+                    className={navStyle}
+                    onMouseOver={() => setSettingsHover(true)}
+                    onMouseOut={() => setSettingsHover(false)}
+                    onClick={() => changeBg}
+                  >
+                    {settingsHover ? (
+                      <img src={GearOrange} alt="orange gear icon" />
+                    ) : (
+                      <img src={gear} alt="gear icon" />
+                    )}
+                    <p>Settings</p>
+                  </NavLink>
+                </div>
+                {/* only appears if logged in as a Performer */}
+                <NavLink to='/' className='row-start-3 col-span-full'>
+                  <TextButton
+                    buttonText='Switch to Performer View'
+                    textSize='text-xs'
+                    textColor='primary'
+                  />
                 </NavLink>
-              </div>
-              <div className='row-start-3 col-start-5'>
-                <NotificationsButton
-                  notificationNumber={clientNotifications.messageNotifications}
-                />
-              </div>
-              <div className='row-start-4 col-span-3'>
-                <NavLink
-                  to='/Calendar'
-                  className={navStyle}
-                  onMouseOver={() => setCalendarHover(true)}
-                  onMouseOut={() => setCalendarHover(false)}
-                  onClick={() => changeBg}
-                >
-                  {calendarHover? (
-                    <img src={CalendarOrange} alt="orange calendar icon" />
-                  ) : (
-                    <img src={calendar} alt="calendar icon" />
-                  )}
-                  <p>Calendar</p>
-                </NavLink>
-              </div>
-              <div className='row-start-4 col-start-5'>
-                <NotificationsButton
-                  notificationNumber={clientNotifications.calendarNotifications}
-                />
-              </div>
-              <div className='row-start-5 col-span-3'>
-                <NavLink
-                  to='/Payments'
-                  className={navStyle}
-                  onMouseOver={() => setPaymentsHover(true)}
-                  onMouseOut={() => setPaymentsHover(false)}
-                  onClick={() => changeBg}
-                >
-                  {paymentsHover? (
-                    <img src={DollarOrange} alt="orange dollar icon" />
-                  ) : (
-                    <img src={dollar_sign} alt="dollar sign icon" />
-                  )}
-                  <p>Payments</p>
-                </NavLink>
-              </div>
-              <div className='row-start-5 col-start-5'>
-                <NotificationsButton
-                  notificationNumber={clientNotifications.paymentNotifications}
-                />
-              </div>
-              <div className='row-start-6 col-span-3'>
-                <NavLink
-                  to='/Profile'
-                  className={navStyle}
-                  onMouseOver={() => setProfileHover(true)}
-                  onMouseOut={() => setProfileHover(false)}
-                  onClick={() => changeBg}
-                >
-                  {profileHover?
-                  (
-                    <img src={ProfileOrange} alt="orange profile icon" />
-                  ) : (
-                    <img src={profile} alt="profile icon" />
-                  )
-                  }
-                  
-                  <p>Profile</p>
-                </NavLink>
-              </div>
-              <div className='row-start-6 col-start-5'>
-                <NotificationsButton
-                  notificationNumber={clientNotifications.profileNotifications}
-                />
               </div>
             </div>
-          </div>
-          <div className='row-start-4 row-end-10 col-span-full flex flex-col justify-start mr-2 border-t-2 border-[#F6F6F6]'>
-            <p className='text-text_primary text-xs my-4'>Settings</p>
-            <div className='flex flex-col w-full space-y-2'>
-              <div>
-                <NavLink
-                  to='/Settings'
-                  className={navStyle}
-                  onMouseOver={() => setSettingsHover(true)}
-                  onMouseOut={() => setSettingsHover(false)}
-                  onClick={() => changeBg}
-                >
-                  {settingsHover? (
-                    <img src={GearOrange} alt="orange gear icon" />
-                  ) : (
-                    <img src={gear} alt="gear icon" />
-                  )}
-                  <p>Settings</p>
-                </NavLink>
-              </div>
-              {/* only appears if logged in as a Performer */}
-              <NavLink to='/' className='row-start-3 col-span-full'>
-                <TextButton
-                  buttonText='Switch to Performer View'
-                  textSize='text-xs'
-                  textColor='primary'
-                  />
+            <div className='row-start-11 col-start-1 col-span-3'>
+              <NavLink
+                to='/Help'
+                className={navStyle}
+                onClick={() => changeBg}
+              >
+                <img src={question_mark} alt="question mark icon" />
+                <p>Help</p>
               </NavLink>
             </div>
-          </div> 
-          <div className='row-start-11 col-start-1 col-span-3'>
-            <NavLink
-              to='/Help'
-              className={navStyle}
-              onClick={() => changeBg}
-            >
-              <img src={question_mark} alt="question mark icon" />
-              <p>Help</p>
-            </NavLink>
           </div>
-        </div> 
         </nav>
       ) : (
         // collapsed sidebar
         <nav className='fixed top-0 left-0 w-[80px] h-screen z-30 bg-white'>
           {/* collapse/expand button */}
-          <button 
+          <button
             className='relative -right-17 top-34 size-6 rotate-180'
             onClick={handleExpand}
           >
-            <img src={arrow} alt="arrow for expanding menu"/>
+            <img src={arrow} alt="arrow for expanding menu" />
           </button>
           {/* grid for whole sidebar */}
           <div className='grid grid-cols-3 grid-rows-auto h-full gap-2 px-2 border-r-2 border-gray-200'>
             <div className='col-span-full flex justify-center items-center h-10 pb-4 mt-2 border-b-2 border-[#F6F6F6]'>
-              <img src={star_logo} alt="Star logo" className='h-8'/>
+              <img src={star_logo} alt="Star logo" className='h-8' />
             </div>
             <div className='row-start-2 col-span-full h-6'>
               <ClientIcon />
@@ -367,7 +367,7 @@ const Sidebar: React.FC<SideBarProps> = ({expanded, handleExpand}) => {
                   className={`${navStyle} justify-center`}
                 >
                   <img src={gear} alt="gear icon" />
-                  
+
                 </NavLink>
                 {/* only appears if logged in as a Performer */}
                 <NavLink to='/' className='row-start-3 col-span-full px-4 h-8 flex items-center'>
@@ -385,7 +385,7 @@ const Sidebar: React.FC<SideBarProps> = ({expanded, handleExpand}) => {
                 className={`${navStyle} justify-center`}
               >
                 <img src={question_mark} alt="question mark icon" />
-                
+
               </NavLink>
             </div>
           </div>

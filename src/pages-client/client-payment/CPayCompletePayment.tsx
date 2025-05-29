@@ -1,7 +1,7 @@
 import { useForm } from "react-hook-form";
 
-import Visa from '../assets/logos/visa.jpg';
-import MasterCard from '../assets/logos/mastercard.jpg';
+import Visa from '../../assets/logos/visa.jpg';
+import MasterCard from '../../assets/logos/mastercard.jpg';
 
 const CPayCompletePayment = () => {
   const { register, handleSubmit } = useForm({});

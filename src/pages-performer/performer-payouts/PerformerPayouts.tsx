@@ -1,11 +1,15 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import SamplePayoutsData from "../../SampleData/PayoutsData";
 import PayoutProps from "../../types/PayoutsType";
 import PayoutsRow from "./PayoutsRow";
 
 const PerformerPayouts = () => {
-  const [payoutsData, setPayoutsData] = useState<PayoutProps[]>(SamplePayoutsData);
+  const [payoutsData, setPayoutsData] = useState<PayoutProps[]>([]);
+
+  useEffect(() => {
+    setPayoutsData(SamplePayoutsData)
+  }, [])
 
   return (
     <div className="flex flex-col justify-start space-y-2 w-2/3">

@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 
 import InvoiceRowProps from "../../types/InvoiceHistoryType";
-import Caret from '../assets/svgs/caret.svg?react';
+import Caret from '../../assets/svgs/caret.svg?react';
 
 const InvoiceHistoryRow = (
   { 

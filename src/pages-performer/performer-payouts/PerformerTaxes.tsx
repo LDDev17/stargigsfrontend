@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-import TaxesButton from "../../design components/buttons/TaxesButton";
+import TaxesButton from "../../design-components/buttons/TaxesButton";
 import PayoutsRow from "./PayoutsRow";
 import SamplePayoutsData from "../../SampleData/PayoutsData";
 import PayoutProps from "../../types/PayoutsType";
