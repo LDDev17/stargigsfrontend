@@ -14,7 +14,7 @@ const SearchBar = () => {
   const [isWhenActive, setIsWhenActive] = useState<boolean>(false);
   const [whereInput, setWhereInput] = useState<string>('');
 
-  const handleClick = (e: React.MouseEvent) => {
+  const handleClick = () => {
     console.log('SEARCHBAR CLICKED: EXPANDING')
     setIsSearchActive(true);
   };

@@ -1,7 +1,7 @@
 import CreditCard from '../../assets/svgs/credit_card.svg?react';
 import Bank from '../../assets/svgs/bank.svg?react';
 import PayoutProps from '../../types/PayoutsType';
-import EditButton from '../../design components/buttons/EditButton';
+import EditButton from '../../design-components/buttons/EditButton';
 
 interface PayoutRowType {
   props: PayoutProps;
@@ -27,7 +27,7 @@ const PayoutsRow = ({ props }: PayoutRowType) => {
         </div>
       </div>
       <div>
-          <EditButton />
+        <EditButton />
       </div>
     </div>
   )

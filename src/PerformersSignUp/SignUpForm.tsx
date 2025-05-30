@@ -1,11 +1,11 @@
 import type { FormEvent } from "react";
 import { signUp } from 'aws-amplify/auth';
 
-import PerformerIcon from "../design components/PerformerIcon";
+import PerformerIcon from "../design-components/PerformerIcon";
 import { InputField } from "./InputField";
 // import { SocialLoginButton } from "./SocialLoginButton";
-import BackButton from "../design components/buttons/BackButton";
-import TextButton from "../design components/buttons/TextButton";
+import BackButton from "../design-components/buttons/BackButton";
+import TextButton from "../design-components/buttons/TextButton";
 import SignUpStepType from "../types/SignUpStepType";
 
 
@@ -80,8 +80,8 @@ export function PerformerSignUpForm({ setUserEmail, setSignUpStep }: PerformerSi
         <form onSubmit={handleSignUp} className="flex flex-col gap-8">
           <header className="flex flex-col gap-5">
             <h2 className="text-4xl font-bold leading-[52.2px]">
-              Join 
-              <span 
+              Join
+              <span
                 className="bg-clip-text bg-gradient-to-r from-light_orange 
                   to-primary text-transparent ml-2"
               >
@@ -117,7 +117,7 @@ export function PerformerSignUpForm({ setUserEmail, setSignUpStep }: PerformerSi
             <button
               type="submit"
               className="text-white rounded-xl py-3"
-              style={{ backgroundColor: "black"}}
+              style={{ backgroundColor: "black" }}
             >
               Sign up
             </button>
@@ -125,9 +125,9 @@ export function PerformerSignUpForm({ setUserEmail, setSignUpStep }: PerformerSi
 
           <div className="flex gap-4 items-center mx-0 my-6">
             <div className="flex-1 h-px bg-zinc-300" />
-              <div className="text-base leading-7 text-slate-700">
-                Or Continue with
-              </div>
+            <div className="text-base leading-7 text-slate-700">
+              Or Continue with
+            </div>
             <div className="flex-1 h-px bg-zinc-300" />
           </div>
 
@@ -146,7 +146,7 @@ export function PerformerSignUpForm({ setUserEmail, setSignUpStep }: PerformerSi
           <footer className="mt-14 text-lg leading-7 text-center text-slate-700 inline-flex space-x-2">
             <p className="py-2.5">Already have an account? </p>
             {/* TODO: needs onClick to take the user to the SignInPage */}
-            <TextButton 
+            <TextButton
               buttonText="Login"
               textColor="text-primary"
               textHoverFrom="from-light_orange"

@@ -5,7 +5,7 @@ import UpcomingTableRow from "./UpcomingTableRow";
 import HistoryTableRow from "./HistoryTableRow";
 import TableFooter from "./TableFooter";
 import GigsTableType from "../../types/GigsTableType";
-import TimePeriodButtonUp from "../../design components/buttons/TimePeriodButtonUp";
+import TimePeriodButtonUp from "../../design-components/buttons/TimePeriodButtonUp";
 
 import Sort from '../../assets/svgs/sort.svg?react';
 
@@ -53,76 +53,76 @@ const PerformerGigsTable = ({ activeTab, filteredData }: PerformerGigsTableProps
         />
       </header>
       <table className="text-sm text-left border-separate border-spacing-y-3 bg-[#fbfbfb] text-text_secondary">
-      {activeTab === 'booking' ? 
-        (
-          <>
-            <thead>
-              <tr>
-                <th className={thStyling}>Event Name</th>
-                <th className={thStyling}>Event Manager</th>
-                <th className={thStyling}>Location</th>
-                <th className={thStyling}>Amount</th>
-                <th className={thStyling}>Date & Time  <button><Sort /></button></th>
-                <th className={thStyling}>Gig Type  <button><Sort /></button></th>
-                <th colSpan={3} className={`${thStyling} text-center`}>Action</th>
-              </tr>
-            </thead>
-            <tbody>
-              {displayData.map((Row, index) => (
-                <BookingTableRow key={index} props={Row} />
-              ))}
-            </tbody>
-          </>
-        ) : activeTab === 'upcoming' ? (
-              <>
-                <thead>
-                  <tr>
-                    <th className={thStyling}>Event Name</th>
-                    <th className={thStyling}>Event Manager</th>
-                    <th className={thStyling}>Location</th>
-                    <th className={thStyling}>Date & Time  <button><Sort /></button></th>
-                    <th className={thStyling}>Gig Type  <button><Sort /></button></th>
-                    <th className={thStyling}>Status  <button><Sort /></button></th>
-                    <th className={`${thStyling} text-center`} colSpan={2}>Action</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {displayData.map((Row, index) => (
-                    <UpcomingTableRow key={index} props={Row} />
-                  ))}
-                </tbody>
-              </>
-            ) : (
-              <>
-                <thead>
-                  <tr>
-                    <th className={thStyling}>Event Name</th>
-                    <th className={thStyling}>Event Manager</th>
-                    <th className={thStyling}>Location</th>
-                    <th className={thStyling}>Date & Time  <button><Sort /></button></th>
-                    <th className={thStyling}>Gig Type  <button><Sort /></button></th>
-                    <th className={thStyling}>Status  <button><Sort /></button></th>
-                    <th className={`${thStyling} text-center`} colSpan={2}>Action</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {displayData.map((Row, index) => (
-                    <HistoryTableRow key={index} props={Row} />
-                  ))}
-                </tbody>
-              </>
-            )
-          }
-          </table>
-      
+        {activeTab === 'booking' ?
+          (
+            <>
+              <thead>
+                <tr>
+                  <th className={thStyling}>Event Name</th>
+                  <th className={thStyling}>Event Manager</th>
+                  <th className={thStyling}>Location</th>
+                  <th className={thStyling}>Amount</th>
+                  <th className={thStyling}>Date & Time  <button><Sort /></button></th>
+                  <th className={thStyling}>Gig Type  <button><Sort /></button></th>
+                  <th colSpan={3} className={`${thStyling} text-center`}>Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                {displayData.map((Row, index) => (
+                  <BookingTableRow key={index} props={Row} />
+                ))}
+              </tbody>
+            </>
+          ) : activeTab === 'upcoming' ? (
+            <>
+              <thead>
+                <tr>
+                  <th className={thStyling}>Event Name</th>
+                  <th className={thStyling}>Event Manager</th>
+                  <th className={thStyling}>Location</th>
+                  <th className={thStyling}>Date & Time  <button><Sort /></button></th>
+                  <th className={thStyling}>Gig Type  <button><Sort /></button></th>
+                  <th className={thStyling}>Status  <button><Sort /></button></th>
+                  <th className={`${thStyling} text-center`} colSpan={2}>Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                {displayData.map((Row, index) => (
+                  <UpcomingTableRow key={index} props={Row} />
+                ))}
+              </tbody>
+            </>
+          ) : (
+            <>
+              <thead>
+                <tr>
+                  <th className={thStyling}>Event Name</th>
+                  <th className={thStyling}>Event Manager</th>
+                  <th className={thStyling}>Location</th>
+                  <th className={thStyling}>Date & Time  <button><Sort /></button></th>
+                  <th className={thStyling}>Gig Type  <button><Sort /></button></th>
+                  <th className={thStyling}>Status  <button><Sort /></button></th>
+                  <th className={`${thStyling} text-center`} colSpan={2}>Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                {displayData.map((Row, index) => (
+                  <HistoryTableRow key={index} props={Row} />
+                ))}
+              </tbody>
+            </>
+          )
+        }
+      </table>
+
       <footer className="py-4">
-          <TableFooter 
-            items_per_page={items_per_page}
-            tableData={filteredData}
-            displayData={displayData}
-            currentPage={currentPage}
-            setCurrentPage={setCurrentPage}
-          />
+        <TableFooter
+          items_per_page={items_per_page}
+          tableData={filteredData}
+          displayData={displayData}
+          currentPage={currentPage}
+          setCurrentPage={setCurrentPage}
+        />
       </footer>
     </div>
   )

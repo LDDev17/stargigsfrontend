@@ -3,7 +3,7 @@
 import { CalendarIcon } from "../Carousel/Icons1";
 import { RatingBadge } from "../Carousel/RatingBadge";
 import { TalentCardProps } from "../../../types/TalentCardProps";
-import './talentCard.css';
+import './talentcard.css';
 
 export const TalentCard: React.FC<TalentCardProps> = ({
   image,

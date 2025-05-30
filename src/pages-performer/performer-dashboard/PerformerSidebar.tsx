@@ -2,14 +2,14 @@
 import { NavLink, Link } from 'react-router-dom';
 import { useState, useContext, useEffect } from 'react';
 
-import TextButton from '../../design components/buttons/TextButton';
-import NotificationsButton from '../../design components/buttons/NotificationsButton';
+import TextButton from '../../design-components/buttons/TextButton';
+import NotificationsButton from '../../design-components/buttons/NotificationsButton';
 import { ExpandedContext } from '../../Context/ExpandedContext';
 
 import full_logo from '../../assets/logos/logo_md_orange.png';
 import star_logo from '../../assets/logos/orange_white_circle_only.png';
-import ClientIcon from '../../design components/ClientIcon';
-import PerformerIcon from '../../design components/PerformerIcon';
+import ClientIcon from '../../design-components/ClientIcon';
+import PerformerIcon from '../../design-components/PerformerIcon';
 
 import Calendar from '../../assets/svgs/calendar.svg?react';
 import DollarSign from '../../assets/svgs/dollarSign.svg?react';
@@ -43,11 +43,11 @@ interface sidebarProps {
 
 const PerformerSidebar = (
   {
-    viewClient, 
-    handleViewClient, 
-    textColor, 
-    textHoverFrom, 
-    textHoverTo, 
+    viewClient,
+    handleViewClient,
+    textColor,
+    textHoverFrom,
+    textHoverTo,
     bgColor,
     notificationColor,
   }: sidebarProps) => {
@@ -60,7 +60,7 @@ const PerformerSidebar = (
   const { isExpanded, setIsExpanded } = context;
 
   // Set the color of the text based on whether the performer is in client view or not
-  
+
   const [performerNotifications, setPerformerNotifications] = useState<NotificationProps>({
     performanceNotifications: 1,
     gigNotifications: 1,
@@ -83,21 +83,21 @@ const PerformerSidebar = (
       profileNotifications: 0,
     })
   }, []);
-  
- 
+
+
   const navStyle = `flex justify-between items-center hover:${textColor} text-xs py-2 -mx-4 pl-4`;
   const leftDivStyle = 'flex justify-start items-center space-x-2'
 
   return (
 
-    <nav className={` ${isExpanded ? 'w-50': 'w-24'} bg-white h-screen z-30 py-4 
+    <nav className={` ${isExpanded ? 'w-50' : 'w-24'} bg-white h-screen z-30 py-4 
       fixed flex flex-col justify-between px-4 border-r-2 border-gray-200 font-inter`}
     >
       <div className='flex justify-start pb-4 flex-col'>
-        <Link to='/' className={`flex justify-center border-b-2 border-gray-200 ${isExpanded? 'pb-5' : 'pb-3'}`}>
+        <Link to='/' className={`flex justify-center border-b-2 border-gray-200 ${isExpanded ? 'pb-5' : 'pb-3'}`}>
           <img src={` ${isExpanded ? `${full_logo}` : `${star_logo}`}`} alt="Star Gigs logo" />
         </Link>
-        
+
         {/* Renders Client Icon if Performer is in ClientView and PerformerIcon if not */}
         {viewClient ? (
           <ClientIcon />
@@ -114,60 +114,57 @@ const PerformerSidebar = (
             }
             onClick={() => setIsExpanded(!isExpanded)}
           >
-            <Caret className='rotate-90'/>
+            <Caret className='rotate-90' />
           </button>
         </div>
-        
+
         <main className={`flex flex-col space-y-1 -mt-2 ${!isExpanded ? 'justify-center' : ''}`}>
           <p className={`text-text_primary text-xs ${!isExpanded ? 'text-center' : ''}`}>Main</p>
-          
+
           {/* Main Dashboard Links */}
           <div className='flex flex-col justify-around text-text_primary'>
-            
+
             {/* Dashboard */}
             <NavLink
               to='/performerDashboard/main'
-              className={({isActive}) =>
+              className={({ isActive }) =>
                 `flex ${isExpanded ? 'justify-start' : 'justify-center'} 
                 items-center space-x-2 -mx-4 pl-4 py-2 text-text_primary text-xs 
-                hover:${textColor} ${
-                  isActive ? bgColor : 'bg-white'
+                hover:${textColor} ${isActive ? bgColor : 'bg-white'
                 }`
               }
             >
-                <Home />
-                <span className={`${!isExpanded && 'hidden'}`}>Dashboard</span>
+              <Home />
+              <span className={`${!isExpanded && 'hidden'}`}>Dashboard</span>
             </NavLink>
 
             {/* Performances */}
-            {!viewClient && 
-            <NavLink
-              to='/performerDashboard/performances'
-              className={({isActive}) =>
-                `${navStyle} ${isExpanded ? 'justify-between pr-2' : performerNotifications.performanceNotifications ? 
-                  'justify-end pr-2' : 'justify-center'} ${
-                  isActive ? bgColor : 'bg-white'
-                }`
-              }
-            >
-              <div className={leftDivStyle}>
-                <Star />
-                <span className={`${!isExpanded && 'hidden'}`}>Performances</span>
-              </div>
-              <NotificationsButton
-                notificationColor={notificationColor}
-                notificationNumber={performerNotifications.performanceNotifications}
-              />
-            </NavLink>
+            {!viewClient &&
+              <NavLink
+                to='/performerDashboard/performances'
+                className={({ isActive }) =>
+                  `${navStyle} ${isExpanded ? 'justify-between pr-2' : performerNotifications.performanceNotifications ?
+                    'justify-end pr-2' : 'justify-center'} ${isActive ? bgColor : 'bg-white'
+                  }`
+                }
+              >
+                <div className={leftDivStyle}>
+                  <Star />
+                  <span className={`${!isExpanded && 'hidden'}`}>Performances</span>
+                </div>
+                <NotificationsButton
+                  notificationColor={notificationColor}
+                  notificationNumber={performerNotifications.performanceNotifications}
+                />
+              </NavLink>
             }
 
             {/* Gigs */}
             <NavLink
-              to='/performerDashboard/gigs' 
-              className={({isActive}) =>
-                `${navStyle} ${isExpanded ? 'justify-between pr-2' : performerNotifications.gigNotifications ? 
-                  'justify-end pr-2' : 'justify-center'} ${
-                  isActive ? bgColor : 'bg-white'
+              to='/performerDashboard/gigs'
+              className={({ isActive }) =>
+                `${navStyle} ${isExpanded ? 'justify-between pr-2' : performerNotifications.gigNotifications ?
+                  'justify-end pr-2' : 'justify-center'} ${isActive ? bgColor : 'bg-white'
                 }`
               }
             >
@@ -184,10 +181,9 @@ const PerformerSidebar = (
             {/* Messages */}
             <NavLink
               to='/messages'
-              className={({isActive}) =>
-                `${navStyle} ${isExpanded ? 'justify-between pr-2' : performerNotifications.messageNotifications ? 
-                  'justify-end pr-2' : 'justify-center'} ${
-                  isActive ? bgColor : 'bg-white'
+              className={({ isActive }) =>
+                `${navStyle} ${isExpanded ? 'justify-between pr-2' : performerNotifications.messageNotifications ?
+                  'justify-end pr-2' : 'justify-center'} ${isActive ? bgColor : 'bg-white'
                 }`
               }
             >
@@ -204,9 +200,8 @@ const PerformerSidebar = (
             {/* Calendar */}
             <NavLink
               to='/calendar'
-              className={({isActive}) =>
-                `${navStyle} ${isExpanded ? 'justify-between pr-2' : performerNotifications.calendarNotifications ? 'justify-end pr-2' : 'justify-center'} ${
-                  isActive ? bgColor : 'bg-white'
+              className={({ isActive }) =>
+                `${navStyle} ${isExpanded ? 'justify-between pr-2' : performerNotifications.calendarNotifications ? 'justify-end pr-2' : 'justify-center'} ${isActive ? bgColor : 'bg-white'
                 }`
               }
             >
@@ -223,10 +218,9 @@ const PerformerSidebar = (
             {/* Payouts */}
             <NavLink
               to='/performerDashboard/payouts'
-              className={({isActive}) =>
-                `${navStyle} ${isExpanded ? 'justify-between pr-2' : 
-                  performerNotifications.paymentNotifications ? 'justify-end space-x-2 pr-2' : 'justify-center'} ${
-                  isActive ? bgColor : 'bg-white'
+              className={({ isActive }) =>
+                `${navStyle} ${isExpanded ? 'justify-between pr-2' :
+                  performerNotifications.paymentNotifications ? 'justify-end space-x-2 pr-2' : 'justify-center'} ${isActive ? bgColor : 'bg-white'
                 }`
               }
             >
@@ -243,9 +237,8 @@ const PerformerSidebar = (
             {/* Profile */}
             <NavLink
               to='/profile'
-              className={({isActive}) =>
-                `${navStyle} ${isExpanded ? 'justify-between pr-2' : performerNotifications.profileNotifications ? 'justify-end pr-2' : 'justify-center'} ${
-                  isActive ? bgColor : 'bg-white'
+              className={({ isActive }) =>
+                `${navStyle} ${isExpanded ? 'justify-between pr-2' : performerNotifications.profileNotifications ? 'justify-end pr-2' : 'justify-center'} ${isActive ? bgColor : 'bg-white'
                 }`
               }
             >
@@ -267,9 +260,8 @@ const PerformerSidebar = (
           <div className='flex flex-col space-y-2'>
             <NavLink
               to='/Settings'
-              className={({isActive}) =>
-                `flex items-center space-x-2 text-text_primary text-xs hover:${textColor} ${isExpanded ? 'justify-start pr-2' : 'justify-center'} ${
-                  isActive ? bgColor : 'bg-white'
+              className={({ isActive }) =>
+                `flex items-center space-x-2 text-text_primary text-xs hover:${textColor} ${isExpanded ? 'justify-start pr-2' : 'justify-center'} ${isActive ? bgColor : 'bg-white'
                 }`
               }
             >
@@ -305,16 +297,15 @@ const PerformerSidebar = (
       <footer>
         <NavLink
           to='/help'
-          className={({isActive}) => 
-            `flex ${context ? 'justify-start' : 'justify-center'} items-center space-x-2 text-text_primary text-xs hover:text-primary ${
-              isActive ? bgColor : 'bg-white'
+          className={({ isActive }) =>
+            `flex ${context ? 'justify-start' : 'justify-center'} items-center space-x-2 text-text_primary text-xs hover:text-primary ${isActive ? bgColor : 'bg-white'
             }`
           }
         >
           <QuestionMark />
           <span className={`${!context && 'hidden'}`}>Help</span>
         </NavLink>
-      </footer>       
+      </footer>
     </nav>
   )
 }

@@ -1,8 +1,8 @@
 import { NavLink } from 'react-router-dom';
 
 import logo_light from '../../assets/logos/logo2-sm-light-navbar.png';
-import OrangeButton from '../../design components/buttons/OrangeButton';
-import TextButton from '../../design components/buttons/TextButton';
+import OrangeButton from '../../design-components/buttons/OrangeButton';
+import TextButton from '../../design-components/buttons/TextButton';
 import SearchBar from './searchbar/SearchBar';
 
 const Navbar = () => {

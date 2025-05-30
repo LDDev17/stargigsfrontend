@@ -1,7 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 
-import TextButton from '../design components/buttons/TextButton';
+import TextButton from '../design-components/buttons/TextButton';
 import styles from './CustomRadio.module.css';
 import { useEffect } from 'react';
 
@@ -15,7 +15,7 @@ interface RoleSelectionProps {
 
 const RoleSelectionForm = ({ onRoleChange }: RoleSelectionProps) => {
   const { register, handleSubmit, watch } = useForm<RoleProps>({});
-  
+
   const navigate = useNavigate();
 
   const roleSubmit = (data: RoleProps) => {
@@ -36,15 +36,15 @@ const RoleSelectionForm = ({ onRoleChange }: RoleSelectionProps) => {
   }, [roleValue, onRoleChange])
 
   return (
-    <form 
-      className="w-1/2 flex flex-col justify-center items-center space-y-4 font-inter" 
+    <form
+      className="w-1/2 flex flex-col justify-center items-center space-y-4 font-inter"
       onSubmit={handleSubmit(roleSubmit)}
     >
       <div className="role-selection-container">
         <h2 className="font-bold text-4xl text-text_primary">Get Started:</h2>
         <p className="text-secondary text-xl">Choose the role that best describes you to continue.</p>
         <div className="flex flex-col space-y-4">
-          
+
           {/* Input options */}
           <div>
 
@@ -86,8 +86,8 @@ const RoleSelectionForm = ({ onRoleChange }: RoleSelectionProps) => {
               </label>
             </div>
           </div>
-          <button 
-            type="submit" 
+          <button
+            type="submit"
             className="text-white rounded-xl py-3 cursor-pointer text-md"
             style={{ backgroundColor: 'black' }}
           >
@@ -96,10 +96,12 @@ const RoleSelectionForm = ({ onRoleChange }: RoleSelectionProps) => {
         </div>
         <div className="inline-flex space-x-2 text-lg mt-24">
           <p className='py-2.5'>Already have an account? </p>
-          <TextButton 
+          <TextButton
             buttonText='Login'
             textColor='primary'
-
+            textHoverFrom='from-light_orange'
+            textHoverTo='to-primary'
+            onClick={() => navigate('/login')}
           />
         </div>
       </div>

@@ -1,10 +1,11 @@
-import Phone from '../assets/svgs/bxs_phone-call.svg?react';
-import Envelope from '../assets/svgs/envelope.svg?react';
-import MapPin from '../assets/svgs/map_pin.svg?react';
-import Twitter from '../assets/svgs/twitter.svg?react';
-import Instagram from '../assets/svgs/instagram.svg?react';
-import Discord from '../assets/svgs/discord.svg?react';
 import { Link } from 'react-router-dom';
+
+import Phone from '../../assets/svgs/bxs_phone-call.svg?react';
+import Envelope from '../../assets/svgs/envelope.svg?react';
+import MapPin from '../../assets/svgs/map_pin.svg?react';
+import Twitter from '../../assets/svgs/twitter.svg?react';
+import Instagram from '../../assets/svgs/instagram.svg?react';
+import Discord from '../../assets/svgs/discord.svg?react';
 
 export const ContactInfo = () => {
   return (

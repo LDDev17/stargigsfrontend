@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react"
-import InvoiceType from "../types/InvoiceType"
-import SampleInvoiceData from "../SampleData/InvoiceData";
 import { useParams } from "react-router-dom";
+
+import InvoiceType from "../../types/InvoiceType"
+import SampleInvoiceData from "../../SampleData/InvoiceData";
 
 const ClientInvoice = () => {
   // pulling invoiceId from URL

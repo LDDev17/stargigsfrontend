@@ -3,7 +3,7 @@
 import { useForm } from 'react-hook-form';
 
 import { TextArea } from "./TextArea";
-import paper_airplane from '../assets/icons/paper_airplane.png';
+import paper_airplane from '../../assets/icons/paper_airplane.png';
 
 interface ContactFormProps {
   firstName: string;

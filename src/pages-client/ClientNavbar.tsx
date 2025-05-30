@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 
 import SearchBar from '../pages-general/general-components/searchbar/SearchBar';
-import NotificationsButton from '../design components/buttons/NotificationsButton';
+import NotificationsButton from '../design-components/buttons/NotificationsButton';
 
 import NotificationBell from '../assets/icons/bell.svg';
 import Avatar from '../assets/icons/Avatar.png';
@@ -17,25 +17,34 @@ interface clientProps {
   email: string,
   phone: number,
   city: string,
+  state: string,
+  profile_pic?: string,
 }
 
 const ClientNavbar = () => {
-  const [clientNotifications, setClientNotifications] = useState<NotificationProps[]>(SampleNotificationData);
+  const [clientNotifications, setClientNotifications] = useState<NotificationProps[]>([]);
   const [totalNotifications, setTotalNotifications] = useState<number>(0);
-  const [client, setclient] = useState<clientProps>({
-    id: 1,
-    first_name: 'Andrew',
-    last_name: 'Smith',
-    user_name: 'andrew_smith',
-    email: 'andrew@smith.com',
-    phone: 5555555555,
-    city: 'Portland',
-  });
+  const [client, setclient] = useState<clientProps>();
   const [menuOpen, setMenuOpen] = useState(false);
   // const [clientView, setClientView] = useState(true);
 
   useEffect(() => {
+    setclient({
+      id: 1,
+      first_name: 'Andrew',
+      last_name: 'Smith',
+      user_name: 'andrew_smith',
+      email: 'andrew@smith.com',
+      phone: 5555555555,
+      city: 'Portland',
+      state: 'Oregon',
+      profile_pic: Avatar,
+    })
+  }, []);
+
+  useEffect(() => {
     // on load of page, make async API call to retrieve any notifications for that perfomer
+    setClientNotifications(SampleNotificationData)
   }, []);
 
   useEffect(() => {
@@ -70,6 +79,7 @@ const ClientNavbar = () => {
           <div className='relative -top-2 right-2'>
             <NotificationsButton
               notificationNumber={totalNotifications}
+              notificationColor=''
             />
           </div>
         </button>
@@ -79,7 +89,7 @@ const ClientNavbar = () => {
         <div className='flex items-center'>
           <div className='flex flex-col'>
             <p className='text-xs'>Hello!</p>
-            <p>{client.first_name} {client.last_name}</p>
+            <p>{client?.first_name} {client?.last_name}</p>
           </div>
           <button
             // caret opens dropdown with some menu options
